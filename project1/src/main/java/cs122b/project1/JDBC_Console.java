@@ -27,14 +27,18 @@ public class JDBC_Console {
 		String input;
 		boolean ifExit = false;
 		do {
-			System.out.println("\nLogin Menu:\n" + "1. Connect to MySQL.\n" + "2. Exit Program.\n");
+			System.out.println("\nLogin Menu:\n" + "1. Connect to local MySQL.\n" + "2. Connect to remote MySQL.\n"
+					+ "3. Exit Program.\n");
 			System.out.print("input your choice:\n>>");
 			input = console.next();
 			switch (input) {
 			case "1":
-				ifExit = connect();
+				ifExit = connectlocal();
 				break;
 			case "2":
+				ifExit = connectremote();
+				break;
+			case "3":
 				System.out.println("Bye.");
 				ifExit = true;
 				close_console();
@@ -45,30 +49,49 @@ public class JDBC_Console {
 			}
 		} while (!ifExit);
 
-		if (input.equals("1"))
+		if (input.equals("1") || input.equals("2"))
 			menu_console();
 	}
 
-	private static boolean connect() {
+	private static boolean connectlocal() {
 		System.out.print("Input DataBase Name:\n>>");
 		String dbname = console.next();
 		System.out.print("Input User Name:\n>>");
 		String user = console.next();
 		System.out.print("Input Password:\n>>");
 		String pass = console.next();
-		conn = new JDBC_Connection(dbname, user, pass);
+		conn = new JDBC_Connection("localhost", dbname, user, pass);
 		if (!conn.isConnected())
 			return false;
 		else {
 			username = user;
-			System.out.println("\nLogin to " + dbname + " as " + username + ". Welcome!");
+			System.out.println("\nLogin to " + dbname + " as " + username + " at localhost. Welcome!");
+			return true;
+		}
+	}
+
+	private static boolean connectremote() {
+		System.out.print("Input ip-address:\n>>");
+		String host = console.next();
+		System.out.print("Input DataBase Name:\n>>");
+		String dbname = console.next();
+		System.out.print("Input User Name:\n>>");
+		String user = console.next();
+		System.out.print("Input Password:\n>>");
+		String pass = console.next();
+		conn = new JDBC_Connection(host, dbname, user, pass);
+		if (!conn.isConnected())
+			return false;
+		else {
+			username = user;
+			System.out.println("\nLogin to " + dbname + " as " + username + " at " + host + ". Welcome!");
 			return true;
 		}
 	}
 
 	private static void menu_console() {
-		//create_console();
-		//conn = new JDBC_Connection("movieDB", "root", "cyhwwq");
+		// create_console();
+		// conn = new JDBC_Connection("movieDB", "root", "cyhwwq");
 		String input;
 		boolean ifExit = false;
 		do {
@@ -199,7 +222,7 @@ public class JDBC_Console {
 							choice = console.next();
 						}
 						choice_id = Integer.parseInt(choice);
-						if (choice_id > 0 && choice_id <= ids.size()+1)
+						if (choice_id > 0 && choice_id <= ids.size() + 1)
 							ifValid_Choice = true;
 						else {
 							System.out.print("please input a valid choice!\n>>");
@@ -240,10 +263,10 @@ public class JDBC_Console {
 				ifExit = true;
 				break;
 			case "8":
+				System.out.println("Bye " + username + ".");
 				conn.connectionClose();
 				close_console();
 				ifExit = true;
-				System.out.println("Bye " + username + ".");
 				break;
 			default:
 				System.out.println("no such choice, please retry!\n");
@@ -334,7 +357,7 @@ public class JDBC_Console {
 
 	public static void main(String[] arg) {
 		System.out.println("Welcome to JDBC Text Console!\n");
-		//JDBC_Console.menu_console();
+		// JDBC_Console.menu_console();
 		JDBC_Console.login_console();
 	}
 }

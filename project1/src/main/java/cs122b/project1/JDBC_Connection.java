@@ -18,9 +18,9 @@ import cs122b.project1.obj.Star;
 public class JDBC_Connection {
 	private Connection connection;
 
-	public JDBC_Connection(String dbname, String user, String pass) {
+	public JDBC_Connection(String host,String dbname, String user, String pass) {
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + dbname, user, pass);
+			connection = DriverManager.getConnection("jdbc:mysql://"+host+":3306/" + dbname, user, pass);
 		} catch (SQLException e) {
 			e.getErrorCode();
 			System.out.println("Login Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode()
