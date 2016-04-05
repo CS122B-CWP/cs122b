@@ -14,8 +14,12 @@ public class JDBC_Console {
 	private static String username;
 
 	private static void create_console() {
+		String os_type = System.getProperty("os.name").toLowerCase();
 		console = new Scanner(System.in);
-		console.useDelimiter("\r\n");
+		if (os_type.indexOf("windows") >= 0) {
+			console.useDelimiter("\r\n");
+		} else
+			console.useDelimiter("\n");
 	}
 
 	private static void close_console() {

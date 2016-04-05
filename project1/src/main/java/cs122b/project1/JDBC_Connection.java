@@ -18,9 +18,9 @@ import cs122b.project1.obj.Star;
 public class JDBC_Connection {
 	private Connection connection;
 
-	public JDBC_Connection(String host,String dbname, String user, String pass) {
+	public JDBC_Connection(String host, String dbname, String user, String pass) {
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://"+host+":3306/" + dbname, user, pass);
+			connection = DriverManager.getConnection("jdbc:mysql://" + host + ":3306/" + dbname, user, pass);
 		} catch (SQLException e) {
 			e.getErrorCode();
 			System.out.println("Login Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode()
@@ -41,17 +41,21 @@ public class JDBC_Connection {
 			String sql_string = "select * from movies where id in (select movie_id from stars_in_movies where stars_id="
 					+ id + ")";
 			ResultSet result = select.executeQuery(sql_string);
-			System.out.println("\nThe results of the query:");
-			// print table's contents, field by field
-			while (result.next()) {
-				System.out.println("Id:\t\t" + result.getInt(1));
-				System.out.println("Title:\t\t" + result.getString(2));
-				System.out.println("Year:\t\t" + result.getInt(3));
-				System.out.println("Dirctor:\t" + result.getString(4));
-				System.out.println("Banner_URL:\t" + result.getString(5));
-				System.out.println("Trailer:\t" + result.getString(6));
-				System.out.println();
-			}
+			if (result.next()) {
+				result.beforeFirst();
+				while (result.next()) {
+					System.out.println("\nThe results of the query:");
+					// print table's contents, field by field
+					System.out.println("Id:\t\t" + result.getInt(1));
+					System.out.println("Title:\t\t" + result.getString(2));
+					System.out.println("Year:\t\t" + result.getInt(3));
+					System.out.println("Dirctor:\t" + result.getString(4));
+					System.out.println("Banner_URL:\t" + result.getString(5));
+					System.out.println("Trailer:\t" + result.getString(6));
+					System.out.println();
+				}
+			} else
+				System.out.println("No record found!");
 
 			result.close();
 			select.close();
@@ -73,18 +77,21 @@ public class JDBC_Connection {
 					+ "(select id from stars where first_name like '" + fname + "' and last_name like '" + lname
 					+ "'))";
 			ResultSet result = select.executeQuery(sql_string);
-			System.out.println("\nThe results of the query:");
-			// print table's contents, field by field
-			while (result.next()) {
-				System.out.println("Id:\t\t" + result.getInt(1));
-				System.out.println("Title:\t\t" + result.getString(2));
-				System.out.println("Year:\t\t" + result.getInt(3));
-				System.out.println("Dirctor:\t" + result.getString(4));
-				System.out.println("Banner_URL:\t" + result.getString(5));
-				System.out.println("Trailer:\t" + result.getString(6));
-				System.out.println();
-			}
-
+			if (result.next()) {
+				result.beforeFirst();
+				while (result.next()) {
+					System.out.println("\nThe results of the query:");
+					// print table's contents, field by field
+					System.out.println("Id:\t\t" + result.getInt(1));
+					System.out.println("Title:\t\t" + result.getString(2));
+					System.out.println("Year:\t\t" + result.getInt(3));
+					System.out.println("Dirctor:\t" + result.getString(4));
+					System.out.println("Banner_URL:\t" + result.getString(5));
+					System.out.println("Trailer:\t" + result.getString(6));
+					System.out.println();
+				}
+			} else
+				System.out.println("No record found!");
 			result.close();
 			select.close();
 		} catch (SQLException e) {
