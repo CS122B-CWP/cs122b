@@ -9,6 +9,6 @@ mysql -u your_username -p (-h your_host_ip -P your_host_port) -D your_databse<  
 Compile and Execution:
 cd ../project1
 mvn compile
-mvn exec:java -Dexec.mainClass=cs122b.project1.JDBC_Console"
+mvn exec:exec
 
 Then enjoy it!
