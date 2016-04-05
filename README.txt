@@ -1,3 +1,6 @@
+Supported Platform:
+Windows\Linux\MacOS
+
 Required Environment:
 JDK	1.7+
 Maven	3.1+
