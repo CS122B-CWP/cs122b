@@ -1,0 +1,87 @@
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
+.FX-signin{
+ 	margin-top: 60px;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	max-width: 350px;
+ }
+
+.FX-body{
+	min-height: 480px;
+}
+
+.FX-HeaderText{
+	position: relative;
+    display: block;
+    padding: 15px 0px;
+}
+
+.FX-shortInput{
+	max-width: 60px;
+}
+.FX-midInput{
+	max-width: 150px;
+}
+.FX-largeInput{
+	max-width: 300px;
+}
+.FX-inline{
+	display: inline;
+}
+
+.FX-centralArea{
+	text-align: center;
+}
+.FX-rightArea{
+	text-align: right;
+}
+
+.FX-upPadding{
+	padding-top: 20px;
+}
+
+.FX-img-circle{
+	border-radius: 50%;
+}
+
+.FX-search{
+	margin-top: 60px;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	max-width: 600px;
+}
+
+.FX-BrowseText{
+	font-size: 18px;
+}
+
+#FX-foot{
+	border-top: 1px solid #ccc;
+	padding-top: 20px;
+	width: 100%;
+	bottom: 0;
+}
+
+#FX-recommend-carousel{
+	margin-bottom: 60px;
+}
+
+.FX-verticalTop{
+	vertical-align: top;
+}
+
+.FX-BrowsevAdj{
+	position: relative;
+	top:3px;
+}
+
+.navbar-static-top span.glyphicon{
+	font-size: 1.2em;
+}
+
+.FX-browseIcon{
+	font-size: 2em;
+}
