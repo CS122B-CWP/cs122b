@@ -58,6 +58,11 @@
 	font-size: 18px;
 }
 
+.FX-HorSpace{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
 #FX-foot{
 	border-top: 1px solid #ccc;
 	padding-top: 20px;
