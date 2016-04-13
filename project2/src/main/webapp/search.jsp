@@ -16,65 +16,7 @@
 </head>
 <body>
 	
-	<nav class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        			<span class="sr-only">Toggle navigation</span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-      			</button>
-				<!--Href TBD-->
-				<a class="navbar-brand logo-color" href="#">
-					<strong>FABFLIX</strong>   	
-				</a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li>
-						<a href="main.html" title="Home">
-							<span class="glyphicon glyphicon-home"></span>
-						</a>
-					</li>
-					<li>
-						<a href="search.htm" title="Search">
-							<span class="glyphicon glyphicon-search"></span>
-						</a>
-					</li>
-					<li>
-						<a href="browse.html" title="Browse">
-							<span class="glyphicon glyphicon-film"></span>
-						</a>
-					</li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><span class="pre text-center FX-HeaderText">Hi, Username</span></li>
-					<li> 
-						<a href="#" title="Profile">
-							<span class="glyphicon glyphicon-th-large"></span>
-						</a>
-					</li>
-					<li  class="dropdown">
-						<a href="#" title="Shopping cart"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-							<span class="glyphicon glyphicon-shopping-cart"></span>
-							<span class="badge FX-verticalTop">0</span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="#" class="pre">Movie name</a></li>
-							<li role="separator FX-verticalTop" class="divider"></li>
-            				<li><a href="#">Detail</a></li>
-            				<li><a href="#">Checkout</a></li>
-            			</ul>
-					</li>
-					<li><a href="login.html" title="Logout">
-							<span class="glyphicon glyphicon-log-out"></span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<jsp:include page="FRAGMENT/header.jsp"/>
 
 	<div class="container FX-body">
 		<div class="FX-search">
@@ -132,13 +74,9 @@
 			</form>
 		</div>
 	</div>
-	<div id="FX-foot">
-		<div class="container">
-			<div class="span7 text-center pre">
-				<a href="">About Us</a> | <a href="">Github</a>
-			</div>
-		</div>
-	</div>
+	
+	<%@ include file="FRAGMENT/footer.html" %>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<!--BS's js won't work if we don't include the above one-->
 	<script src="CSS/bootstrap/js/bootstrap.min.js"></script>
