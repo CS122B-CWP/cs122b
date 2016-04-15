@@ -5,7 +5,7 @@
 
 .list-special .list-group-item{
   border-radius: 4px;
-  margin: 2px;
+  margin: 2px auto;
 }
 
 .FX-signin{
@@ -42,6 +42,11 @@
 .FX-centralArea{
 	text-align: center;
 }
+
+div.FX-centralPad{
+		text-align: center;
+}
+
 .FX-rightArea{
 	text-align: right;
 }
@@ -98,8 +103,9 @@
 	font-size: 2em;
 }
 
-.FX-listHeight{
+.FX-listItem{
 	height: 300px;
+	max-width: 300px;
 }
 
 .FX-item *{
@@ -114,4 +120,5 @@
 .FX-col{
 	padding-left: 4px;
 	padding-right: 4px;
+	display: inline;
 }
