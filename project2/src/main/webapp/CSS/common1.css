@@ -2,6 +2,12 @@
     display: block;
     margin-top: 0; // remove the gap so it doesn't close
  }
+
+.list-special .list-group-item{
+  border-radius: 4px;
+  margin: 2px;
+}
+
 .FX-signin{
  	margin-top: 60px;
  	margin-left: auto;
@@ -11,6 +17,7 @@
 
 .FX-body{
 	min-height: 480px;
+	margin-bottom: 15px
 }
 
 .FX-HeaderText{
@@ -89,4 +96,22 @@
 
 .FX-browseIcon{
 	font-size: 2em;
+}
+
+.FX-listHeight{
+	height: 300px;
+}
+
+.FX-item *{
+	display: block;
+}
+
+.FX-row{
+	margin-left: -4px;
+	margin-right: -4px;
+}
+
+.FX-col{
+	padding-left: 4px;
+	padding-right: 4px;
 }

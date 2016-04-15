@@ -73,6 +73,14 @@
 				</div>
 			</form>
 		</div>
+		<hr>
+		<ul class="list-group list-special row FX-row">
+			<jsp:include page="FRAGMENT/listItem.jsp"/>
+			<jsp:include page="FRAGMENT/listItem.jsp"/>
+			<jsp:include page="FRAGMENT/listItem.jsp"/>
+			<jsp:include page="FRAGMENT/listItem.jsp"/>
+			<jsp:include page="FRAGMENT/listItem.jsp"/>
+		</ul>
 	</div>
 	
 	<%@ include file="FRAGMENT/footer.html" %>
