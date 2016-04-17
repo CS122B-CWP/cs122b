@@ -75,7 +75,7 @@
 		</div>
 		<hr>
 		<div>
-			<ul class="list-unstyled list-special row FX-row">
+			<ul class="list-group list-special row FX-row">
 				<jsp:include page="FRAGMENT/listItem.jsp"/>
 				<jsp:include page="FRAGMENT/listItem.jsp"/>
 				<jsp:include page="FRAGMENT/listItem.jsp"/>

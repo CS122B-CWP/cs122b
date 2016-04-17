@@ -33,20 +33,19 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><span class="pre text-center FX-HeaderText">Hi, Username</span></li>
 					<li> 
-						<a href="#" title="Profile">
+						<a href="customerInfo.jsp" title="Profile">
 							<span class="glyphicon glyphicon-th-large"></span>
 						</a>
 					</li>
 					<li  class="dropdown">
-						<a href="#" title="Shopping cart"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<a href="shoppingcart.jsp" title="Shopping cart"  class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 							<span class="badge FX-verticalTop">0</span>
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="#" class="pre">Movie name</a></li>
 							<li role="separator" class="divider"></li>
-            				<li><a href="#">Detail</a></li>
-            				<li><a href="#">Checkout</a></li>
+            				<li><a href="shoppingcart.jsp">Checkout</a></li>
             			</ul>
 					</li>
 					<li><a href="login.jsp" title="Logout">
