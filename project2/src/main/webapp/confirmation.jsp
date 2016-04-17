@@ -18,7 +18,7 @@
 
 	<jsp:include page="FRAGMENT/header.jsp"/>
 
-	<div class="container FX-body">
+	<div class="container-non-responsive FX-body">
 		<div class="panel panel-default">
 			<div class="panel-heading"><h2>Order Confirmation:</h2></div>
 			<div class="panel-body">
@@ -37,11 +37,11 @@
 					</div>
 				</table> -->
 				<div class="col-md-8 col-md-offset-2">
-				<table class="table">
+				<table class="table" border="1">
 					<thead>
 						<th> Sales Id:</th>
 						<th>Purchase Date:</th>
-						<th>Movie Purchased:</th>
+						<th style="border-left:0px">Movie Purchased:</th>
 					</thead>
 					<tbody>
 						<tr>

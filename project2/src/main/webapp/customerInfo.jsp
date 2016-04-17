@@ -37,26 +37,30 @@
 						</div>
 					</div>
 					<div class="list-group-item">
-
-						<label class="checkbox-inline"><input type="radio" name="optradio" value="">Visa</label>
-						<label class="checkbox-inline"><input type="radio" name="optradio" value="">Mastercard</label>
-					</div>
-					<div class="list-group-item">
 						<div class="input-group">
-							<span class="input-group-addon" id="basic-addon3">First Name:</span>
-  							<input type="text" class="form-control" aria-describedby="basic-addon2">
+							<span class="input-group-addon" id="basic-addon3">Card Type:</span>
+							<label class="checkbox-inline"><input type="radio" name="optradio" value="">Visa</label>
+							<label class="checkbox-inline"><input type="radio" name="optradio" value="">Mastercard</label>
+							<label class="checkbox-inline"><input type="radio" name="optradio" value="">Discover</label>
+							<label class="checkbox-inline"><input type="radio" name="optradio" value="" disabled>UnionPay</label>
 						</div>
 					</div>
 					<div class="list-group-item">
 						<div class="input-group">
-							<span class="input-group-addon" id="basic-addon4">Last Name:</span>
+							<span class="input-group-addon" id="basic-addon4">First Name:</span>
   							<input type="text" class="form-control" aria-describedby="basic-addon4">
+						</div>
+					</div>
+					<div class="list-group-item">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon5">Last Name:</span>
+  							<input type="text" class="form-control" aria-describedby="basic-addon5">
 						</div>
 					</div>
 				</div>
 
 
-			<div class="row">
+			<div class="row" align="right">
 				<button type="button" class="btn btn-success btn-md">Check Out</button>
 				<button type="button" class="btn btn-default btn-md">Reset Form</button>
 			</div>
