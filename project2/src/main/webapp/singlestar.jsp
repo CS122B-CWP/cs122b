@@ -16,18 +16,18 @@
 </head>
 <body>
 	<jsp:include page="FRAGMENT/header.jsp"/>
-	<div class="container FX-fluid">
+	<div class="container-non-responsive FX-fluid">
 		<div class="panel panel-default">
 			<div class="panel-heading"><h3>Star Details:</h3></div>
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-md-4 FX-BlackText text-center">
+					<div class="col-xs-4 FX-BlackText" align="right">
 						<a href="">
 		      				<img src="http://ia.imdb.com/media/imdb/01/I/57/21/01m.jpg" alt="Generic placeholder image" 
 		      				style="height:250px">
 		      			</a>
 					</div>
-					<div class="col-md-6 FX-BlackText">
+					<div class="col-xs-6 FX-BlackText">
 						<table class="table table-borderless">
 							<thead>
 								<td style="text-left"><h4>Michael Jackson</h4></td>
@@ -38,12 +38,12 @@
 									<td>1958-04-21</td>
 								</tr>
 								<tr>
-									<td style="text-left">Star id:</td>
-									<td>430</td>
+									<td style="border-top:0px">Star id:</td>
+									<td style="border-top:0px">430</td>
 								</tr>
 								<tr>
-									<td style="text-left">Starred in:</td>
-									<td><a href="">This is it</a>,<a href="">This is it</a>,<a href="">This is it</a>,<a href="">This is it</a></td>
+									<td style="border-top:0px">Starred in:</td>
+									<td style="border-top:0px"><a href="">This is it</a>,<a href="">This is it</a>,<a href="">This is it</a>,<a href="">This is it</a></td>
 								</tr>
 							</tbody>
 						</table>

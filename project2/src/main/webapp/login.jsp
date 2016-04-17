@@ -30,11 +30,10 @@
 				<form action="" method="POST" class="login" role="form">
 					<p></p>
 					<div class="input-group">
-						<span class="input-group-addon">
-							<span class="glyphicon glyphicon-user"></span>
-						</span>
-						
-						<input autofocus="" class="form-control input-lg" name="username" placeholder="Username" required tabindex="1" type="text" value=""/>
+						<span class="input-group-addon"> <span
+							class="glyphicon glyphicon-user"></span>
+						</span> <input autofocus="" class="form-control input-lg" name="username"
+							placeholder="Username" required tabindex="1" type="text" value="" />
 					</div>
 					<p></p>
 					<div class="input-group">

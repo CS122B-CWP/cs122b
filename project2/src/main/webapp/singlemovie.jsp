@@ -16,22 +16,22 @@
 </head>
 <body>
 	<jsp:include page="FRAGMENT/header.jsp"/>
-	<div class="container FX-fluid">
+	<div class="container-non-responsive FX-fluid">
 		<div class="panel panel-default">
 			<div class="panel-heading"><h3>Movie Details:</h3></div>
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-md-4 FX-BlackText text-center">
+					<div class="col-xs-4 FX-BlackText" align="right">
 						<a href="">
 		      				<img src="http://ia.imdb.com/media/imdb/01/I/57/21/01m.jpg" alt="Generic placeholder image" 
 		      				style="height:250px">
 		      			</a>
 					</div>
-					<div class="col-md-6 FX-BlackText">
+					<div class="col-xs-6 FX-BlackText" align="right">
 						<table class="table">
 							<thead>
 								<tr>
-									<td><h4>StarWar</h4></td>
+									<td><h4><I>StarWar</I></h4></td>
 									<td align="right"><button type="button" class="btn btn-success btn-md">Add to Cart</button>	</td>
 								</tr>
 							</thead>
@@ -41,20 +41,20 @@
 									<td>2009</td>
 								</tr>
 								<tr>
-									<td style="text-left">Director:</td>
-									<td>Kenny Ortege</td>
+									<td style="border-top:0px">Director:</td>
+									<td style="border-top:0px">Kenny Ortege</td>
 								</tr>
 								<tr>
-									<td style="text-left">Movie id:</td>
-									<td>174</td>
+									<td style="border-top:0px">Movie id:</td>
+									<td style="border-top:0px">174</td>
 								</tr>
 								<tr>
-									<td style="text-left">Stars:</td>
-									<td><a herf="">Michael Johnson</a>,<a herf="">Michael Johnson</a>,<a herf="">Michael Johnson</a>,<a herf="">Michael Johnson</a></td>
+									<td style="border-top:0px">Stars:</td>
+									<td style="border-top:0px"><a herf="">Michael Johnson</a>,<a herf="">Michael Johnson</a>,<a herf="">Michael Johnson</a>,<a herf="">Michael Johnson</a></td>
 								</tr>
 								<tr>
-									<td style="text-left">Price:</td>
-									<td>$15.99</td>
+									<td style="border-top:0px">Price:</td>
+									<td style="border-top:0px">$15.99</td>
 								</tr>
 							</tbody>
 						</table>
