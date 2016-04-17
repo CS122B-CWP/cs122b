@@ -17,7 +17,8 @@
       			Stars: <a href="">blabla</a>
      	</div><br>
      	<div class="FX-innerItem FX-listRB">
-     		<form action="">
+     		<%//pass movie id by url %>
+     		<form action="" method="POST" role="form">
      			<button type="button" class="btn btn-success btn-sm">Buy</button><br>
      		<p></p>
      			<div class="FX-QtyContainer">

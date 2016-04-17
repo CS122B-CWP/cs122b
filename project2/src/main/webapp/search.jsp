@@ -20,7 +20,7 @@
 
 	<div class="container FX-body">
 		<div class="FX-search">
-			<form action="" method="POST" class="search" role="form">
+			<form action="" method="GET" class="search" role="form">
 				<div class="input-group">
 					<input autofocus class="form-control input-lg" name="username"
 						placeholder="Title" required tabindex="1" type="text" value="" />
