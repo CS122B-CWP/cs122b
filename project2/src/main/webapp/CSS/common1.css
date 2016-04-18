@@ -79,6 +79,7 @@ div.FX-centralPad{
 	border-top: 1px solid #ccc;
 	padding-top: 20px;
 	width: 100%;
+	min-height:100px;
 	bottom: 0;
 }
 
