@@ -9,9 +9,12 @@ public class JDBCConnector implements JDBCProperty {
 
 	static {
 		try {
+			Class.forName(DRIVER);
 			connection = DriverManager.getConnection(CONNECTION_URL, USERNAME, PASSWORD);
 		} catch (SQLException e) {
 			System.out.println("JDBC Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode());
+		} catch (ClassNotFoundException e) {
+			// e.printStackTrace();
 		}
 	}
 
