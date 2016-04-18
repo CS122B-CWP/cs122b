@@ -89,6 +89,7 @@
 				<jsp:include page="FRAGMENT/listItem.jsp" />
 				<jsp:include page="FRAGMENT/listItem.jsp" />
 			</ul>
+			<jsp:include page="FRAGMENT/pagination.jsp" />
 		</div>
 	</div>
 

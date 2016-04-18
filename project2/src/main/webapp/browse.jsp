@@ -46,6 +46,7 @@
 			</div>
 		</div>
 		<hr>
+		<div>
 		<ul class="list-group list-special row FX-row">
 			<jsp:include page="FRAGMENT/listItem.jsp" />
 			<jsp:include page="FRAGMENT/listItem.jsp" />
@@ -53,6 +54,8 @@
 			<jsp:include page="FRAGMENT/listItem.jsp" />
 			<jsp:include page="FRAGMENT/listItem.jsp" />
 		</ul>
+		<jsp:include page="FRAGMENT/pagination.jsp" />
+		</div>
 	</div>
 
 	<%@ include file="FRAGMENT/footer.html"%>

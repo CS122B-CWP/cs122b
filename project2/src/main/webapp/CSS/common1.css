@@ -141,4 +141,11 @@ div.FX-centralPad{
 	max-width: 100px;
 	margin-left: auto;
  	margin-right: auto;
+ 	display:inline-block;
+ 	vertical-align:bottom;
+}
+.FX-listBuy{
+	position:absolute;
+	bottom:30px;
+	left:230px;
 }
