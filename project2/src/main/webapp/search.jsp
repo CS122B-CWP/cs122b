@@ -23,8 +23,8 @@
 			<form action="" method="GET" class="search" role="form">
 				<div class="input-group">
 					<input autofocus class="form-control input-lg" name="username"
-						placeholder="Title" tabindex="1" type="text" value="" />
-					<span class="input-group-addon"> <span
+						placeholder="Title" tabindex="1" type="text" value="" /> <span
+						class="input-group-addon"> <span
 						class="glyphicon glyphicon-search"></span>
 					</span>
 				</div>
@@ -89,7 +89,7 @@
 				<jsp:include page="FRAGMENT/listItem.jsp" />
 				<jsp:include page="FRAGMENT/listItem.jsp" />
 			</ul>
-			<jsp:include page="FRAGMENT/pagination.jsp" />
+			<jsp:include page="FRAGMENT/browsepagination.jsp" />
 		</div>
 	</div>
 

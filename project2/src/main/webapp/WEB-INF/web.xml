@@ -7,11 +7,24 @@
 		<welcome-file>/main.jsp</welcome-file>
 	</welcome-file-list>
 	<servlet>
+		<servlet-name>JDBCPoolServlet</servlet-name>
+		<servlet-class>project2.servlet.JDBCPoolServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>project2.servlet.LoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>/loginprocess</url-pattern>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>BrowserServlet</servlet-name>
+		<servlet-class>project2.servlet.BrowserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BrowserServlet</servlet-name>
+		<url-pattern>/browse</url-pattern>
 	</servlet-mapping>
 </web-app>

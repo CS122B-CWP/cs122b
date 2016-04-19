@@ -11,12 +11,17 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--BS's js won't work if we don't include the above one-->
+<script src="CSS/bootstrap/js/bootstrap.min.js"></script>
 <title>Main</title>
 </head>
 <body>
-
-	<jsp:include page="FRAGMENT/header.jsp" />
+	<div id="header"></div>
+	<script>
+		$("#header").load("FRAGMENT/header.jsp");
+	</script>
 
 	<div class="container FX-body">
 		<div id="FX-recommend-carousel" class="carousel slide"
@@ -77,13 +82,9 @@
 		</div>
 	</div>
 
-
-
-	<%@ include file="FRAGMENT/footer.html"%>
-
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<!--BS's js won't work if we don't include the above one-->
-	<script src="CSS/bootstrap/js/bootstrap.min.js"></script>
+	<div id="footer"></div>
+	<script>
+		$("#footer").load("FRAGMENT/footer.html");
+	</script>
 </body>
 </html>
