@@ -67,12 +67,17 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2">Star:</label>
 							<div class="col-sm-10">
-								<div class="form-group form-inline">
-									<label for="FirstName">First Name:</label> <input
-										class="form-control input-sm FX-midInput" name="FirstName"
-										type="text" value="" maxlength="255" /> <label for="LastName">Last
-										Name:</label> <input class="form-control input-sm FX-midInput"
-										name="LastName" type="text" value="" maxlength="255" />
+								<div class="form-group form-inline"> 
+									<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1">First Name</span>
+									<input class="form-control input-sm FX-midInput" name="FirstName"
+										type="text" value="" maxlength="255" /> 
+									</div>	
+									<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1">Last Name</span>
+									<input class="form-control input-sm FX-midInput" name="FirstName"
+										type="text" value="" maxlength="255" /> 
+									</div>	
 								</div>
 							</div>
 						</div>
