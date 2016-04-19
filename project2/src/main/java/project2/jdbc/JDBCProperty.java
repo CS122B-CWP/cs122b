@@ -5,4 +5,5 @@ public interface JDBCProperty {
 	String CONNECTION_URL = "jdbc:mysql://localhost:3306/movieDB";
 	String USERNAME = "root";
 	String PASSWORD = "cyhwwq";
+	int SIZE = 20;
 }

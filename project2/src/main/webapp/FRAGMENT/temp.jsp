@@ -15,21 +15,6 @@
 			Genres: <a href="">absa</a>
 			<hr>
 			Stars: <a href="">blabla</a>
-		</div> <br>
-		<div class="FX-innerItem FX-listBuy">
-			<%
-				//pass movie id by url
-			%>
-			<form action="" method="POST" role="form">
-				<button type="button" class="btn btn-success btn-sm">Buy</button>
-				<div class="FX-QtyContainer">
-					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Qty</span> <input
-							type="text" class="form-control input-sm"
-							aria-describedby="basic-addon1">
-					</div>
-				</div>
-			</form>
 		</div>
 	</li>
 </div>

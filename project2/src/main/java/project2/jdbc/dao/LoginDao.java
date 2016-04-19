@@ -5,34 +5,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import project2.jdbc.JDBCConnector;
-import project2.jdbc.bean.LoginBean;
+import project2.jdbc.JDBCPool;
 
 public class LoginDao {
-	private static Connection conn = null;
 
-	public LoginDao() {
-		conn = JDBCConnector.getConnection();
-	}
-
-	public boolean validate(LoginBean bean) {
-		boolean status = false;
+	public static String validate(String email, String pass) {
+		String name = "";
 		try {
-			PreparedStatement sql = conn.prepareStatement("select * from customer where email=? and password=?");
-			sql.setString(1, bean.getEmail());
-			sql.setString(2, bean.getPass());
+			Connection conn = JDBCPool.getInstance().getConnection();
+			PreparedStatement sql = conn
+					.prepareStatement("select last_name from customers where email=? and password=?");
+			sql.setString(1, email);
+			sql.setString(2, pass);
 
 			ResultSet rs = sql.executeQuery();
-			status = rs.next();
+			if (rs.next()) {
+				name = rs.getString(1);
+			}
 			rs.close();
 			sql.close();
+			JDBCPool.getInstance().release(conn);
 		} catch (SQLException e) {
 			System.out.println("JDBC Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode());
 		}
-		return status;
+		return name;
 	}
 
-	public void close() {
-		JDBCConnector.connectionClose(conn);
-	}
 }
