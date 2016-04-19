@@ -15,7 +15,7 @@ public class BrowserDAO {
 
 	public static List<Movie> browserContent(BrowserPageBean pagebean) {
 		List<Movie> movies = new ArrayList<Movie>();
-		int start = (pagebean.getCurPage() - 1) * pagebean.getRowsPerPage() + 1;
+		int start = (pagebean.getCurPage() - 1) * pagebean.getRowsPerPage();
 		Object[] para = new Object[] { "%" + pagebean.getGenre() + "%", pagebean.getYear() + "%", start,
 				pagebean.getRowsPerPage() };
 		try {

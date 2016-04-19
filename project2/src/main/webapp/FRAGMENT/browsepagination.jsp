@@ -36,7 +36,7 @@
 	$('#pageP').find('a').attr(
 			'href',
 			'browse?page=' + pre + "&genre=" + content.genre + "&year="
-					+ content.year)
+					+ content.year);
 
 	var next = content.curPage + 1;
 	if (next > content.maxPage)
@@ -44,5 +44,5 @@
 	$('#pageN').find('a').attr(
 			'href',
 			'browse?page=' + next + "&genre=" + content.genre + "&year="
-					+ content.year)
+					+ content.year);
 </script>

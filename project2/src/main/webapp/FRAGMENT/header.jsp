@@ -8,7 +8,7 @@
 					class="icon-bar"></span>
 			</button>
 			<!--Href TBD-->
-			<a class="navbar-brand logo-color" href="#"> <strong>FABFLIX</strong>
+			<a class="navbar-brand logo-color"> <strong>FABFLIX</strong>
 			</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
@@ -16,7 +16,7 @@
 				<li><a href="main.jsp" title="Home"> <span
 						class="glyphicon glyphicon-home"></span>
 				</a></li>
-				<li><a href="search.jsp" title="Search"> <span
+				<li><a href="search" title="Search"> <span
 						class="glyphicon glyphicon-search"></span>
 				</a></li>
 				<li><a href="browse" title="Browse"> <span
@@ -52,7 +52,7 @@
 
 <script>
 	$("#logout").hide();
-	var name ="<%=(String) session.getAttribute("login_name")%>";
+	var name ="<%=(String) session.getAttribute("login_name")%>	";
 	if (name == "null") {
 		var name_msg = "Hi,Username";
 	} else {

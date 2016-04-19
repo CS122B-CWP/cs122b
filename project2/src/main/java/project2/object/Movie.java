@@ -5,6 +5,8 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import project2.jdbc.dao.GenreDAO;
+
 public class Movie {
 	private int id = -1;
 	private String title;
@@ -92,6 +94,8 @@ public class Movie {
 		JSONObject jsonStr = new JSONObject();
 		jsonStr.put("id", this.id);
 		jsonStr.put("title", this.title);
+		if (this.genre == null)
+			this.genre = GenreDAO.moviegenre(id);
 		jsonStr.put("genre", this.genre);
 		jsonStr.put("dirctor", this.dirctor);
 		jsonStr.put("year", this.year);
