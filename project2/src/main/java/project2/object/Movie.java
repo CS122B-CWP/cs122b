@@ -14,6 +14,7 @@ public class Movie {
 	private String trailer;
 	private String genre;
 	private List<MovieStar> stars;
+	private double price;
 
 	public int getId() {
 		return id;
@@ -79,6 +80,14 @@ public class Movie {
 		this.stars = stars;
 	}
 
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	public JSONObject toJson() {
 		JSONObject jsonStr = new JSONObject();
 		jsonStr.put("id", this.id);
@@ -94,6 +103,7 @@ public class Movie {
 				star_array.put(star.toJson());
 		}
 		jsonStr.put("stars", star_array);
+		jsonStr.put("price", this.price);
 		return jsonStr;
 	}
 

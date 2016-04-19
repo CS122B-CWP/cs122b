@@ -128,7 +128,7 @@
 					starname += " " + stars[j].lname;
 				if (starname != "") {
 					var starlink = $('<a></a>');
-					starlink.attr('href', 'singlestar?id' + stars[j].id);
+					starlink.attr('href', 'singlestar?id=' + stars[j].id);
 					if (j < stars.length - 1)
 						starlink.text(starname + ",\t");
 					else

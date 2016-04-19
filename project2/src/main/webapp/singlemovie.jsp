@@ -1,3 +1,7 @@
+
+<%
+	String content = (String) session.getAttribute("moviePage");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +19,11 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!--BS's js won't work if we don't include the above one-->
 <script src="CSS/bootstrap/js/bootstrap.min.js"></script>
+<script>
+	var content =
+<%=content%>
+	;
+</script>
 <title>singleMovie</title>
 </head>
 <body>
@@ -30,17 +39,14 @@
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-xs-4 FX-BlackText" align="right">
-						<a href=""> <img
-							src="http://ia.imdb.com/media/imdb/01/I/57/21/01m.jpg"
-							alt="Generic placeholder image" style="height: 250px">
-						</a>
+						<img id="img" style="height: 250px">
 					</div>
 					<div class="col-xs-6 FX-BlackText" align="right">
 						<table class="table">
 							<thead>
 								<tr>
 									<td><h4>
-											<I>StarWar</I>
+											<I id="title"></I>
 										</h4></td>
 									<td align="right"><button type="button"
 											class="btn btn-success btn-md">Add to Cart</button></td>
@@ -49,25 +55,23 @@
 							<tbody>
 								<tr>
 									<td style="">Year:</td>
-									<td>2009</td>
+									<td id="year"></td>
 								</tr>
 								<tr>
 									<td style="border-top: 0px">Director:</td>
-									<td style="border-top: 0px">Kenny Ortege</td>
+									<td id="dirctor" style="border-top: 0px"></td>
 								</tr>
 								<tr>
 									<td style="border-top: 0px">Movie id:</td>
-									<td style="border-top: 0px">174</td>
+									<td id="movie_id" style="border-top: 0px"></td>
 								</tr>
 								<tr>
 									<td style="border-top: 0px">Stars:</td>
-									<td style="border-top: 0px"><a herf="">Michael Johnson</a>,<a
-										herf="">Michael Johnson</a>,<a herf="">Michael Johnson</a>,<a
-										herf="">Michael Johnson</a></td>
+									<td id="stars" style="border-top: 0px"></td>
 								</tr>
 								<tr>
 									<td style="border-top: 0px">Price:</td>
-									<td style="border-top: 0px">$15.99</td>
+									<td id="price" style="border-top: 0px"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -80,6 +84,33 @@
 	<div id="footer"></div>
 	<script>
 		$("#footer").load("FRAGMENT/footer.html");
+	</script>
+
+	<script>
+		$("#img").attr('src', content.banner_url);
+		$("#img").attr('alt', content.title);
+		$("#title").text(content.title);
+		$("#year").text(content.year);
+		$("#dirctor").text(content.dirctor);
+		$("#movie_id").text(content.id);
+		var stars = content.stars;
+		for (i = 0; i < stars.length; i++) {
+			var starname = "";
+			if (stars[i].fname != null)
+				starname += stars[i].fname;
+			if (stars[i].lname != null)
+				starname += " " + stars[i].lname;
+			if (starname != "") {
+				var starlink = $('<a></a>');
+				starlink.attr('href', 'singlestar?id=' + stars[i].id);
+				if (i < stars.length - 1)
+					starlink.text(starname + ",\t");
+				else
+					starlink.text(starname);
+				starlink.appendTo("#stars");
+			}
+		}
+		$("#price").text(content.price);
 	</script>
 </body>
 </html>

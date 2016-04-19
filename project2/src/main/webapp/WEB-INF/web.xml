@@ -27,4 +27,20 @@
 		<servlet-name>BrowserServlet</servlet-name>
 		<url-pattern>/browse</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>SingleMovieServlet</servlet-name>
+		<servlet-class>project2.servlet.SingleMovieServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SingleMovieServlet</servlet-name>
+		<url-pattern>/singlemovie</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SingleStarServlet</servlet-name>
+		<servlet-class>project2.servlet.SingleStarServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SingleStarServlet</servlet-name>
+		<url-pattern>/singlestar</url-pattern>
+	</servlet-mapping>
 </web-app>

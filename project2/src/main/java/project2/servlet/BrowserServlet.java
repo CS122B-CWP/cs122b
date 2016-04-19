@@ -14,7 +14,7 @@ import project2.jdbc.bean.BrowserPageBean;
 import project2.jdbc.dao.BrowserDAO;
 
 public class BrowserServlet extends HttpServlet {
-	private static final long serialVersionUID = 2L;
+	private static final long serialVersionUID = 3L;
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
