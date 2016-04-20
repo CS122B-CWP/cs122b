@@ -48,7 +48,7 @@
 									<td><h4>
 											<I id="title"></I>
 										</h4></td>
-									<td align="right"><button type="button"
+									<td align="right"><button type="button" id="addBtn"
 											class="btn btn-success btn-md">Add to Cart</button></td>
 								</tr>
 							</thead>
@@ -110,7 +110,28 @@
 				starlink.appendTo("#stars");
 			}
 		}
-		$("#price").text(content.price);
+		$("#price").text('$' + content.price);
+	</script>
+
+	<script>
+		$("#addBtn").click(function() {
+			var _f = $('<form></form>');
+			_f.attr('method', 'POST');
+			_f.attr('action', 'shoppingcart');
+			var type = $('<input></input>');
+			type.attr('name', 'type');
+			type.val('add');
+			type.appendTo(_f);
+			var movie_id = $('<input></input>');
+			movie_id.attr('name', 'movie_id');
+			movie_id.val($("#movie_id").text());
+			movie_id.appendTo(_f);
+			var movie_title = $('<input></input>');
+			movie_title.attr('name', 'movie_title');
+			movie_title.val($("#title").text());
+			movie_title.appendTo(_f);
+			_f.submit();
+		});
 	</script>
 </body>
 </html>

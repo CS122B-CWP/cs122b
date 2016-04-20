@@ -74,7 +74,7 @@
 				</a>
 			</div>
 			<div class="col-md-6 FX-centralArea">
-				<a href="browse.jsp"> <span
+				<a href="browse"> <span
 					class="glyphicon glyphicon-film FX-browseIcon"></span><br>
 					Browse
 				</a>

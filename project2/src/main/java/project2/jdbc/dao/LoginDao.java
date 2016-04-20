@@ -6,21 +6,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import project2.jdbc.JDBCPool;
+import project2.object.LoginInfo;
 
 public class LoginDao {
 
-	public static String validate(String email, String pass) {
-		String name = "";
+	public static LoginInfo validate(String email, String pass) {
+		LoginInfo user = null;
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
 			PreparedStatement sql = conn
-					.prepareStatement("select last_name from customers where email=? and password=?");
+					.prepareStatement("select last_name, id from customers where email=? and password=?");
 			sql.setString(1, email);
 			sql.setString(2, pass);
 
 			ResultSet rs = sql.executeQuery();
 			if (rs.next()) {
-				name = rs.getString(1);
+				user = new LoginInfo();
+				user.setLname(rs.getString(1));
+				user.setUser_id(rs.getInt(2));
 			}
 			rs.close();
 			sql.close();
@@ -28,7 +31,7 @@ public class LoginDao {
 		} catch (SQLException e) {
 			System.out.println("JDBC Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode());
 		}
-		return name;
+		return user;
 	}
 
 }

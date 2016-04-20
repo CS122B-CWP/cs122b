@@ -1,7 +1,8 @@
 
 <%
-	if (session.getAttribute("login_name") != null)
-		response.sendRedirect("main.html");
+	if (session.getAttribute("login_name") != null) {
+		response.sendRedirect("main.jsp");
+	}
 %>
 
 <!DOCTYPE html>
