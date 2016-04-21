@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="CSS/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="CSS/common1.css">
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--BS's js won't work if we don't include the above one-->
+<script src="CSS/bootstrap/js/bootstrap.min.js"></script>
+<title>customerInfo</title>
+</head>
+<body>
+	<div id="header"></div>
+	<script>
+		$("#header").load("FRAGMENT/header.jsp");
+	</script>
+
+	<div class="container-fluid">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>Order Information</h3>
+			</div>
+			<form method="POST" action="checkout" id="check_out_form">
+				<div class="panel-body">
+					<p class="text-warning">Please fill out all of the following
+						customer information.</p>
+					<div class="list-group">
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1">Card
+									Number:</span> <input type="text" class="form-control"
+									aria-describedby="basic-addon1" name='credit_card'>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon2">Expiration
+									Date:</span> <input type="text" class="form-control"
+									placeholder="YYYY-MM-DD" aria-describedby="basic-addon2"
+									name='exp'>
+							</div>
+						</div>
+
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon4">First
+									Name:</span> <input type="text" class="form-control"
+									aria-describedby="basic-addon4" name='fname'>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon5">Last
+									Name:</span> <input type="text" class="form-control"
+									aria-describedby="basic-addon5" name='lname'>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row" align="right">
+						<button type="button" id="checkBtn" class="btn btn-success btn-md">Check
+							Out</button>
+						<button type="button" id="resetBtn" class="btn btn-default btn-md">Reset
+							Form</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="footer"></div>
+	<script>
+		$("#footer").load("FRAGMENT/footer.html");
+		$('#resetBtn').click(function() {
+			$("[name='credit_card']").val("");
+			$("[name='exp']").val("");
+			$("[name='fname']").val("");
+			$("[name='lname']").val("");
+		});
+	</script>
+
+	<script>
+		$('#checkBtn')
+				.click(
+						function() {
+							if ($('#header').find('#itemNum').text() > 0) {
+								if ($("[name='credit_card']").val() != ""
+										&& $("[name='exp']").val() != ""
+										&& $("[name='fname']").val() != ""
+										&& $("[name='lname']").val() != "") {
+									var date = $("[name='exp']").val();
+									if (date
+											.match("(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})"
+													+ "-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))"
+													+ "|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)"))
+										$('#check_out_form').submit();
+									else
+										alert('Invalid Date!');
+								} else
+									alert('Please Complete All the info!');
+							} else
+								alert('Your shopping cart is empty!');
+						});
+	</script>
+</body>
+</html>
+
