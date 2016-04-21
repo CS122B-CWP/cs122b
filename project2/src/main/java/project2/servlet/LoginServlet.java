@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import project2.jdbc.bean.ShoppingCartBean;
-import project2.jdbc.dao.LoginDao;
+import project2.jdbc.dao.LoginDAO;
 import project2.jdbc.dao.ShoppingCartDAO;
 import project2.object.LoginInfo;
 
@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			LoginInfo user = LoginDao.validate(request.getParameter("username"), request.getParameter("password"));
+			LoginInfo user = LoginDAO.validate(request.getParameter("username"), request.getParameter("password"));
 			// System.out.println(login_name);
 			// System.out.println(request.getHeader("referer"));
 			if (request.getSession().getAttribute("origin_url") == null) {

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import project2.jdbc.JDBCPool;
 import project2.object.LoginInfo;
 
-public class LoginDao {
+public class LoginDAO {
 
 	public static LoginInfo validate(String email, String pass) {
 		LoginInfo user = null;
