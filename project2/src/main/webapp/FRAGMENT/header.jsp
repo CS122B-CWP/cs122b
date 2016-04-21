@@ -32,20 +32,19 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><span class="pre text-center FX-HeaderText" id="username"></span></li>
-				<li><a href="customerInfo.jsp" title="Profile"> <span
+				<li class="dropdown"><a title="Profile" class="dropdown-toggle"
+					role="button" aria-haspopup="true" aria-expanded="false"> <span
 						class="glyphicon glyphicon-th-large"></span>
-				</a></li>
-				<li class="dropdown"><a href="shoppingcart"
-					title="Shopping cart" class="dropdown-toggle" role="button"
-					aria-haspopup="true" aria-expanded="false"> <span
-						class="glyphicon glyphicon-shopping-cart"></span> <span
-						class="badge FX-verticalTop" id="itemNum"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="#" class="pre">Movie name</a></li>
+						<li><a href="#" class="pre">User Info</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="shoppingcart.jsp">Checkout</a></li>
+						<li><a href="orderhistory">Order History</a></li>
 					</ul></li>
+				<li><a href="shoppingcart" title="Shopping cart"> <span
+						class="glyphicon glyphicon-shopping-cart"></span> <span
+						class="badge FX-verticalTop" id="itemNum"></span>
+				</a></li>
 				<li id="login"><a href="login" title="Login"> <span
 						class="glyphicon glyphicon-log-in"> </span>
 				</a></li>

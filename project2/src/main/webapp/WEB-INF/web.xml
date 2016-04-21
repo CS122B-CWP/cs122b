@@ -67,7 +67,14 @@
 		<servlet-name>CheckoutServlet</servlet-name>
 		<url-pattern>/checkout</url-pattern>
 	</servlet-mapping>
-
+	<servlet>
+		<servlet-name>OrderHistoryServlet</servlet-name>
+		<servlet-class>project2.servlet.OrderHistoryServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OrderHistoryServlet</servlet-name>
+		<url-pattern>/orderhistory</url-pattern>
+	</servlet-mapping>
 	<filter>
 		<filter-name>loginfilter</filter-name>
 		<filter-class>project2.jdbc.filter.LoginFilter</filter-class>
@@ -104,7 +111,18 @@
 		<filter-name>loginfilter</filter-name>
 		<url-pattern>/confirmation.jsp</url-pattern>
 	</filter-mapping>
-
+	<filter-mapping>
+		<filter-name>loginfilter</filter-name>
+		<url-pattern>/orderhistory</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>loginfilter</filter-name>
+		<url-pattern>/orderhistory.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>loginfilter</filter-name>
+		<url-pattern>/ordersingle.jsp</url-pattern>
+	</filter-mapping>
 	<filter-mapping>
 		<filter-name>ResultFilter</filter-name>
 		<url-pattern>/orderfail.html</url-pattern>
@@ -113,5 +131,4 @@
 		<filter-name>ResultFilter</filter-name>
 		<url-pattern>/ordersuccess.html</url-pattern>
 	</filter-mapping>
-
 </web-app>
