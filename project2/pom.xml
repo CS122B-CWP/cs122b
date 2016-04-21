@@ -16,6 +16,18 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<path>/project2</path>
+					<update>true</update>
+					<url>http://54.193.25.226:8080/manager/text</url>
+					<username>caoyh</username>
+					<password>cyhwwq</password>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
