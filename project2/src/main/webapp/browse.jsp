@@ -45,9 +45,12 @@
 						<h3>Genre:</h3>
 					</div>
 					<div class="col-md-10 FX-BrowseText">
-						<a href=""><kbd>ALL</kbd></a> <span
-							class="glyphicon glyphicon-chevron-right FX-BrowsevAdj"></span> <a
-							href="">a</a> <a href="">b</a> <a href="">c</a>
+						<span class="glyphicon glyphicon-chevron-right FX-BrowsevAdj"></span>
+						<a href="browse?genre=Drama">Drama</a>, <a
+							href="browse?genre=Action">Action</a>, <a
+							href="browse?genre=Comedy">Comedy</a>, <a
+							href="browse?genre=Thriller">Thriller</a>, <a
+							href="browse?genre=Adventure">Adventure</a>
 					</div>
 				</div>
 				<hr>
@@ -56,9 +59,10 @@
 						<h3>Dict:</h3>
 					</div>
 					<div class="col-md-10 FX-BrowseText">
-						<a href=""><kbd>ALL</kbd></a> <span
-							class="glyphicon glyphicon-chevron-right FX-BrowsevAdj"></span> <a
-							href="">a</a> <a href="">b</a> <a href="">c</a>
+						<span class="glyphicon glyphicon-chevron-right FX-BrowsevAdj"></span>
+						<a href="browse?year=2001">2001</a>, <a href="browse?year=2002">2002</a>,
+						<a href="browse?year=2003">2003</a>, <a href="browse?year=2004">2004</a>,
+						<a href="browse?year=2005">2005</a>
 					</div>
 				</div>
 			</div>

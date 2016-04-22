@@ -26,7 +26,6 @@
 					<mainClass>cs122b.project1.JDBC_Console</mainClass>
 					<cleanupDaemonThreads>false</cleanupDaemonThreads>
 				</configuration>
-
 			</plugin>
 		</plugins>
 	</build>

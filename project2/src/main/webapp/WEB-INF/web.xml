@@ -124,6 +124,10 @@
 		<url-pattern>/ordersingle.jsp</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
+		<filter-name>loginfilter</filter-name>
+		<url-pattern>/userInfo.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
 		<filter-name>ResultFilter</filter-name>
 		<url-pattern>/orderfail.html</url-pattern>
 	</filter-mapping>

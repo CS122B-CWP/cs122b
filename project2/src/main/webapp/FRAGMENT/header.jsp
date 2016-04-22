@@ -37,7 +37,7 @@
 						class="glyphicon glyphicon-th-large"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="#" class="pre">User Info</a></li>
+						<li><a href="userInfo.jsp" class="pre">User Info</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="orderhistory">Order History</a></li>
 					</ul></li>

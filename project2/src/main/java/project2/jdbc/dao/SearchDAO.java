@@ -111,7 +111,7 @@ public class SearchDAO {
 					+ "and movies.title rlike ? and dirctor like ? and year >= ? and year <=? "
 					+ "and first_name like ? and last_name like ? group by movies.id limit ?,?;";
 			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setObject(1, para[0]);
+			sql.setString(1, para[0].toString());
 			sql.setObject(2, para[1]);
 			sql.setObject(3, para[2]);
 			sql.setObject(4, para[3]);
@@ -153,7 +153,7 @@ public class SearchDAO {
 					+ "and movies.title rlike ? and dirctor like ? and year >= ? and year <=? "
 					+ "and first_name like ? and last_name like ?";
 			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setObject(1, para[0]);
+			sql.setString(1, para[0].toString());
 			sql.setObject(2, para[1]);
 			sql.setObject(3, para[2]);
 			sql.setObject(4, para[3]);
