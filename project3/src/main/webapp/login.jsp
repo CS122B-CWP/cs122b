@@ -22,6 +22,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!--BS's js won't work if we don't include the above one-->
 <script src="CSS/bootstrap/js/bootstrap.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <title>Login</title>
 </head>
 <body>
@@ -56,7 +57,9 @@
 							name="password" placeholder="Password" required tabindex="2"
 							type="password" value="">
 					</div>
-					<p></p>
+					<p><div class="g-recaptcha"
+						data-sitekey="6LcNGx8TAAAAAEpapfpYioYFMR-XTGx9j2aj7n_a"></div></p>
+
 					<p class="checkbox">
 						<label><input type="checkbox" name="remember_me"
 							tabindex="3">Remember me</label>

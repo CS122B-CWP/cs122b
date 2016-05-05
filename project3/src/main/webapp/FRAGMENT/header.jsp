@@ -45,7 +45,7 @@
 						class="glyphicon glyphicon-shopping-cart"></span> <span
 						class="badge FX-verticalTop" id="itemNum"></span>
 				</a></li>
-				<li id="login"><a href="login" title="Login"> <span
+				<li id="login"><a href="login.jsp" title="Login"> <span
 						class="glyphicon glyphicon-log-in"> </span>
 				</a></li>
 				<li id="logout"><a href="logout.jsp" title="Logout"> <span

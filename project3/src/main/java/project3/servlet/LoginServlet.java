@@ -13,6 +13,7 @@ import project3.jdbc.bean.ShoppingCartBean;
 import project3.jdbc.dao.LoginDAO;
 import project3.jdbc.dao.ShoppingCartDAO;
 import project3.object.LoginInfo;
+import project3.recaptcha.VerifyUtils;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 2L;
@@ -25,6 +26,17 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		try {
+			String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+			// System.out.println("gRecaptchaResponse=" + gRecaptchaResponse);
+			// Verify CAPTCHA.
+			boolean valid = VerifyUtils.verify(gRecaptchaResponse);
+			// System.out.println(valid);
+
+			if (!valid) {
+				response.sendRedirect("recaptchafail.html");
+				return;
+			}
+
 			LoginInfo user = LoginDAO.validate(request.getParameter("username"), request.getParameter("password"));
 			// System.out.println(login_name);
 			// System.out.println(request.getHeader("referer"));
@@ -33,6 +45,7 @@ public class LoginServlet extends HttpServlet {
 			}
 
 			if (user != null) {
+
 				HttpSession session = request.getSession();
 				session.setAttribute("login_name", user.getLname());
 				session.setAttribute("customer_id", user.getUser_id());
