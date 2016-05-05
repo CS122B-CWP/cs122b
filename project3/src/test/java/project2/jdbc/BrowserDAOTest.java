@@ -2,8 +2,9 @@ package project2.jdbc;
 
 import java.sql.SQLException;
 
-import project2.jdbc.bean.BrowserPageBean;
-import project2.jdbc.dao.BrowserDAO;
+import project3.jdbc.JDBCPool;
+import project3.jdbc.bean.BrowserPageBean;
+import project3.jdbc.dao.BrowserDAO;
 
 public class BrowserDAOTest {
 	public static void main(String[] args) throws SQLException {

@@ -2,8 +2,9 @@ package project2.jdbc;
 
 import java.sql.SQLException;
 
-import project2.jdbc.bean.SearchPageBean;
-import project2.jdbc.dao.SearchDAO;
+import project3.jdbc.JDBCPool;
+import project3.jdbc.bean.SearchPageBean;
+import project3.jdbc.dao.SearchDAO;
 
 public class SearchDAOTest {
 	public static void main(String[] args) throws SQLException {

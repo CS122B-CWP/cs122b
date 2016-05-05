@@ -1,5 +1,5 @@
-<%@page import="project2.jdbc.dao.UserDAO"%>
-<jsp:useBean id="user" class="project2.jdbc.bean.UserInfoBean"
+<%@page import="project3.jdbc.dao.UserDAO"%>
+<jsp:useBean id="user" class="project3.jdbc.bean.UserInfoBean"
 	scope="page">
 	<jsp:setProperty name="user" property="*" />
 </jsp:useBean>

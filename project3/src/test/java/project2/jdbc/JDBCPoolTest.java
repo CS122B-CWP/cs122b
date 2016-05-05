@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import project3.jdbc.JDBCPool;
+
 public class JDBCPoolTest {
 	public static void main(String[] args) throws SQLException {
 		String sql = "select last_name from customers where email='a@email.com' and password='a2'";

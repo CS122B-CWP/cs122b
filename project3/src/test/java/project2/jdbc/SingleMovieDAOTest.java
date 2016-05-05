@@ -2,7 +2,8 @@ package project2.jdbc;
 
 import java.sql.SQLException;
 
-import project2.jdbc.dao.SingleMovieDAO;
+import project3.jdbc.JDBCPool;
+import project3.jdbc.dao.SingleMovieDAO;
 
 public class SingleMovieDAOTest {
 	public static void main(String[] args) throws SQLException {
