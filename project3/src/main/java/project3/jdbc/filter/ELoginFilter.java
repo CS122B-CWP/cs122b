@@ -24,11 +24,11 @@ public class ELoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
-		
+
 		if (session.getAttribute("e_login_name") != null && session.getAttribute("e_login_name") != "") {
-			chain.doFilter(request, response);
+			chain.doFilter(req, res);
 		} else {
-			request.getRequestDispatcher("employee_login").forward(req, res);
+			res.sendRedirect("../employee_login");
 		}
 	}
 

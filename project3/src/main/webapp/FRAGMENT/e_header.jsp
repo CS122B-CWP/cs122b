@@ -17,21 +17,24 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="_dashboard.html" title="Dashboard"> <span
+				<li><a href="main.html" title="Dashboard"> <span
 						class="glyphicon glyphicon-home"></span>
 				</a></li>
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><span class="pre text-center FX-HeaderText" id="username"></span></li>
-				<li class="dropdown"><a title="Operations" class="dropdown-toggle"
-					role="button" aria-haspopup="true" aria-expanded="false"> <span
+				<li class="dropdown"><a title="Operations"
+					class="dropdown-toggle" role="button" aria-haspopup="true"
+					aria-expanded="false"> <span
 						class="glyphicon glyphicon-th-large"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="userInfo.jsp" class="pre">User Info</a></li>
+						<li><a href="meta.jsp" class="pre">Show Metadata</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="orderhistory">Order History</a></li>
+						<li><a href="insert_star.html">Insert Star</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="orderhistory">Insert Movie</a></li>
 					</ul></li>
 
 				<li id="login"><a href="employee_login.jsp"

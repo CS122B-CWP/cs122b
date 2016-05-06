@@ -43,7 +43,7 @@ public class EmployeeLoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("e_login_name", employee.getLname());
 
-				response.sendRedirect("_dashboard.html");
+				response.sendRedirect("dashapp/main.html");
 			} else {
 				request.getRequestDispatcher("employee_login.html").forward(request, response);
 			}
