@@ -13,7 +13,7 @@ public class Stars_Info_DAO {
 	public void insert(HashMap<Movies,HashSet<Stars>> starInMovie) throws SQLException{
 		int s_id,m_id;
 		connection.setAutoCommit(false);
-		String sql = "insert into stars_in_movies (star_id, movie_id) values(?,?);";
+		String sql = "insert into stars_in_movies (stars_id, movie_id) values(?,?);";
 		PreparedStatement prepstmt = connection.prepareStatement(sql);
 		if (!starInMovie.isEmpty()){
 			for (Movies movie : starInMovie.keySet()){

@@ -18,7 +18,7 @@ public class Movies_DAO {
     	if (movieList!=null && !movieList.isEmpty()){
         	for (Movies m: movieList){
         		flag = true;
-        		String sql = "replace into movies (title, year, director, banner_url, trailer_url) values(?, ?, ?, ?, ?);";
+        		String sql = "replace into movies (title, year, dirctor, banner_url, trailer) values(?, ?, ?, ?, ?);";
 
         		ps = connection.prepareStatement(sql);
         		
