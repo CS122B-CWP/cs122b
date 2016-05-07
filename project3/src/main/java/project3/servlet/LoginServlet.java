@@ -40,9 +40,11 @@ public class LoginServlet extends HttpServlet {
 			LoginInfo user = LoginDAO.validate(request.getParameter("username"), request.getParameter("password"));
 			// System.out.println(login_name);
 			// System.out.println(request.getHeader("referer"));
+			/*
 			if (request.getSession().getAttribute("origin_url") == null) {
 				request.getSession().setAttribute("origin_url", request.getHeader("referer"));
 			}
+			*/
 
 			if (user != null) {
 
@@ -54,15 +56,18 @@ public class LoginServlet extends HttpServlet {
 				for (ShoppingCartBean item : items)
 					total += item.getQty();
 				session.setAttribute("item_nums", total);
-				String origin_url = (String) session.getAttribute("origin_url");
+				response.sendRedirect("main.jsp");
+				// String origin_url = (String) session.getAttribute("origin_url");
 				// System.out.println(origin_url);
+				/*
 				if (origin_url != null) {
 					session.removeAttribute("origin_url");
 					// System.out.println(origin_url);
 					response.sendRedirect(origin_url);
 				} else {
-					response.sendRedirect("main.jsp");
+					
 				}
+				*/
 			} else {
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}

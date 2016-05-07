@@ -28,7 +28,7 @@ public class ELoginFilter implements Filter {
 		if (session.getAttribute("e_login_name") != null && session.getAttribute("e_login_name") != "") {
 			chain.doFilter(req, res);
 		} else {
-			res.sendRedirect("../employee_login");
+			res.sendRedirect("../employee_login.html");
 		}
 	}
 

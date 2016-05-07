@@ -18,7 +18,7 @@ public class DashboardServlet extends HttpServlet {
 			if (session.getAttribute("e_login_name") != null && session.getAttribute("e_login_name") != "") {
 				response.sendRedirect("dashapp/main.html");
 			} else
-				response.sendRedirect("employee_login");
+				response.sendRedirect("employee_login.html");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

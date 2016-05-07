@@ -24,15 +24,17 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
+		/*
 		String origin_url = req.getHeader("referer");
 		if (req.getSession().getAttribute("origin_url") == null) {
 			req.getSession().setAttribute("origin_url", origin_url);
 			// System.out.println(origin_url);
 		}
+		*/
 		if (session.getAttribute("customer_id") != null && session.getAttribute("customer_id") != "") {
 			chain.doFilter(request, response);
 		} else {
-			request.getRequestDispatcher("login").forward(req, res);
+			request.getRequestDispatcher("login.jsp").forward(req, res);
 		}
 	}
 
