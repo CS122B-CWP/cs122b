@@ -36,7 +36,8 @@
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">id:</span> <input
 									type="text" class="form-control"
-									aria-describedby="basic-addon1" name='id'>
+									aria-describedby="basic-addon1" name='id'
+									placeholder="If movie id is provided, other movie fields will be ignored!">
 							</div>
 						</div>
 						<div class="list-group-item">
@@ -51,8 +52,7 @@
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon4">Year:</span> <input
 									type="text" class="form-control"
-									aria-describedby="basic-addon4" name='year'
-									placeholder="YYYY-MM-DD">
+									aria-describedby="basic-addon4" name='year' placeholder="YYYY">
 							</div>
 						</div>
 						<div class="list-group-item">
@@ -87,7 +87,8 @@
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon5">Star
 									Name:</span> <input type="text" class="form-control"
-									aria-describedby="basic-addon5" name='star_name'>
+									aria-describedby="basic-addon5" name='star_name'
+									placeholder="LastName or LastName, FirstName">
 							</div>
 						</div>
 						<div class="list-group-item">
@@ -130,18 +131,36 @@
 		$('#checkBtn')
 				.click(
 						function() {
+							if ($("[name='id']").val() != ""
+									|| $("[name='title']").val() != "") {
+								if ($("[name='id']").val() != "") {
+									var id = $("[name='id']").val();
+									if (!id.match("[0-9][0-9]*")) {
+										alert("Not a valid movie id!!!");
+										return;
+									}
+								}
 
-							if ($("[name='year']").val() != "") {
-								var date = $("[name='year']").val();
-								if (date
-										.match("(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})"
-												+ "-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))"
-												+ "|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)"))
+								if ($("[name='price']").val() != "") {
+									var price = $("[name='price']").val();
+									if (!price
+											.match('^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$')) {
+										alert("Not a valid price!!!");
+										return;
+									}
+								}
+
+								if ($("[name='year']").val() != "") {
+									var date = $("[name='year']").val();
+									if (date.match('[0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3}'))
+										$('#insert_movie_form').submit();
+									else
+										alert('Invalid Year!');
+								} else
 									$('#insert_movie_form').submit();
-								else
-									alert('Invalid Date!');
-							} else
-								$('#insert_movie_form').submit();
+							} else {
+								alert('You need to provide movie_id or movie_title!!!');
+							}
 						});
 	</script>
 </body>

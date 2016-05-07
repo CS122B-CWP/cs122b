@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class DashboardServlet extends HttpServlet {
 	private static final long serialVersionUID = 11L;
@@ -12,7 +13,12 @@ public class DashboardServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			response.sendRedirect("employee_login");
+			HttpSession session = request.getSession();
+
+			if (session.getAttribute("e_login_name") != null && session.getAttribute("e_login_name") != "") {
+				response.sendRedirect("dashapp/main.html");
+			} else
+				response.sendRedirect("employee_login");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

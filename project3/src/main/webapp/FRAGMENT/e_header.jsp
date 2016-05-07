@@ -12,7 +12,7 @@
 					class="icon-bar"></span>
 			</button>
 			<!--Href TBD-->
-			<a class="navbar-brand logo-color"> <strong>FABFLIX</strong>
+			<a class="navbar-brand logo-color"> <strong>FABFLIX EMPLOYEE</strong>
 			</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
@@ -34,7 +34,7 @@
 						<li role="separator" class="divider"></li>
 						<li><a href="insert_star.html">Insert Star</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="orderhistory">Insert Movie</a></li>
+						<li><a href="insert_movie.html">Insert Movie</a></li>
 					</ul></li>
 
 				<li id="login"><a href="employee_login.jsp"

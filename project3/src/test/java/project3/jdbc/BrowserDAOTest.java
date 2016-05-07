@@ -1,4 +1,4 @@
-package project2.jdbc;
+package project3.jdbc;
 
 import java.sql.SQLException;
 

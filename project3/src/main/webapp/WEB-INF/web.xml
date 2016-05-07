@@ -99,6 +99,14 @@
 		<servlet-name>InsertStarServlet</servlet-name>
 		<url-pattern>/dashapp/insert_star</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>InsertMovieServlet</servlet-name>
+		<servlet-class>project3.servlet.InsertMovieServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InsertMovieServlet</servlet-name>
+		<url-pattern>/dashapp/insert_movie</url-pattern>
+	</servlet-mapping>
 	<filter>
 		<filter-name>loginfilter</filter-name>
 		<filter-class>project3.jdbc.filter.LoginFilter</filter-class>
@@ -167,6 +175,7 @@
 		<filter-name>eloginfilter</filter-name>
 		<url-pattern>/dashapp/*</url-pattern>
 	</filter-mapping>
+
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>HTTPSOnly</web-resource-name>

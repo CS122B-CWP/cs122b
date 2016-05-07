@@ -1,14 +1,14 @@
-package project2.jdbc;
+package project3.jdbc;
 
 import java.sql.SQLException;
 
 import project3.jdbc.JDBCPool;
-import project3.jdbc.dao.SingleStarDAO;
+import project3.jdbc.dao.SingleMovieDAO;
 
-public class SingleStarDAOTest {
+public class SingleMovieDAOTest {
 	public static void main(String[] args) throws SQLException {
 		JDBCPool pool = JDBCPool.getInstance();
-		System.out.println(SingleStarDAO.starcontent(671105).toString());
+		System.out.println(SingleMovieDAO.moviecontent(901).toString());
 		pool.closePool();
 	}
 }
