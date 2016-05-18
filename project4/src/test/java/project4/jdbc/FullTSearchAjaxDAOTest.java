@@ -1,19 +1,19 @@
-package project3.jdbc;
+package project4.jdbc;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import project4.jdbc.JDBCPool;
-import project4.jdbc.bean.SearchPageBean;
-import project4.jdbc.dao.SearchDAO;
+import project4.jdbc.dao.FullTSearchAjaxDAO;
 
-public class SearchDAOTest {
+public class FullTSearchAjaxDAOTest {
 	public static void main(String[] args) throws SQLException {
 		JDBCPool pool = JDBCPool.getInstance();
-		SearchPageBean pg = new SearchPageBean(1, 20);
+
 		// BrowserDAO.browserContent(new PageBean(1, 20), "crime", "s");
 		// pg.setMaxPage();
-		pg.setMovies(SearchDAO.nsearchContent(pg));
-		System.out.println(pg.toString());
+		List<String> titles = FullTSearchAjaxDAO.searchContent("good c");
+		System.out.println(titles.toString());
 		pool.closePool();
 	}
 }

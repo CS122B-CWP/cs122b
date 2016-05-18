@@ -1,14 +1,14 @@
-package project3.jdbc;
+package project4.jdbc;
 
 import java.sql.SQLException;
 
 import project4.jdbc.JDBCPool;
-import project4.jdbc.dao.MovieStarsDAO;
+import project4.jdbc.dao.StarMoviesDAO;
 
-public class MovieStarsDAOTest {
+public class StarMoviesDAOTest {
 	public static void main(String[] args) throws SQLException {
 		JDBCPool pool = JDBCPool.getInstance();
-		System.out.println(MovieStarsDAO.movie_stars(908));
+		System.out.println(StarMoviesDAO.star_movies(671105));
 		pool.closePool();
 	}
 }
