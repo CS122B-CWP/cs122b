@@ -88,6 +88,7 @@
 			li.attr('class', 'list-group-item FX-listItem pre');
 			var div2 = $('<div></div>');
 			div2.attr('class', 'FX-innerItem FX-listLeft');
+			div2.attr('data-poload', 'singlemovieajax?id=' + movies[i].id);
 			var a0 = $('<a></a>');
 			a0.attr('href', 'singlemovie?id=' + movies[i].id);
 			var img = $('<img></img>');
@@ -144,6 +145,58 @@
 			div3.appendTo(li);
 			li.appendTo(div1);
 			div1.appendTo('#pageContent');
+		}
+	</script>
+
+	<script>
+		$(document).ready(function() {
+			$('[data-poload]').hover(function() {
+				var e = $(this);
+				$.get(e.data('poload'), function(movie_info) {
+					movie_info = $.parseJSON(movie_info);
+					e.popover({
+						placement : 'right',
+						trigger : 'hover',
+						container : 'body',
+						title : 'Movie Title: ' + movie_info.title,
+						html : 'true',
+						content : ContentMethod(movie_info)
+					}).popover('show');
+				});
+			});
+		});
+
+		function ContentMethod(movie_info) {
+			var table = $('<table></table>');
+			table.attr('class', 'table table-bordered');
+			// banner_url
+			var banner_tr = $('<tr></tr>');
+			var banner_td = $('<td></td>');
+			var banner_img = $('<img></img>');
+			banner_img.attr('src', movie_info.banner_url);
+			banner_img.attr('style', 'height: 150px; width: 150px;');
+			banner_img.appendTo(banner_td);
+			banner_td.appendTo(banner_tr);
+			banner_tr.appendTo(table);
+
+			// dirctor
+			var dirctor_tr = $('<tr></tr>');
+			var dirctor_td = $('<td>Dirctor: ' + movie_info.dirctor + '</td>');
+			dirctor_td.appendTo(dirctor_tr);
+			dirctor_tr.appendTo(table);
+
+			// year
+			var year_tr = $('<tr></tr>');
+			var year_td = $('<td>Year: ' + movie_info.year + '</td>');
+			year_td.appendTo(year_tr);
+			year_tr.appendTo(table);
+
+			// price
+			var price_tr = $('<tr></tr>');
+			var price_td = $('<td>Price: ' + movie_info.price + '</td>');
+			price_td.appendTo(price_tr);
+			price_tr.appendTo(table);
+			return table;
 		}
 	</script>
 </body>
