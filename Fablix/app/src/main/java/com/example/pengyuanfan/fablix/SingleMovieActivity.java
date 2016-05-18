@@ -8,6 +8,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pengyuanfan.fablix.json.LoginResult;
 import com.example.pengyuanfan.fablix.json.SingleMovie;
 import com.example.pengyuanfan.fablix.json.SingleStar;
 import com.example.pengyuanfan.fablix.json.Star;
@@ -110,6 +112,13 @@ public class SingleMovieActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        LoginResult lgR;
+        if((lgR=LoginActivity.getLgR())!=null&&lgR.isLogin_result()){
+            getSupportActionBar().setSubtitle(lgR.getLogin_name());
+        }else{
+            Intent backToLogin = new Intent(SingleMovieActivity.this, LoginActivity.class);
+            startActivity(backToLogin);
+        }
 
     }
 
@@ -136,6 +145,5 @@ public class SingleMovieActivity extends AppCompatActivity {
         starsGrid.setAdapter(new StarListAdapter(data.getStars()));
         new ImageDowloader(bannerV).execute(data.getBanner_url());
     }
-
 
 }

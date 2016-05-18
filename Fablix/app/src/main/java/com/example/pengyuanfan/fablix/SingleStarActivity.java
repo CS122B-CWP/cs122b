@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pengyuanfan.fablix.json.LoginResult;
 import com.example.pengyuanfan.fablix.json.SingleStar;
 import com.example.pengyuanfan.fablix.singleMS.SingleMovieParser;
 import com.example.pengyuanfan.fablix.singleStar.SingleStarParser;
@@ -92,6 +93,18 @@ public class SingleStarActivity extends AppCompatActivity {
         singleStarUrl = appContext.getString(R.string.fablix_Url)+appContext.getString(R.string.fablix_singleStarUrl);
 
         downLoadSingleStar(starId);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LoginResult lgR;
+        if((lgR=LoginActivity.getLgR())!=null&&lgR.isLogin_result()){
+            getSupportActionBar().setSubtitle(lgR.getLogin_name());
+        }else{
+            Intent backToLogin = new Intent(SingleStarActivity.this, LoginActivity.class);
+            startActivity(backToLogin);
+        }
     }
 
     private void downLoadSingleStar(String starId){

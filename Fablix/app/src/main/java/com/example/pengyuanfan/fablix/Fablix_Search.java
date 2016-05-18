@@ -1,5 +1,6 @@
 package com.example.pengyuanfan.fablix;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pengyuanfan.fablix.json.LoginResult;
 import com.example.pengyuanfan.fablix.movieListAdapter.MovieListAdapter;
 import com.example.pengyuanfan.fablix.movieListAdapter.MovieListParser;
 import com.example.pengyuanfan.fablix.movieListAdapter.MvItemBean;
@@ -136,6 +138,14 @@ public class Fablix_Search extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        LoginResult lgR;
+        if((lgR=LoginActivity.getLgR())!=null&&lgR.isLogin_result()){
+            Log.d("login", lgR.getLogin_name());
+            getSupportActionBar().setSubtitle(lgR.getLogin_name());
+        }else{
+            Intent backToLogin = new Intent(Fablix_Search.this, LoginActivity.class);
+            startActivity(backToLogin);
+        }
     }
 
     private void searchOnline(String query){
@@ -208,6 +218,7 @@ public class Fablix_Search extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        Log.d("Destory",mvPage.getQuery()+mvPage.getCurPageS());
         super.onSaveInstanceState(outState);
         if(mvPage.getQuery()!=null&&!mvPage.getQuery().trim().equals("")){
             outState.putString(QUERY, mvPage.getQuery());
