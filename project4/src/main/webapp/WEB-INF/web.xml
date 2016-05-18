@@ -123,6 +123,14 @@
 		<servlet-name>SingleMovieAjaxServlet</servlet-name>
 		<url-pattern>/singlemovieajax</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>LoginMobileServlet</servlet-name>
+		<servlet-class>project4.servlet.LoginMobileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginMobileServlet</servlet-name>
+		<url-pattern>/loginmobile</url-pattern>
+	</servlet-mapping>
 	<filter>
 		<filter-name>loginfilter</filter-name>
 		<filter-class>project4.jdbc.filter.LoginFilter</filter-class>
