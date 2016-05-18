@@ -13,7 +13,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Fablix_Search"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
