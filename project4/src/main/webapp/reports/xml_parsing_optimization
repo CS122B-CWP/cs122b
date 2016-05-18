@@ -1,0 +1,10 @@
+Optimization:
+
+As mentioned in class,here we just easily set the auto-commit to false when we insert, and commit after finish inserting.
+
+Test under the moviedb we created in project 1 and 2:
+
+The old one (without shut down auto-commit) is about 3 min 20 seconds.
+The new one (no auto-commit during insert)is about 2 min 57 seconds 
+
+The performance is like 1.1x faster.
