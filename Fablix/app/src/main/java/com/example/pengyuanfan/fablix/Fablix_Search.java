@@ -9,6 +9,9 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +33,9 @@ import com.example.pengyuanfan.fablix.util.HttpGetThread;
 import com.example.pengyuanfan.fablix.util.SoftKeyBoard;
 import com.example.pengyuanfan.fablix.util.URLParam;
 
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +55,7 @@ public class Fablix_Search extends AppCompatActivity {
     private Context actContext;
 
     private String searchURL;
+    private String logoutURL;
 
     Handler onGetSearchResult=new Handler(){
         @Override
@@ -119,7 +125,7 @@ public class Fablix_Search extends AppCompatActivity {
         });
 
         searchURL = appContext.getString(R.string.fablix_Url) + appContext.getString(R.string.fablix_searchUrl);
-
+        logoutURL = appContext.getString(R.string.fablix_Url) + appContext.getString(R.string.fablix_logout);
         if(savedInstanceState!=null)
             onRestartSearch(savedInstanceState);
     }
@@ -225,6 +231,30 @@ public class Fablix_Search extends AppCompatActivity {
         }
         if(!data.isEmpty()){
             outState.putString(PAGE, mvPage.getCurPageS());
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater actionbar_addon = getMenuInflater();
+        actionbar_addon.inflate(R.menu.actionbar_addon, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                Intent backToLogin = new Intent(Fablix_Search.this, LoginActivity.class);
+                startActivity(backToLogin);
+                try {
+                    new HttpGetThread(new URL(logoutURL),new Handler()).start();
+                }catch (MalformedURLException e){
+                    e.printStackTrace();
+                }
+                Log.d("login","logout");return true;
+
+            default:return super.onOptionsItemSelected(item);
         }
     }
 

@@ -14,6 +14,7 @@
     <string name="fablix_singleMovieUrl">/singlemovie</string>
     <string name="fablix_singleStarUrl">/singlestar</string>
     <string name="fablix_loginUrl">/loginmobile</string>
+    <string name="fablix_logout">/logout.jsp</string>
     <string name="backPage">Prev</string>
     <string name="nextPage">Next</string>
     <string name="cachedquery">Fablix.searchquery</string>
