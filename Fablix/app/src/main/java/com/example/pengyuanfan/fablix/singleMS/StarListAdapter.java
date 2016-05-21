@@ -3,6 +3,7 @@ package com.example.pengyuanfan.fablix.singleMS;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -40,7 +41,7 @@ public class StarListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView==null){
             TextView tmp = new TextView(parent.getContext());
-            tmp.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            tmp.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT));
             tmp.setGravity(Gravity.CENTER);
             convertView = tmp;
         }
