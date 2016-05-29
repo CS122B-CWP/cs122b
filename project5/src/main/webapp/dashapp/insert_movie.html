@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="../CSS/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../CSS/common1.css">
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--BS's js won't work if we don't include the above one-->
+<script src="../CSS/bootstrap/js/bootstrap.min.js"></script>
+<title>Insert a Movie</title>
+</head>
+<body>
+	<div id="header"></div>
+	<script>
+		$("#header").load("../FRAGMENT/e_header.jsp");
+	</script>
+
+	<div class="container-fluid">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>Insert a Movie</h3>
+			</div>
+			<form method="POST" action="insert_movie" id="insert_movie_form">
+				<div class="panel-body">
+					<p class="text-warning">Please fill out a Movie Info.</p>
+					<div class="list-group">
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1">id:</span> <input
+									type="text" class="form-control"
+									aria-describedby="basic-addon1" name='id'
+									placeholder="If movie id is provided, other movie fields will be ignored!">
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon2">Title:</span>
+								<input type="text" class="form-control"
+									aria-describedby="basic-addon2" name='title'>
+							</div>
+						</div>
+
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon4">Year:</span> <input
+									type="text" class="form-control"
+									aria-describedby="basic-addon4" name='year' placeholder="YYYY">
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon5">Director:</span>
+								<input type="text" class="form-control"
+									aria-describedby="basic-addon5" name='director'>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon5">Banner_url:</span>
+								<input type="text" class="form-control"
+									aria-describedby="basic-addon5" name='banner_url'>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon5">Trailer:</span>
+								<input type="text" class="form-control"
+									aria-describedby="basic-addon5" name='trailer'>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon5">Price:</span>
+								<input type="text" class="form-control"
+									aria-describedby="basic-addon5" name='price'>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon5">Star
+									Name:</span> <input type="text" class="form-control"
+									aria-describedby="basic-addon5" name='star_name'
+									placeholder="LastName or LastName, FirstName">
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon5">Genre:</span>
+								<input type="text" class="form-control"
+									aria-describedby="basic-addon5" name='genre'>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row" align="right">
+						<button type="button" id="checkBtn" class="btn btn-success btn-md">Submit</button>
+						<button type="button" id="resetBtn" class="btn btn-default btn-md">Reset
+							Form</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="footer"></div>
+	<script>
+		$("#footer").load("../FRAGMENT/footer.html");
+		$('#resetBtn').click(function() {
+			$("[name='id']").val("");
+			$("[name='title']").val("");
+			$("[name='year']").val("");
+			$("[name='director']").val("");
+			$("[name='banner_url']").val("");
+			$("[name='trailer']").val("");
+			$("[name='price']").val("");
+			$("[name='star_name']").val("");
+			$("[name='genre']").val("");
+		});
+	</script>
+
+	<script>
+		$('#checkBtn')
+				.click(
+						function() {
+							if ($("[name='id']").val() != ""
+									|| $("[name='title']").val() != "") {
+								if ($("[name='id']").val() != "") {
+									var id = $("[name='id']").val();
+									if (!id.match("[0-9][0-9]*")) {
+										alert("Not a valid movie id!!!");
+										return;
+									}
+								}
+
+								if ($("[name='price']").val() != "") {
+									var price = $("[name='price']").val();
+									if (!price
+											.match('^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$')) {
+										alert("Not a valid price!!!");
+										return;
+									}
+								}
+
+								if ($("[name='year']").val() != "") {
+									var date = $("[name='year']").val();
+									if (date.match('[0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3}'))
+										$('#insert_movie_form').submit();
+									else
+										alert('Invalid Year!');
+								} else
+									$('#insert_movie_form').submit();
+							} else {
+								alert('You need to provide movie_id or movie_title!!!');
+							}
+						});
+	</script>
+</body>
+</html>
+
