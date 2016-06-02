@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 import project5.jdbc.bean.SearchPageBean;
 import project5.jdbc.dao.SearchDAO;
 
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 6L;
-
+	private static Logger log = Logger.getLogger(SearchServlet.class.getName());
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -53,11 +54,27 @@ public class SearchServlet extends HttpServlet {
 			if (page != null && page.matches("[0-9][0-9]*"))
 				pg.setCurPage(Integer.parseInt(page));
 			if (pg.getType().equals("n")) {
+				
+				long tjStartTime = System.nanoTime();
+				
 				pg.setMovies(SearchDAO.nsearchContent(pg));
 				pg.setMaxPage(SearchDAO.nsearchPages(pg));
+				
+				long tjEndTime = System.nanoTime();
+				System.out.println("TJ hit!");
+				log.info("TJ:"+(tjEndTime-tjStartTime));
+				
 			} else {
+				
+				long tjStartTime = System.nanoTime();
+				
 				pg.setMovies(SearchDAO.rsearchContent(pg));
 				pg.setMaxPage(SearchDAO.rsearchPages(pg));
+				
+				long tjEndTime = System.nanoTime();
+				System.out.println("TJ hit!");
+				log.info("TJ:"+(tjEndTime-tjStartTime));
+				
 			}
 			// System.out.println(pg.toString());
 			HttpSession session = request.getSession();
@@ -69,5 +86,4 @@ public class SearchServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -12,6 +12,7 @@ import project5.jdbc.bean.SearchPageBean;
 import project5.object.Movie;
 
 public class SearchDAO {
+	
 	public static List<Movie> nsearchContent(SearchPageBean pagebean) {
 		List<Movie> movies = new ArrayList<Movie>();
 		int start = (pagebean.getCurPage() - 1) * pagebean.getRowsPerPage();
