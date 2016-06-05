@@ -1,0 +1,7 @@
+let '\' be the root of .war file
+
+Script file is \Script\logparse.py
+
+Just run this script, it will read log file from \log\SearchPerformance.log
+
+the result file will be \TSJSResult.txt
