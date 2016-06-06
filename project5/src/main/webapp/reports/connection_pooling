@@ -1,0 +1,18 @@
+We mainly follow the tutorial but combined some setting in link2.
+
+We also add a webapp level connection pool for better load balance (that an web will not exceed a number of connections
+see project5.jdbc.JDBCProperty and project5.jdbc.JDBCPool) and it initialized at the webapp startup.
+
+The main connection pool features are as follows:
+removeAbandoned:	true
+removeAbandonedTimeout:	30
+maxActive:	100
+maxIdle:	30 
+maxWait:	10000
+
+Both the single and scale version of the project are enbaled with connection pool.
+
+In scale version, load balancing is enabled.
+
+The write request (shopping cart operations, checkout, dashapp/instert_star, dashapp/insert_movie) is only handled by master instance
+which internal ip is (10.0.1.16).

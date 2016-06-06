@@ -1,9 +1,13 @@
 package project5.jdbc;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Vector;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 public class JDBCPool implements JDBCProperty {
 	private Vector<Connection> pool;
@@ -15,18 +19,22 @@ public class JDBCPool implements JDBCProperty {
 	}
 
 	private void addConnection() {
-		Connection coon = null;
-		for (int i = 0; i < SIZE; i++) {
-			try {
-				Class.forName(DRIVER);
-				coon = DriverManager.getConnection(CONNECTION_URL, USERNAME, PASSWORD);
+		try {
+			Class.forName(DRIVER);
+			Context initialContext = new InitialContext();
+			Context environmentContext = (Context) initialContext.lookup("java:comp/env");
+			DataSource dataSource = (DataSource) environmentContext.lookup("jdbc/movieDB");
+			for (int i = 0; i < SIZE; i++) {
+				Connection conn = dataSource.getConnection();
 				// System.out.println("JDBC Connection " + i + " create!");
-				pool.add(coon);
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				System.out.println("JDBC Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode());
+				pool.add(conn);
 			}
+		} catch (NamingException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 
