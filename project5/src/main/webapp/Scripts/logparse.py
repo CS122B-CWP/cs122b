@@ -22,12 +22,12 @@ tjMean=float(tjSum)/float(tjNum)
 resultFile='TSJSResult.txt';
 f=open(resultFile,'w')
 
-f.write("TS total time:"+str(tsSum)+'\n')
+f.write("TS total time:"+str(tsSum/1000000)+'ms'+'\n')
 f.write("TS number:"+str(tsNum)+'\n')
-f.write("TS average time:"+str(tsMean)+'\n')
-
-f.write("TJ total time:"+str(tjSum)+'\n')
+f.write("TS average time:"+str(tsMean/1000000)+'ms'+'\n')
+f.write('\n')
+f.write("TJ total time:"+str(tjSum/1000000)+'ms'+'\n')
 f.write("TJ number:"+str(tjNum)+'\n')
-f.write("TJ average time:"+str(tjMean)+'\n')
+f.write("TJ average time:"+str(tjMean/1000000)+'ms'+'\n')
 
 f.close()
