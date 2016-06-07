@@ -88,7 +88,16 @@
 						</table>
 					</div>
 				</div>
+				
 			</div>
+		</div>
+		<div class="well well-sm" align="left">
+					<h4>Comments:</h4>
+						<hr>
+						<div>
+							<p>By user1:</p>
+							<p>Comments123....blabla</p>
+						</div>		
 		</div>
 	</div>
 
