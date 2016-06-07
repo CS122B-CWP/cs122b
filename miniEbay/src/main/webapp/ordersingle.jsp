@@ -43,12 +43,14 @@
 						<thead>
 							<th>Quantities</th>
 							<th>Unit Price</th>
-							<th style="border-left: 0px">Movie Name</th>
+							<th style="border-left: 0px">Product name:</th>
 						</thead>
 						<tbody id='pageContent'>
 						</tbody>
 					</table>
 				</div>
+				<hr>
+				
 			</div>
 		</div>
 	</div>

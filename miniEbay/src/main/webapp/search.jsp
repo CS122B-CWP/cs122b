@@ -61,39 +61,13 @@
 				<div id="Advanced" class="collapse">
 					<div class="form-horizontal">
 						<div class="form-group">
-							<label class="control-label col-sm-2">Year:</label>
+							<label class="control-label col-sm-2">Price:</label>
 							<div class="col-sm-10">
 								<div class="form-group form-inline">
-									<input class="form-control input-sm FX-shortInput" name="syear"
+									<input class="form-control input-sm FX-shortInput" name="lowPrice"
 										placeholder="YYYY" type="text" value="" maxlength="4" /> - <input
-										class="form-control input-sm FX-shortInput" name="eyear"
+										class="form-control input-sm FX-shortInput" name="highPrice"
 										placeholder="YYYY" type="text" value="" maxlength="4" />
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-2">Director:</label>
-							<div class="col-sm-10">
-								<div class="form-group form-inline">
-									<input class="form-control input-sm FX-largeInput"
-										name="director" type="text" value="" maxlength="255" />
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-2">Star:</label>
-							<div class="col-sm-10">
-								<div class="form-group form-inline">
-									<div class="input-group">
-										<span class="input-group-addon" id="basic-addon1">First
-											Name</span> <input class="form-control input-sm FX-midInput"
-											name="fname" type="text" value="" maxlength="255" />
-									</div>
-									<div class="input-group">
-										<span class="input-group-addon" id="basic-addon1">Last
-											Name</span> <input class="form-control input-sm FX-midInput"
-											name="lname" type="text" value="" maxlength="255" />
-									</div>
 								</div>
 							</div>
 						</div>

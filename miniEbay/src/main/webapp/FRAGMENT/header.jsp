@@ -17,7 +17,7 @@
 					class="icon-bar"></span>
 			</button>
 			<!--Href TBD-->
-			<a class="navbar-brand logo-color"> <strong>FABFLIX</strong>
+			<a class="navbar-brand logo-color"> <strong>miniEbay</strong>
 			</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
@@ -29,7 +29,7 @@
 						class="glyphicon glyphicon-search"></span>
 				</a></li>
 				<li><a href="browse" title="Browse"> <span
-						class="glyphicon glyphicon-film"></span>
+						class="glyphicon glyphicon-th-list"></span>
 				</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-middle" id="search_nav">
