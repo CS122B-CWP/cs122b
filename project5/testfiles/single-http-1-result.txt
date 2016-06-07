@@ -1,0 +1,7 @@
+TS total time:74094ms
+TS number:2642
+TS average time:28.0449763073ms
+
+TJ total time:64860ms
+TJ number:2642
+TJ average time:24.5496490488ms

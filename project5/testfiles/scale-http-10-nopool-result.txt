@@ -1,0 +1,7 @@
+TS total time:4814848ms
+TS number:26018
+TS average time:185.058350389ms
+
+TJ total time:4864129ms
+TJ number:26420
+TJ average time:184.107860275ms

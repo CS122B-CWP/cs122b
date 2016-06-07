@@ -1,1 +1,143 @@
-111
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	background-color: linen;
+}
+
+td {
+	border-top-style: solid;
+}
+</style>
+</head>
+<body>
+
+	<table style="width: 100%">
+		<tr style="font-weight: bold; background-color: orange">
+			<td width="300px">Single-instance version cases</td>
+			<td>Graph Results Screenshot</td>
+			<td>Average Query Time(ms)</td>
+			<td>Average Search Servlet Time(ms)</td>
+			<td>Average JDBC Time(ms)</td>
+			<td>Analysis</td>
+		</tr>
+		<tr>
+			<td>Case 1: HTTP/1 thread</td>
+			<td><img src="jmeter_img/single-http-1.png"
+				alt="Graph Results Screenshot Case 1"
+				style="width: 304px; height: 228px;"></td>
+			<td>59</td>
+			<td>28</td>
+			<td>24.5</td>
+			<td>single version http 1 thread, base situation.</td>
+		</tr>
+		<tr>
+			<td>Case 2: HTTP/10 threads</td>
+			<td><img src="jmeter_img/single-http-10.png"
+				alt="Graph Results Screenshot Case 2"
+				style="width: 304px; height: 228px;"></td>
+			<td>59</td>
+			<td>46.9</td>
+			<td>41.9</td>
+			<td>single version http 10 thread. More busy on JDBC and
+				Servlets, higher throughput.</td>
+		</tr>
+		<tr>
+			<td>Case 3: HTTPS/10 threads</td>
+			<td><img src="jmeter_img/single-https-10.png"
+				alt="Graph Results Screenshot Case 3"
+				style="width: 304px; height: 228px;"></td>
+			<td>47</td>
+			<td>46.9</td>
+			<td>41.52</td>
+			<td>single version https 10 thread, same level workload but less
+				latency and higher throughput compare to case2.</td>
+		</tr>
+		<tr>
+			<td>Case 4: HTTP/10 threads/No prepared statements</td>
+			<td><img src="jmeter_img/single-http-10-noprep.png"
+				alt="Graph Results Screenshot Case 4"
+				style="width: 304px; height: 228px;"></td>
+			<td>54</td>
+			<td>46.9</td>
+			<td>41.5</td>
+			<td>single version http 10 thread without prepared statements,
+				almost same with case2</td>
+		</tr>
+		<tr>
+			<td>Case 5: HTTP/10 threads/No connection pooling</td>
+			<td><img src="jmeter_img/single-http-10-nopool.png"
+				alt="Graph Results Screenshot Case 5"
+				style="width: 304px; height: 228px;"></td>
+			<td>255</td>
+			<td>193.4</td>
+			<td>196.4</td>
+			<td>single version http 10 thread without connection pool.
+				Clearly huge latency and very heavy workload on JDBC and Servlet.</td>
+		</tr>
+
+	</table>
+
+
+	<table style="width: 100%">
+		<tr style="font-weight: bold; background-color: orange">
+			<td width="300px">Scaled version cases</td>
+			<td>Graph Results Screenshot</td>
+			<td>Average Query Time(ms)</td>
+			<td>Average Search Servlet Time(ms)</td>
+			<td>Average JDBC Time(ms)</td>
+			<td>Analysis</td>
+		</tr>
+		<tr>
+			<td>Case 1: HTTP/1 thread</td>
+			<td><img src="jmeter_img/scale-http-1.png"
+				alt="Graph Results Screenshot Case 1"
+				style="width: 304px; height: 228px;"></td>
+			<td>45</td>
+			<td>30.1</td>
+			<td>28.2</td>
+			<td>scale version 1 thread. Base, less latency compare to single
+				case 1. Almost same level workload on JDBC and Servlet.</td>
+		</tr>
+		<tr>
+			<td>Case 2: HTTP/10 threads</td>
+			<td><img src="jmeter_img/scale-http-10.png"
+				alt="Graph Results Screenshot Case 2"
+				style="width: 304px; height: 228px;"></td>
+			<td>36</td>
+			<td>46.9</td>
+			<td>41.5</td>
+			<td>scale version 10 thread. Greatly reduce latency compare to
+				single case2.</td>
+		</tr>
+		<tr>
+			<td>Case 3: HTTP/10 threads/No prepared statements</td>
+			<td><img src="jmeter_img/scale-http-10-noprep.png"
+				alt="Graph Results Screenshot Case 3"
+				style="width: 304px; height: 228px;"></td>
+			<td>54</td>
+			<td>71.4</td>
+			<td>65.0</td>
+			<td>single version http 10 thread without prepared statements.
+				Same level search time compare to single case, but more overhead on
+				JDBC and Servlet.</td>
+		</tr>
+		<tr>
+			<td>Case 4: HTTP/10 threads/No connection pooling</td>
+			<td><img src="jmeter_img/scale-http-10-nopool.png"
+				alt="Graph Results Screenshot Case 4"
+				style="width: 304px; height: 228px;"></td>
+			<td>210</td>
+			<td>185.1</td>
+			<td>184.1</td>
+			<td>scale version http 10 thread without connection pool,
+				contribute great to every part latency when connection pool is not
+				enabled.</td>
+		</tr>
+
+	</table>
+
+</body>
+</html>

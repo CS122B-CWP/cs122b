@@ -11,7 +11,7 @@ import project5.object.Movie;
 public class SearchPageBean {
 	private int curPage = 1;
 	private int maxPage;
-	private int rowsPerPage = 20;
+	private int rowsPerPage = 50;
 	private String title = "";
 	private String type;
 	private int syear = 1800;

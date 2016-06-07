@@ -26,6 +26,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		try {
+			
 			String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 			// System.out.println("gRecaptchaResponse=" + gRecaptchaResponse);
 			// Verify CAPTCHA.
@@ -36,7 +37,8 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("recaptchafail.html");
 				return;
 			}
-
+			
+			
 			LoginInfo user = LoginDAO.validate(request.getParameter("username"), request.getParameter("password"));
 			// System.out.println(login_name);
 			// System.out.println(request.getHeader("referer"));

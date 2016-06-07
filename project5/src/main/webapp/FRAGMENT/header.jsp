@@ -5,8 +5,8 @@
 	if (name != null)
 		total = (int) session.getAttribute("item_nums");
 %>
-<script src="Scripts/typeahead.bundle.js"></script>
-<link rel="stylesheet" href="CSS/bootstrap3-typeahead.css">
+<script src="/fabflix/Scripts/typeahead.bundle.js"></script>
+<link rel="stylesheet" href="/fabflix/CSS/bootstrap3-typeahead.css">
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
@@ -22,13 +22,13 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="main.jsp" title="Home"> <span
+				<li><a href="/fabflix/main.jsp" title="Home"> <span
 						class="glyphicon glyphicon-home"></span>
 				</a></li>
-				<li><a href="search.jsp" title="Search Page"> <span
+				<li><a href="/fabflix/search.jsp" title="Search Page"> <span
 						class="glyphicon glyphicon-search"></span>
 				</a></li>
-				<li><a href="browse" title="Browse"> <span
+				<li><a href="/fabflix/browse" title="Browse"> <span
 						class="glyphicon glyphicon-film"></span>
 				</a></li>
 			</ul>
@@ -43,18 +43,18 @@
 						class="glyphicon glyphicon-th-large"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="userInfo.jsp" class="pre">User Info</a></li>
+						<li><a href="/fabflix/userInfo.jsp" class="pre">User Info</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="orderhistory">Order History</a></li>
+						<li><a href="/fabflix/orderhistory">Order History</a></li>
 					</ul></li>
-				<li><a href="shoppingcart" title="Shopping cart"> <span
+				<li><a href="/fabflix/shoppingcart" title="Shopping cart"> <span
 						class="glyphicon glyphicon-shopping-cart"></span> <span
 						class="badge FX-verticalTop" id="itemNum"></span>
 				</a></li>
-				<li id="login"><a href="login.jsp" title="Login"> <span
+				<li id="login"><a href="/fabflix/login.jsp" title="Login"> <span
 						class="glyphicon glyphicon-log-in"> </span>
 				</a></li>
-				<li id="logout"><a href="logout.jsp" title="Logout"> <span
+				<li id="logout"><a href="/fabflix/logout.jsp" title="Logout"> <span
 						class="glyphicon glyphicon-log-out"> </span>
 				</a></li>
 			</ul>

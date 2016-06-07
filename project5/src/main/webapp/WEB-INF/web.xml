@@ -218,9 +218,6 @@
 		<servlet-name>LoginMobileServlet</servlet-name>
 		<url-pattern>/loginmobile</url-pattern>
 	</servlet-mapping>
-	<welcome-file-list>
-		<welcome-file>/main.jsp</welcome-file>
-	</welcome-file-list>
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>HTTPSOnly</web-resource-name>
