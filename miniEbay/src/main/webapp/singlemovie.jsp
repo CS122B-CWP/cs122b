@@ -49,8 +49,19 @@
 											<I id="title"></I>
 										</h4></td>
 									<td align="right"><button type="button" id="addBtn"
-											class="btn btn-success btn-md">Add to Cart</button></td>
+											class="btn btn-success btn-md">Buy It Now</button></td>
 								</tr>
+								<tr>
+									<td>Starting bid: US $0.00-<a>3 bids</a></td>
+									<td>Time Left: 1 day</td>
+								</tr>
+								<tr>
+									<td><input name="bidPrice"></td>
+									<td align="right">
+										<button type="button" id="addBtn"
+										class="btn btn-primary btn-md">Place bid</button></td>
+								</tr>
+								
 							</thead>
 							<tbody>
 								<tr>

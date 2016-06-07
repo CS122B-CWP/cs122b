@@ -48,9 +48,24 @@
 						<tbody id='pageContent'>
 						</tbody>
 					</table>
+					<hr>
+					<div style="text-align: center" >
+						<form>
+							<textarea 
+							   class="form-control input-lg"
+						       name="comment" 
+						       rows="4"
+						       id="Comments" 
+						       placeholder="Comments"
+						       required
+						       ></textarea>
+						    <p></p>
+					    	<button class="btn btn-primary" type="submit">
+								<strong>Post Comments</strong>
+							</button>
+						</form>
+					</div>
 				</div>
-				<hr>
-				
 			</div>
 		</div>
 	</div>
