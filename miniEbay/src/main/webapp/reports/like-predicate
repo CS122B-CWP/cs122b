@@ -1,0 +1,22 @@
+The like predicate in input work for movie title, not case sensitive.
+
+Normal Search Type:
+1.	We choose like method for sql such that the result will return all movies that contain input.
+
+2.	A_Z: 	results contains strings that starts with 'A', another character, and end with 'Z'. 
+			The number of '_' specify the number of characters between 'A' and 'Z'.
+			(e.g. l_m)
+
+Regex Search Type:
+This the powerful method implemented by rlike/REGEXP.
+
+1.	^b				results start with 'b' or 'B'.
+2.	om$				results end with 'om'.
+3.	az				results contain 'az'.
+4.	^.{n}$			results with length n.
+5.	^.{x} .{y}$ 	results with two words connected with space, first length is x while the second is y.
+6.	^[a-c]			results start with a, A, b, B, c and C, can also applied to case 2-5.
+7.	more detailed usage, ref http://dev.mysql.com/doc/refman/5.7/en/regexp.html
+
+Advanced options:
+Director, First Name and Last Name apply the same strategy with normal search type.

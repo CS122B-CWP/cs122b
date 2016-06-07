@@ -1,0 +1,175 @@
+.dropdown:hover .dropdown-menu {
+	display: block;
+	margin-top: 0;
+	//
+	remove
+	the
+	gap
+	so
+	it
+	doesn't
+	close
+}
+
+.list-special .list-group-item {
+	border-radius: 4px;
+	margin: 2px auto;
+}
+
+.FX-signin {
+	margin-top: 60px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 350px;
+}
+
+.FX-body {
+	min-height: 480px;
+	margin-bottom: 15px
+}
+
+.FX-HeaderText {
+	position: relative;
+	display: block;
+	padding: 15px 0px;
+}
+
+.FX-shortInput {
+	max-width: 60px;
+}
+
+.FX-midInput {
+	max-width: 150px;
+}
+
+.FX-largeInput {
+	max-width: 300px;
+}
+
+.FX-inline {
+	display: inline;
+}
+
+.FX-centralArea {
+	text-align: center;
+}
+
+div.FX-centralPad {
+	text-align: center;
+}
+
+.FX-rightArea {
+	text-align: right;
+}
+
+.FX-upPadding {
+	padding-top: 20px;
+}
+
+.FX-img-circle {
+	border-radius: 50%;
+}
+
+.FX-search {
+	margin-top: 60px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 600px;
+}
+
+.FX-BrowseText {
+	font-size: 18px;
+}
+
+.FX-HorSpace {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#FX-foot {
+	border-top: 1px solid #ccc;
+	padding-top: 20px;
+	width: 100%;
+	min-height: 100px;
+	bottom: 0;
+}
+
+#FX-recommend-carousel {
+	margin-bottom: 60px;
+}
+
+.FX-verticalTop {
+	vertical-align: top;
+}
+
+.FX-BrowsevAdj {
+	position: relative;
+	top: 3px;
+}
+
+.navbar-static-top span.glyphicon {
+	font-size: 1.2em;
+}
+
+.FX-browseIcon {
+	font-size: 2em;
+}
+
+.FX-listItem {
+	height: 300px;
+	max-width: 600px;
+}
+
+.FX-row {
+	margin-left: -4px;
+	margin-right: -4px;
+}
+
+.FX-col {
+	padding-left: 4px;
+	padding-right: 4px;
+	display: inline;
+}
+
+.FX-innerItem {
+	float: left;
+}
+
+.FX-listLeft {
+	text-align: center;
+	width: 30%;
+}
+
+.FX-listRight {
+	padding-top: 10px;
+	padding-left: 10px;
+	width: 70%;
+	min-height: 200px;
+}
+
+.FX-listRB {
+	text-align: center;
+	width: 70%;
+}
+
+.FX-QtyContainer {
+	max-width: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.FX-listBuy {
+	position: absolute;
+	bottom: 30px;
+	left: 400px;
+}
+
+.popover {
+	max-width: 100%;
+}
+
+.hover {
+	max-width: 100%;
+}

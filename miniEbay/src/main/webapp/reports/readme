@@ -1,0 +1,63 @@
+About the authentication:
+Guests can use browse and search, while any other function need to be login.
+
+Metion to the browse navigation part, to make the page more tidy. We just list the top 5 genre and year.
+However, you can still browser all years and type through the link we provided in every movie shortcut.
+
+Requirement:
+Tomcat	7/8
+JDK	1.7+
+Maven	3.1+
+
+Database setup:
+(Skip this if you already properly setup your database)
+1.	Make sure you import table and data using the file we provided in project1.
+
+2.	Use the ../main/resources/addOn.sql to full fill the tables and columns that will used in project2.
+	(shopping_cart_items, movies.price, sales.qty, sales.total)
+
+3.	Type mvn exec:java to full fill the price info in table movies, quantities and price info in table sales.
+
+WebApp deploy:
+	sudo ../tomcat/bin/startup.sh to start tomcat.
+
+Command Shell Version:
+1.	cd to ../project2, type mvn tomcat7:deploy for the first time deploy.
+
+2.	To update any changes, type mvn tomcat7:redeploy for redeploy.
+
+3.	If you updeployed this webapp in Tomcat in host/manager, restart Tomcat and execute step 1 for redeploy.
+
+Eclipse Version (J2EE Mars):
+
+1.	Import the project as Maven project.
+
+2.	Configure a JRE satisfied the requirement through Window -> Preference -> JAVA -> Installed JREs -> Execution Enviroment.
+
+3.	Run Configuration -> Setup up a Maven Configuration point to the project you just imported.
+
+4.	use tomcat7:deploy/redeploy as goal for deploy/redeploy.
+
+5.	If you updeployed this webapp in Tomcat in host/manager, restart Tomcat before you execute Step 4.
+
+Modify to run on arbitrary host:
+1.	Make sure your host have corrent Tomcat and JDK.
+
+2.	In tomcat_home/conf/tomcat-users.xml, add role "manager-gui" and "manager-script". Then add a user, assign this two roles to it.
+
+3.	Assume the user you just created has is "user" and password is "pass". Modify tomcat7-maven-plugin configuration in pom.xml as follows:
+					<path>/your_desired_web_path</path>
+					<update>true</update>
+					<url>http://your_host_ip:your_host_port/manager/text</url>
+					<username>user</username>
+					<password>pass</password>
+
+Modify To use your own mysql/MariaDB database:
+1.	Modify the properties in project2.jdbc.JDBCProperty to specify connection string(host, port and database name here), driver type
+	(if other then mysql/MarianDB, add	correspond JDBC dependency in pom.xml), user/pass that have authority to connection, 
+	size to specify connection pool size (We simulation connection pool to avoid too many connections to databse and use DAO design pattern.)
+	
+
+
+Then enjoy it!
+
