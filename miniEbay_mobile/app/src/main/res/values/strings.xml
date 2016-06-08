@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">MiniEbay</string>
+    <string name="edit_message">Product Name</string>
+    <string name="button_send">Send</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_display_message">My Message</string>
+    <string name="please_connect_to_internet">Network not available, please connect to internet</string>
+    <string name="no_title">Please enter a movie name</string>
+    <string name="no_movie">We don\'t find any movie...</string>
+    <string name="no_username">please enter your username</string>
+    <string name="no_password">please enter your password</string>
+    <string name="fablix_Url">https://54.193.25.226:8443/fabflix</string>
+    <string name="fablix_searchUrl">/search</string>
+    <string name="fablix_singleMovieUrl">/singlemovie</string>
+    <string name="fablix_singleStarUrl">/singlestar</string>
+    <string name="fablix_loginUrl">/loginmobile</string>
+    <string name="fablix_logout">/logout.jsp</string>
+    <string name="backPage">Prev</string>
+    <string name="nextPage">Next</string>
+    <string name="cachedquery">Fablix.searchquery</string>
+</resources>

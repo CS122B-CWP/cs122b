@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="CSS/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="CSS/common1.css">
+<link rel="stylesheet" href="CSS/simple-sidebar.css">
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -35,47 +36,52 @@
 	<script>
 		$("#header").load("FRAGMENT/header.jsp");
 	</script>
-
-	<div class="container FX-body">
-		<div class="panel panel-default">
-			<div class="panel-heading">Browse</div>
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-md-2">
-						<h3>Genre:</h3>
-					</div>
-					<div class="col-md-10 FX-BrowseText">
-						<span class="glyphicon glyphicon-chevron-right FX-BrowsevAdj"></span>
-						<a href="browse?genre=Drama">Drama</a>, <a
-							href="browse?genre=Action">Action</a>, <a
-							href="browse?genre=Comedy">Comedy</a>, <a
-							href="browse?genre=Thriller">Thriller</a>, <a
-							href="browse?genre=Adventure">Adventure</a>
-					</div>
-				</div>
+	<div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Category
+                    </a>
+                </li>
+                <li>
+                    <a href="#">ALL</a>
+                </li>
+                <li>
+                    <a href="#">iphone</a>
+                </li>
+                <li>
+                    <a href="#">android phone</a>
+                </li>
+                <li>
+                    <a href="#">win phone</a>
+                </li>
+                <li>
+                    <a href="#">blabla phone</a>
+                </li>
+                <li>
+                    <a href="#">bilibili phone</a>
+                </li>
+                <li>
+                    <a href="#">giligili phone</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+	    <div id="page-content-wrapper">
+			<div class="container FX-body">
+				<h5>Showing result for category "blablabla"</h5>
 				<hr>
-				<div class="row">
-					<div class="col-md-2">
-						<h3>Dict:</h3>
-					</div>
-					<div class="col-md-10 FX-BrowseText">
-						<span class="glyphicon glyphicon-chevron-right FX-BrowsevAdj"></span>
-						<a href="browse?year=2001">2001</a>, <a href="browse?year=2002">2002</a>,
-						<a href="browse?year=2003">2003</a>, <a href="browse?year=2004">2004</a>,
-						<a href="browse?year=2005">2005</a>
-					</div>
+				<div>
+					<ul id="pageContent" class="list-group list-special row FX-row">
+					</ul>
+					<jsp:include page="FRAGMENT/browsepagination.jsp" />
 				</div>
 			</div>
 		</div>
-		<hr>
-		<div>
-			<ul id="pageContent" class="list-group list-special row FX-row">
-			</ul>
-			<jsp:include page="FRAGMENT/browsepagination.jsp" />
-		</div>
-	</div>
-
 	<div id="footer"></div>
+	</div>
 	<script>
 		$("#footer").load("FRAGMENT/footer.html");
 	</script>

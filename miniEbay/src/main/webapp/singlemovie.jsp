@@ -97,6 +97,9 @@
 						<div>
 							<p>By user1:</p>
 							<p>Comments123....blabla</p>
+							<hr>
+							<p>By user2:</p>
+							<p>Comments123....blabla</p>
 						</div>		
 		</div>
 	</div>
