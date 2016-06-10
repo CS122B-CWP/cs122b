@@ -2,16 +2,14 @@ package miniEbay.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import miniEbay.jdbc.bean.SearchPageBean;
 import miniEbay.jdbc.dao.SearchDAO;
 
-public class SearchServlet extends HttpServlet {
+public class SearchServletMobile extends HttpServlet {
 	private static final long serialVersionUID = 6L;
 
 	@Override
@@ -42,12 +40,8 @@ public class SearchServlet extends HttpServlet {
 			pg.setBrief_items(SearchDAO.searchContent(pg));
 			pg.setMaxPage(SearchDAO.searchPages(pg));
 			// System.out.println(pg.toString());
-			HttpSession session = request.getSession();
-			session.setAttribute("searchPage", pg.toString());
-			request.getRequestDispatcher("search.jsp").forward(request, response);
+			response.getWriter().write(pg.toString());
 		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ServletException e) {
 			e.printStackTrace();
 		}
 	}

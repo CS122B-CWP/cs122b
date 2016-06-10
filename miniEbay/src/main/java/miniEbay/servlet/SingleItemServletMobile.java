@@ -5,23 +5,24 @@ import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import miniEbay.jdbc.dao.SingleItemDAO;
 import miniEbay.object.DetailItem;
 
-public class SingleMovieAjaxServlet extends HttpServlet {
-	private static final long serialVersionUID = 15L;
+public class SingleItemServletMobile extends HttpServlet {
+	private static final long serialVersionUID = 4L;
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			String movie_id = request.getParameter("id");
-			DetailItem mv = null;
-			if (movie_id != null && movie_id.matches("[0-9][0-9]*"))
-				mv = SingleItemDAO.itemDetail(movie_id);
-			if (mv != null) {
-				// System.out.println(mv.toString());
-				response.getWriter().write(mv.toString());
+			String item_id = request.getParameter("item_id");
+			DetailItem item = null;
+			if (item_id != null)
+				item = SingleItemDAO.itemDetail(item_id);
+			// System.out.println(item.toString());
+			if (item != null) {
+				response.getWriter().write(item.toString());
+			} else {
+				response.sendRedirect("search_mobile");
 			}
 
 		} catch (IOException e) {

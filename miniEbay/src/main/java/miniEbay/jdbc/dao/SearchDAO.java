@@ -9,80 +9,76 @@ import java.util.List;
 
 import miniEbay.jdbc.JDBCPool;
 import miniEbay.jdbc.bean.SearchPageBean;
-import miniEbay.object.Movie;
+import miniEbay.object.BriefItem;
 
 public class SearchDAO {
-	public static List<Movie> nsearchContent(SearchPageBean pagebean) {
-		List<Movie> movies = new ArrayList<Movie>();
+	public static List<BriefItem> searchContent(SearchPageBean pagebean) {
+		List<BriefItem> brief_items = new ArrayList<BriefItem>();
 		int start = (pagebean.getCurPage() - 1) * pagebean.getRowsPerPage();
-		Object[] para = new Object[] { "%" + pagebean.getTitle() + "%", "%" + pagebean.getDirector() + "%",
-				pagebean.getSyear(), pagebean.getEyear(), "%" + pagebean.getFname() + "%",
-				"%" + pagebean.getLname() + "%", start, pagebean.getRowsPerPage() };
+		Object[] para = new Object[] { "%" + pagebean.getSearch_title() + "%",
+				"%" + pagebean.getSearch_category_id() + "%", pagebean.getLowPrice(), pagebean.getHighPrice(), start,
+				pagebean.getRowsPerPage() };
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
-			String sql_str = "select movies.id, title, year, dirctor, banner_url from stars, movies, stars_in_movies "
-					+ "where stars.id=stars_in_movies.stars_id and movies.id=stars_in_movies.movie_id "
-					+ "and movies.title like ? and dirctor like ? and year >= ? and year <=? "
-					+ "and first_name like ? and last_name like ? group by movies.id limit ?,?;";
-			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setObject(1, para[0]);
-			sql.setObject(2, para[1]);
-			sql.setObject(3, para[2]);
-			sql.setObject(4, para[3]);
-			sql.setObject(5, para[4]);
-			sql.setObject(6, para[5]);
-			sql.setObject(7, para[6]);
-			sql.setObject(8, para[7]);
-			// System.out.println(sql.toString());
+			String sql_str = "select item_id, title, items.category_id, category_name, current_price, gallery_url"
+					+ " from items, categories where items.category_id = categories.category_id and "
+					+ "title like ? and items.category_id like ? and current_price > ? and current_price < ? "
+					+ "group by item_id limit ?, ?;";
+			PreparedStatement stmn = conn.prepareStatement(sql_str);
+			stmn.setObject(1, para[0]);
+			stmn.setObject(2, para[1]);
+			stmn.setObject(3, para[2]);
+			stmn.setObject(4, para[3]);
+			stmn.setObject(5, para[4]);
+			stmn.setObject(6, para[5]);
+			// System.out.println(stmn.toString());
 
-			ResultSet rs = sql.executeQuery();
+			ResultSet rs = stmn.executeQuery();
 
 			while (rs.next()) {
-				Movie mv = new Movie();
-				mv.setId(rs.getInt(1));
-				mv.setTitle(rs.getString(2));
-				mv.setYear(rs.getInt(3));
-				mv.setDirctor(rs.getString(4));
-				mv.setBanner_url(rs.getString(5));
-				movies.add(mv);
+				BriefItem item = new BriefItem();
+				item.setItem_id(rs.getString(1));
+				item.setTitle(rs.getString(2));
+				item.setCategory_id(rs.getString(3));
+				item.setCategory_name(rs.getString(4));
+				item.setCurrent_price(rs.getDouble(5));
+				item.setGallery_url(rs.getString(6));
+				brief_items.add(item);
 				// System.out.println(mv.toString());
 			}
 			rs.close();
-			sql.close();
+			stmn.close();
 			JDBCPool.getInstance().release(conn);
 		} catch (SQLException e) {
 			System.out.println("JDBC Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode());
 		}
-		return movies;
+		return brief_items;
 	}
 
-	public static int nsearchPages(SearchPageBean pagebean) {
+	public static int searchPages(SearchPageBean pagebean) {
 		int total_pages = 0;
-		Object[] para = new Object[] { "%" + pagebean.getTitle() + "%", "%" + pagebean.getDirector() + "%",
-				pagebean.getSyear(), pagebean.getEyear(), "%" + pagebean.getFname() + "%",
-				"%" + pagebean.getLname() + "%" };
+		Object[] para = new Object[] { "%" + pagebean.getSearch_title() + "%",
+				"%" + pagebean.getSearch_category_id() + "%", pagebean.getLowPrice(), pagebean.getHighPrice() };
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
-			String sql_str = "select count(distinct movies.id) from stars, movies, stars_in_movies "
-					+ "where stars.id=stars_in_movies.stars_id and movies.id=stars_in_movies.movie_id "
-					+ "and movies.title like ? and dirctor like ? and year >= ? and year <=? "
-					+ "and first_name like ? and last_name like ?";
-			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setObject(1, para[0]);
-			sql.setObject(2, para[1]);
-			sql.setObject(3, para[2]);
-			sql.setObject(4, para[3]);
-			sql.setObject(5, para[4]);
-			sql.setObject(6, para[5]);
-			// System.out.println(sql.toString());
+			String sql_str = "select count(item_id) from items, categories"
+					+ " where items.category_id = categories.category_id and "
+					+ "title like ? and items.category_id like ? and current_price > ? and current_price < ?;";
+			PreparedStatement stmn = conn.prepareStatement(sql_str);
+			stmn.setObject(1, para[0]);
+			stmn.setObject(2, para[1]);
+			stmn.setObject(3, para[2]);
+			stmn.setObject(4, para[3]);
 
-			ResultSet rs = sql.executeQuery();
+			// System.out.println(stmn.toString());
+
+			ResultSet rs = stmn.executeQuery();
 			if (rs.next()) {
 				total_pages = rs.getInt(1);
 				// System.out.println(total_pages);
 			}
 			rs.close();
-			sql.close();
+			stmn.close();
 			JDBCPool.getInstance().release(conn);
 		} catch (SQLException e) {
 			System.out.println("JDBC Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode());
@@ -97,89 +93,4 @@ public class SearchDAO {
 		// System.out.println(total_pages);
 		return total_pages;
 	}
-
-	public static List<Movie> rsearchContent(SearchPageBean pagebean) {
-		List<Movie> movies = new ArrayList<Movie>();
-		int start = (pagebean.getCurPage() - 1) * pagebean.getRowsPerPage();
-		Object[] para = new Object[] { pagebean.getTitle(), "%" + pagebean.getDirector() + "%", pagebean.getSyear(),
-				pagebean.getEyear(), "%" + pagebean.getFname() + "%", "%" + pagebean.getLname() + "%", start,
-				pagebean.getRowsPerPage() };
-		try {
-			Connection conn = JDBCPool.getInstance().getConnection();
-			String sql_str = "select movies.id, title, year, dirctor, banner_url from stars, movies, stars_in_movies "
-					+ "where stars.id=stars_in_movies.stars_id and movies.id=stars_in_movies.movie_id "
-					+ "and movies.title rlike ? and dirctor like ? and year >= ? and year <=? "
-					+ "and first_name like ? and last_name like ? group by movies.id limit ?,?;";
-			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setString(1, para[0].toString());
-			sql.setObject(2, para[1]);
-			sql.setObject(3, para[2]);
-			sql.setObject(4, para[3]);
-			sql.setObject(5, para[4]);
-			sql.setObject(6, para[5]);
-			sql.setObject(7, para[6]);
-			sql.setObject(8, para[7]);
-			// System.out.println(sql.toString());
-
-			ResultSet rs = sql.executeQuery();
-
-			while (rs.next()) {
-				Movie mv = new Movie();
-				mv.setId(rs.getInt(1));
-				mv.setTitle(rs.getString(2));
-				mv.setYear(rs.getInt(3));
-				mv.setDirctor(rs.getString(4));
-				mv.setBanner_url(rs.getString(5));
-				movies.add(mv);
-				// System.out.println(mv.toString());
-			}
-			rs.close();
-			sql.close();
-			JDBCPool.getInstance().release(conn);
-		} catch (SQLException e) {
-			System.out.println("JDBC Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode());
-		}
-		return movies;
-	}
-
-	public static int rsearchPages(SearchPageBean pagebean) {
-		int total_pages = 0;
-		Object[] para = new Object[] { pagebean.getTitle(), "%" + pagebean.getDirector() + "%", pagebean.getSyear(),
-				pagebean.getEyear(), "%" + pagebean.getFname() + "%", "%" + pagebean.getLname() + "%" };
-		try {
-			Connection conn = JDBCPool.getInstance().getConnection();
-			String sql_str = "select count(distinct movies.id) from stars, movies, stars_in_movies "
-					+ "where stars.id=stars_in_movies.stars_id and movies.id=stars_in_movies.movie_id "
-					+ "and movies.title rlike ? and dirctor like ? and year >= ? and year <=? "
-					+ "and first_name like ? and last_name like ?";
-			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setString(1, para[0].toString());
-			sql.setObject(2, para[1]);
-			sql.setObject(3, para[2]);
-			sql.setObject(4, para[3]);
-			sql.setObject(5, para[4]);
-			sql.setObject(6, para[5]);
-			// System.out.println(sql.toString());
-
-			ResultSet rs = sql.executeQuery();
-			if (rs.next()) {
-				total_pages = rs.getInt(1);
-			}
-			rs.close();
-			sql.close();
-			JDBCPool.getInstance().release(conn);
-		} catch (SQLException e) {
-			System.out.println("JDBC Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode());
-		}
-		if (total_pages % pagebean.getRowsPerPage() != 0)
-			total_pages /= pagebean.getRowsPerPage() + 1;
-		else
-			total_pages /= pagebean.getRowsPerPage();
-
-		if (total_pages == 0)
-			total_pages = 1;
-		// System.out.println(total_pages);
-		return total_pages;
-	}
-
 }

@@ -28,12 +28,28 @@
 		<url-pattern>/browse</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>SingleMovieServlet</servlet-name>
-		<servlet-class>miniEbay.servlet.SingleMovieServlet</servlet-class>
+		<servlet-name>BrowserServletMobile</servlet-name>
+		<servlet-class>miniEbay.servlet.BrowserServletMobile</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>SingleMovieServlet</servlet-name>
-		<url-pattern>/singlemovie</url-pattern>
+		<servlet-name>BrowserServletMobile</servlet-name>
+		<url-pattern>/browse_mobile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SingleItemServlet</servlet-name>
+		<servlet-class>miniEbay.servlet.SingleItemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SingleItemServlet</servlet-name>
+		<url-pattern>/singleitem</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SingleItemServletMobile</servlet-name>
+		<servlet-class>miniEbay.servlet.SingleItemServletMobile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SingleItemServletMobile</servlet-name>
+		<url-pattern>/singleitem_mobile</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>SingleStarServlet</servlet-name>
@@ -50,6 +66,14 @@
 	<servlet-mapping>
 		<servlet-name>SearchServlet</servlet-name>
 		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SearchServletMobile</servlet-name>
+		<servlet-class>miniEbay.servlet.SearchServletMobile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchServletMobile</servlet-name>
+		<url-pattern>/search_mobile</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>ShoppingCartServlet</servlet-name>
@@ -76,38 +100,6 @@
 		<url-pattern>/orderhistory</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>EmployeeLoginServlet</servlet-name>
-		<servlet-class>miniEbay.servlet.EmployeeLoginServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>EmployeeLoginServlet</servlet-name>
-		<url-pattern>/employee_login</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>DashboardServlet</servlet-name>
-		<servlet-class>miniEbay.servlet.DashboardServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DashboardServlet</servlet-name>
-		<url-pattern>/_dashboard</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>InsertStarServlet</servlet-name>
-		<servlet-class>miniEbay.servlet.InsertStarServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>InsertStarServlet</servlet-name>
-		<url-pattern>/dashapp/insert_star</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>InsertMovieServlet</servlet-name>
-		<servlet-class>miniEbay.servlet.InsertMovieServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>InsertMovieServlet</servlet-name>
-		<url-pattern>/dashapp/insert_movie</url-pattern>
-	</servlet-mapping>
-	<servlet>
 		<servlet-name>SearchAjaxServlet</servlet-name>
 		<servlet-class>miniEbay.servlet.SearchAjaxServlet</servlet-class>
 	</servlet>
@@ -129,7 +121,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginMobileServlet</servlet-name>
-		<url-pattern>/loginmobile</url-pattern>
+		<url-pattern>/login_mobile</url-pattern>
 	</servlet-mapping>
 	<filter>
 		<filter-name>loginfilter</filter-name>
@@ -142,10 +134,6 @@
 	<filter>
 		<filter-name>ResultFilter</filter-name>
 		<filter-class>miniEbay.jdbc.filter.ResultFilter</filter-class>
-	</filter>
-	<filter>
-		<filter-name>eloginfilter</filter-name>
-		<filter-class>miniEbay.jdbc.filter.ELoginFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>loginfilter</filter-name>
@@ -194,9 +182,5 @@
 	<filter-mapping>
 		<filter-name>ResultFilter</filter-name>
 		<url-pattern>/ordersuccess.html</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>eloginfilter</filter-name>
-		<url-pattern>/dashapp/*</url-pattern>
 	</filter-mapping>
 </web-app>

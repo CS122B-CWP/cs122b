@@ -15,15 +15,14 @@ public class LoginDAO {
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
 			PreparedStatement sql = conn
-					.prepareStatement("select last_name, id from customers where email=? and password=?");
+					.prepareStatement("select customer_id from customers where email=? and password=?");
 			sql.setString(1, email);
 			sql.setString(2, pass);
 
 			ResultSet rs = sql.executeQuery();
 			if (rs.next()) {
 				user = new LoginInfo();
-				user.setLname(rs.getString(1));
-				user.setUser_id(rs.getInt(2));
+				user.setCustomer_id(rs.getString(1));
 			}
 			rs.close();
 			sql.close();

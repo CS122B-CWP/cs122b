@@ -1,4 +1,4 @@
-package project4.jdbc;
+package miniEbay.jdbc;
 
 import java.sql.SQLException;
 
@@ -10,9 +10,7 @@ public class SearchDAOTest {
 	public static void main(String[] args) throws SQLException {
 		JDBCPool pool = JDBCPool.getInstance();
 		SearchPageBean pg = new SearchPageBean(1, 20);
-		// BrowserDAO.browserContent(new PageBean(1, 20), "crime", "s");
-		// pg.setMaxPage();
-		pg.setMovies(SearchDAO.nsearchContent(pg));
+		pg.setBrief_items(SearchDAO.searchContent(pg));
 		System.out.println(pg.toString());
 		pool.closePool();
 	}

@@ -9,9 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="CSS/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="CSS/common1.css">
-<link rel="stylesheet" href="CSS/bootstrap3-typeahead.css">
+<link rel="stylesheet"
+	href="/miniEbay/CSS/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/miniEbay/CSS/common1.css">
+<link rel="stylesheet" href="/miniEbay/CSS/bootstrap3-typeahead.css">
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -19,8 +20,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!--BS's js won't work if we don't include the above one-->
-<script src="CSS/bootstrap/js/bootstrap.min.js"></script>
-<script src="Scripts/typeahead.bundle.js"></script>
+<script src="/miniEbay/CSS/bootstrap/js/bootstrap.min.js"></script>
+<script src="/miniEbay/Scripts/typeahead.bundle.js"></script>
 <script>
 	var content =
 <%=content%>
@@ -31,12 +32,13 @@
 <body>
 	<div id="header"></div>
 	<script>
-		$("#header").load("FRAGMENT/header.jsp");
+		$("#header").load("/miniEbay/FRAGMENT/header.jsp");
 	</script>
 
 	<div class="container FX-body">
 		<div class="FX-search">
-			<form action="search" method="GET" class="search" role="form">
+			<form action="/miniEbay/search" method="GET" class="search"
+				role="form">
 				<div class="input-group">
 					<input autofocus class="form-control input-lg" name="title"
 						id="searchT" placeholder="Title" tabindex="1" type="text" value="" />
@@ -50,10 +52,6 @@
 							type="submit" tabindex="2">
 							<strong>Search</strong>
 						</button>
-						<button class="btn btn-primary FX-HorSpace" type="submit"
-							tabindex="3">
-							<strong>Reg Search</strong>
-						</button>
 					</div>
 				</div>
 				<a style="cursor: pointer" data-toggle="collapse"
@@ -64,10 +62,11 @@
 							<label class="control-label col-sm-2">Price:</label>
 							<div class="col-sm-10">
 								<div class="form-group form-inline">
-									<input class="form-control input-sm FX-shortInput" name="lowPrice"
-										placeholder="YYYY" type="text" value="" maxlength="4" /> - <input
+									<input class="form-control input-sm FX-shortInput"
+										name="lowPrice" placeholder="low" type="text" value=""
+										maxlength="4" /> - <input
 										class="form-control input-sm FX-shortInput" name="highPrice"
-										placeholder="YYYY" type="text" value="" maxlength="4" />
+										placeholder="high" type="text" value="" maxlength="4" />
 								</div>
 							</div>
 						</div>
@@ -85,7 +84,7 @@
 
 	<div id="footer"></div>
 	<script>
-		$("#footer").load("FRAGMENT/footer.html");
+		$("#footer").load("/miniEbay/FRAGMENT/footer.html");
 	</script>
 	<script>
 		if (content != null) {
@@ -156,102 +155,6 @@
 				li.appendTo(div1);
 				div1.appendTo('#pageContent');
 			}
-		}
-	</script>
-	<script>
-		var prefixed_titles = "";
-		xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (xhttp.readyState == 4 && xhttp.status == 200) {
-				prefixed_titles = $.parseJSON(xhttp.responseText);
-				//substringMatcher();
-			}
-		};
-
-		$('#searchT').bind('input propertychange', function() {
-			var prefix = $("#searchT").val();
-			if (prefix != "") {
-				xhttp.open("GET", "searchajax?title=" + prefix, true);
-				xhttp.send();
-			}
-		});
-
-		var matched_titles = function() {
-			return function findMatches(q, cb) {
-				var matches;
-
-				// an array that will be populated with substring matches
-				matches = [];
-
-				// iterate through the pool of strings and for any string that
-				// contains the substring `q`, add it to the `matches` array
-				$.each(prefixed_titles, function(i, prefixed_titles) {
-					matches.push(prefixed_titles);
-				});
-
-				cb(matches);
-			};
-		};
-
-		$('#searchT').typeahead({
-			hint : true,
-			highlight : true,
-			minLength : 2
-		}, {
-			name : 'states',
-			source : matched_titles()
-		});
-	</script>
-
-	<script>
-		$(document).ready(function() {
-			$('[data-poload]').hover(function() {
-				var e = $(this);
-				$.get(e.data('poload'), function(movie_info) {
-					movie_info = $.parseJSON(movie_info);
-					e.popover({
-						placement : 'right',
-						trigger : 'hover',
-						container : 'body',
-						title : 'Movie Title: ' + movie_info.title,
-						html : 'true',
-						content : ContentMethod(movie_info)
-					}).popover('show');
-				});
-			});
-		});
-
-		function ContentMethod(movie_info) {
-			var table = $('<table></table>');
-			table.attr('class', 'table table-bordered');
-			// banner_url
-			var banner_tr = $('<tr></tr>');
-			var banner_td = $('<td></td>');
-			var banner_img = $('<img></img>');
-			banner_img.attr('src', movie_info.banner_url);
-			banner_img.attr('style', 'height: 150px; width: 150px;');
-			banner_img.appendTo(banner_td);
-			banner_td.appendTo(banner_tr);
-			banner_tr.appendTo(table);
-
-			// dirctor
-			var dirctor_tr = $('<tr></tr>');
-			var dirctor_td = $('<td>Dirctor: ' + movie_info.dirctor + '</td>');
-			dirctor_td.appendTo(dirctor_tr);
-			dirctor_tr.appendTo(table);
-
-			// year
-			var year_tr = $('<tr></tr>');
-			var year_td = $('<td>Year: ' + movie_info.year + '</td>');
-			year_td.appendTo(year_tr);
-			year_tr.appendTo(table);
-
-			// price
-			var price_tr = $('<tr></tr>');
-			var price_td = $('<td>Price: ' + movie_info.price + '</td>');
-			price_td.appendTo(price_tr);
-			price_tr.appendTo(table);
-			return table;
 		}
 	</script>
 </body>
