@@ -24,13 +24,9 @@
 			var li = $('<li></li>');
 			var a = $('<a></a>');
 			var herfStr =
-					'search?' + '&page=' + i + '&title=' + content.title
-							+ '&director=' + content.director + '&syear='
-							+ content.syear + '&eyear=' + content.eyear
-							+ '&fname=' + content.fname + '&lname='
-							+ content.lname;
-			if (content.type == "n")
-				herfStr += "&normal="
+					'search?' + '&page=' + i + '&title=' + content.search_title
+							+ '&lowPrice=' + content.lowPrice + '&highPrice='
+							+ content.highPrice;
 			a.attr('href', herfStr);
 			a.text(i);
 			a.appendTo(li);
@@ -42,24 +38,20 @@
 		if (pre <= 0)
 			pre = 1;
 		var herfPre =
-				'search?' + '&page=' + pre + '&title=' + content.title
-						+ '&director=' + content.director + '&syear='
-						+ content.syear + '&eyear=' + content.eyear + '&fname='
-						+ content.fname + '&lname=' + content.lname;
-		if (content.type == "n")
-			herfPre += "&normal="
+				'search?' + '&page=' + pre + '&title=' + content.search_title
+						+ '&lowPrice=' + content.lowPrice + '&highPrice='
+						+ content.highPrice;
+
 		$('#pageP').find('a').attr('href', herfPre);
 
 		var next = content.curPage + 1;
 		if (next > content.maxPage)
 			next = content.maxPage;
 		var herfNext =
-				'search?' + '&page=' + next + '&title=' + content.title
-						+ '&director=' + content.director + '&syear='
-						+ content.syear + '&eyear=' + content.eyear + '&fname='
-						+ content.fname + '&lname=' + content.lname;
-		if (content.type == "n")
-			herfNext += "&normal="
+				'search?' + '&page=' + next + '&title=' + content.search_title
+						+ '&lowPrice=' + content.lowPrice + '&highPrice='
+						+ content.highPrice;
+
 		$('#pageN').find('a').attr('href', herfNext);
 	}
 </script>

@@ -28,11 +28,11 @@ public class SearchServlet extends HttpServlet {
 				pg.setSearch_category_id(search_category_id);
 			// low price
 			String low = request.getParameter("lowPrice");
-			if (low != null)
+			if (low != null && low != "")
 				pg.setLowPrice(Double.parseDouble(low));
 			// high price
 			String high = request.getParameter("highPrice");
-			if (high != null)
+			if (high != null && high != "")
 				pg.setHighPrice(Double.parseDouble(high));
 			// page
 			String page = request.getParameter("page");

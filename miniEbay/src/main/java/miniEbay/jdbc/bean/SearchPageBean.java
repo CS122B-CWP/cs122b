@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 public class SearchPageBean extends PageBean {
 	private double lowPrice = 0.0;
-	private double highPrice = Double.MAX_VALUE;
+	private double highPrice = Integer.MAX_VALUE;
 
 	public SearchPageBean() {
 		super();

@@ -1,6 +1,7 @@
 
 <%
 	String content = (String) session.getAttribute("searchPage");
+	session.removeAttribute("searchPage");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,8 +49,8 @@
 				</div>
 				<div class="row FX-upPadding">
 					<div class="text-center">
-						<button class="btn btn-primary FX-HorSpace" name="normal"
-							type="submit" tabindex="2">
+						<button class="btn btn-primary FX-HorSpace" type="submit"
+							tabindex="2">
 							<strong>Search</strong>
 						</button>
 					</div>
@@ -87,74 +88,46 @@
 		$("#footer").load("/miniEbay/FRAGMENT/footer.html");
 	</script>
 	<script>
-		if (content != null) {
-			$('#searchT').val(content.title);
-			var movies = content.movies;
-			for (i = 0; i < movies.length; i++) {
-				var div1 = $('<div></div>');
-				div1.attr('class', 'col-md-6 FX-col');
-				var li = $('<li></li>');
-				li.attr('class', 'list-group-item FX-listItem pre');
-				var div2 = $('<div></div>');
-				div2.attr('class', 'FX-innerItem FX-listLeft');
-				div2.attr('data-poload', 'singlemovieajax?id=' + movies[i].id);
-				var a0 = $('<a></a>');
-				a0.attr('href', 'singlemovie?id=' + movies[i].id);
-				var img = $('<img></img>');
-				img.attr('src', movies[i].banner_url);
-				img.attr('alt', movies[i].title);
-				img.attr('style', 'height: 200px; width: 100%;');
-				var p0 = $('<p></p>');
-				var p1 = $('<p></p>');
-				p1.text(movies[i].title);
-				img.appendTo(a0);
-				p0.appendTo(a0);
-				p1.appendTo(a0);
-				a0.appendTo(div2);
-				var p2 = $('<p></p>');
-				p2.text(movies[i].dirctor);
-				p2.appendTo(div2);
-				div2.appendTo(li);
-				var div3 = $('<li></li>');
-				div3.attr('class', 'FX-innerItem FX-listRight');
-				var hr1 = $('<hr></hr>');
-				hr1.text('Year:\t');
-				var a1 = $('<a></a>');
-				a1.attr('href', 'browse?year=' + movies[i].year);
-				a1.text(movies[i].year);
-				a1.appendTo(hr1);
-				hr1.appendTo(div3);
-				var hr2 = $('<hr></hr>');
-				hr2.text('Genre:\t');
-				var a2 = $('<a></a>');
-				a2.attr('href', 'browse?genre=' + movies[i].genre);
-				a2.text(movies[i].genre);
-				a2.appendTo(hr2);
-				hr2.appendTo(div3);
-				var hr3 = $('<hr></hr>');
-				hr3.text('Stars:\t');
-				var stars = movies[i].stars;
-				for (j = 0; j < stars.length; j++) {
-					var starname = "";
-					if (stars[j].fname != null)
-						starname += stars[j].fname;
-					if (stars[j].lname != null)
-						starname += " " + stars[j].lname;
-					if (starname != "") {
-						var starlink = $('<a></a>');
-						starlink.attr('href', 'singlestar?id=' + stars[j].id);
-						if (j < stars.length - 1)
-							starlink.text(starname + ",\t");
-						else
-							starlink.text(starname);
-						starlink.appendTo(hr3);
-					}
-				}
-				hr3.appendTo(div3);
-				div3.appendTo(li);
-				li.appendTo(div1);
-				div1.appendTo('#pageContent');
-			}
+		var items = content.brief_items;
+		for (i = 0; i < items.length; i++) {
+			var div1 = $('<div></div>');
+			div1.attr('class', 'col-md-6 FX-col');
+			var li = $('<li></li>');
+			li.attr('class', 'list-group-item FX-listItem pre');
+			var div2 = $('<div></div>');
+			div2.attr('class', 'FX-innerItem FX-listLeft');
+			var a0 = $('<a></a>');
+			a0.attr('href', 'singleitem?item_id=' + items[i].item_id);
+			var img = $('<img></img>');
+			img.attr('src', items[i].gallery_url);
+			img.attr('alt', items[i].title);
+			img.attr('style', 'height: 200px; width: 100%;');
+			var p0 = $('<p></p>');
+			var p1 = $('<p></p>');
+			p1.text(items[i].title);
+			img.appendTo(a0);
+			p0.appendTo(a0);
+			p1.appendTo(a0);
+			a0.appendTo(div2);
+			div2.appendTo(li);
+			var div3 = $('<li></li>');
+			div3.attr('class', 'FX-innerItem FX-listRight');
+			var hr1 = $('<hr></hr>');
+			hr1.text('Category:\t');
+			var a1 = $('<a></a>');
+			a1
+					.attr('href', 'browse?search_category_id='
+							+ items[i].category_id);
+			a1.text(items[i].category_name);
+			a1.appendTo(hr1);
+			hr1.appendTo(div3);
+			var hr2 = $('<hr></hr>');
+			hr2.text('Current Price:\t$' + items[i].current_price);
+			hr2.appendTo(div3);
+			div3.appendTo(li);
+			li.appendTo(div1);
+			div1.appendTo('#pageContent');
+			$('#searchT').val(content.search_title);
 		}
 	</script>
 </body>

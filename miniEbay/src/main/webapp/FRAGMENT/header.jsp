@@ -1,6 +1,9 @@
 
 <%
 	String name = (String) session.getAttribute("customer_id");
+	int total = -1;
+	if (name != null)
+		total = (int) session.getAttribute("item_nums");
 %>
 <script src="/miniEbay/Scripts/typeahead.bundle.js"></script>
 <link rel="stylesheet" href="/miniEbay/CSS/bootstrap3-typeahead.css">
@@ -66,6 +69,9 @@
 		var name_msg = "Hi," + name;
 		$("#logout").show();
 		$("#login").hide();
+		var total ="<%=total%>";
+		if (total != -1)
+			$("#itemNum").text(total);
 	}
 	$("#username").text(name_msg);
 </script>

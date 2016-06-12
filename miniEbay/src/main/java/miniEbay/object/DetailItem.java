@@ -11,10 +11,14 @@ public class DetailItem extends BriefItem {
 	private String end_time;
 	private String des;
 	private String seller_id;
+	private String status;
+	private int bids;
 	private List<String> photos;
+	private List<ItemComment> commnets;
 
 	public DetailItem() {
 		photos = new ArrayList<String>();
+		commnets = new ArrayList<ItemComment>();
 	}
 
 	@Override
@@ -24,10 +28,18 @@ public class DetailItem extends BriefItem {
 		jsonStr.put("EndTime", this.end_time);
 		jsonStr.put("ConditionDescription", this.des);
 		jsonStr.put("Seller_Id", this.seller_id);
+		jsonStr.put("Status", this.status);
+		jsonStr.put("Bids", this.bids);
 		JSONArray photo_array = new JSONArray();
 		for (String photo : photos)
 			photo_array.put(photo);
 		jsonStr.put("PictureURL", photo_array);
+
+		JSONArray comment_array = new JSONArray();
+		for (ItemComment commment : commnets)
+			comment_array.put(commment.toJson());
+		jsonStr.put("Comments", comment_array);
+		
 		return jsonStr;
 	}
 
@@ -68,11 +80,35 @@ public class DetailItem extends BriefItem {
 		this.seller_id = seller_id;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public int getBids() {
+		return bids;
+	}
+
+	public void setBids(int bids) {
+		this.bids = bids;
+	}
+
 	public List<String> getPhotos() {
 		return photos;
 	}
 
 	public void setPhotos(List<String> photos) {
 		this.photos = photos;
+	}
+
+	public List<ItemComment> getCommnets() {
+		return commnets;
+	}
+
+	public void setCommnets(List<ItemComment> commnets) {
+		this.commnets = commnets;
 	}
 }

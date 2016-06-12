@@ -23,7 +23,7 @@ public class CheckoutServlet extends HttpServlet {
 				int customer_id = (int) request.getSession().getAttribute("customer_id");
 
 				// TODO add more robust operation if add sale failed
-				CheckoutDAO.addsales(customer_id);
+				//CheckoutDAO.addsales(customer_id);
 				request.getSession().setAttribute("item_nums", 0);
 				response.sendRedirect("ordersuccess.html");
 			} else

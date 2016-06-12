@@ -38,7 +38,7 @@ public class CheckoutDAO {
 		return ifValid;
 	}
 
-	public static boolean addsales(int customer_id) {
+	public static boolean addsales(String customer_id) {
 		boolean ifOrderComplete = false;
 		List<ShoppingCartBean> items = ShoppingCartDAO.items(customer_id);
 		try {
@@ -51,16 +51,16 @@ public class CheckoutDAO {
 						+ "values (?, ?, ?, ?, ?);";
 				PreparedStatement sql = conn.prepareStatement(sql_str);
 
-				sql.setInt(1, customer_id);
-				sql.setInt(2, item.getMovie_id());
-				sql.setString(3, time);
-				sql.setInt(4, item.getQty());
-				sql.setDouble(5, item.getQty() * item.getUnit_price());
+				// sql.setInt(1, customer_id);
+				// sql.setInt(2, item.getMovie_id());
+				// sql.setString(3, time);
+				// sql.setInt(4, item.getQty());
+				// sql.setDouble(5, item.getQty() * item.getUnit_price());
 
 				// System.out.println(sql.toString());
 
 				int lines = sql.executeUpdate();
-				ShoppingCartDAO.removeitem(customer_id, item.getMovie_id());
+				// ShoppingCartDAO.removeitem(customer_id, item.getMovie_id());
 				// System.out.println(lines);
 				sql.close();
 			}

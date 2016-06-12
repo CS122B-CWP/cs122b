@@ -84,6 +84,14 @@
 		<url-pattern>/shoppingcart</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>ShoppingCartServletMobile</servlet-name>
+		<servlet-class>miniEbay.servlet.ShoppingCartServletMobile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShoppingCartServletMobile</servlet-name>
+		<url-pattern>/shoppingcart_mobile</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>CheckoutServlet</servlet-name>
 		<servlet-class>miniEbay.servlet.CheckoutServlet</servlet-class>
 	</servlet>
@@ -123,6 +131,38 @@
 		<servlet-name>LoginMobileServlet</servlet-name>
 		<url-pattern>/login_mobile</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>BidServlet</servlet-name>
+		<servlet-class>miniEbay.servlet.BidServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BidServlet</servlet-name>
+		<url-pattern>/bid</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>BidServletMobile</servlet-name>
+		<servlet-class>miniEbay.servlet.BidServletMobile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BidServletMobile</servlet-name>
+		<url-pattern>/bid_mobile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CommentServlet</servlet-name>
+		<servlet-class>miniEbay.servlet.CommentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommentServlet</servlet-name>
+		<url-pattern>/comment</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CommentServletMobile</servlet-name>
+		<servlet-class>miniEbay.servlet.CommentServletMobile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommentServletMobile</servlet-name>
+		<url-pattern>/comment_mobile</url-pattern>
+	</servlet-mapping>
 	<filter>
 		<filter-name>loginfilter</filter-name>
 		<filter-class>miniEbay.jdbc.filter.LoginFilter</filter-class>
@@ -138,6 +178,14 @@
 	<filter-mapping>
 		<filter-name>loginfilter</filter-name>
 		<url-pattern>/shoppingcart</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>loginfilter</filter-name>
+		<url-pattern>/bid</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>loginfilter</filter-name>
+		<url-pattern>/comment</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>loginfilter</filter-name>
