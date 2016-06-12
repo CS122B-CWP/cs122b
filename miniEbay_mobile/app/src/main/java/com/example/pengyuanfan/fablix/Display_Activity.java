@@ -25,7 +25,7 @@ public class Display_Activity extends AppCompatActivity {
         }*/
         Intent intent = getIntent();
         //if(intent!=null)
-        //    message = intent.getStringExtra(Fablix_Search.EXTRA_MESSAGE);
+        //    message = intent.getStringExtra(miniEbay_Search.EXTRA_MESSAGE);
         TextView textView = new TextView(this);
         textView.setTextSize(40);
         textView.setText(message);

@@ -9,13 +9,19 @@
     <string name="no_movie">We don\'t find any movie...</string>
     <string name="no_username">please enter your username</string>
     <string name="no_password">please enter your password</string>
-    <string name="fablix_Url">https://54.193.25.226:8443/fabflix</string>
-    <string name="fablix_searchUrl">/search</string>
+    <string name="no_bidprice">please enter a bid price</string>
+    <string name="miniEbay_Url">http://54.193.25.226:8080/miniEbay</string>
+    <string name="miniEbay_searchUrl">/search_mobile</string>
     <string name="fablix_singleMovieUrl">/singlemovie</string>
     <string name="fablix_singleStarUrl">/singlestar</string>
-    <string name="fablix_loginUrl">/loginmobile</string>
+    <string name="miniEbay_loginUrl">/login_mobile</string>
     <string name="fablix_logout">/logout.jsp</string>
+    <string name="miniEbay_singleItemUrl">/singleitem_mobile</string>
+    <string name="miniEbay_bid">/bid_mobile</string>
+    <string name="miniEbay_buy">/shoppingcart_mobile</string>
+    <string name="miniEbay_orderHistory">/orderhistory</string>
+    <string name="miniEbay_commentMobile">/comment_mobile</string>
     <string name="backPage">Prev</string>
     <string name="nextPage">Next</string>
-    <string name="cachedquery">Fablix.searchquery</string>
+    <string name="cachedquery">miniEbay.searchquery</string>
 </resources>

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pengyuanfan.fablix.R;
+import com.example.pengyuanfan.fablix.json.Brief_item;
 import com.example.pengyuanfan.fablix.util.ImageDowloader;
 import com.example.pengyuanfan.fablix.util.PositionHolder;
 
@@ -22,22 +23,22 @@ import java.util.List;
  */
 public class MovieListAdapter extends BaseAdapter {
 
-    private List<MvItemBean> mvList;
-    private LayoutInflater mvItemInf;
+    private List<Brief_item> itemList;
+    private LayoutInflater itemInf;
 
-    public MovieListAdapter(Context context, List<MvItemBean> mvList) {
-        this.mvList = mvList;
-        mvItemInf = LayoutInflater.from(context);
+    public MovieListAdapter(Context context, List<Brief_item> itemList) {
+        this.itemList = itemList;
+        itemInf = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return mvList.size();
+        return itemList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mvList.get(position);
+        return itemList.get(position);
     }
 
     @Override
@@ -52,7 +53,7 @@ public class MovieListAdapter extends BaseAdapter {
         Log.d("d",Integer.toString(position));
         if(convertView == null){
             Log.d("b",Integer.toString(position));
-            convertView = mvItemInf.inflate(R.layout.movie_item, null);
+            convertView = itemInf.inflate(R.layout.movie_item, null);
             vh = new ViewHolder();
             vh.setImgSrc((ImageView) convertView.findViewById(R.id.mv_img));
             vh.setTitle((TextView)convertView.findViewById(R.id.mv_title));
@@ -64,9 +65,10 @@ public class MovieListAdapter extends BaseAdapter {
         }
 
         vh.getPosition().setP(position);
-        mvList.get(position).showImg(vh.getImgSrc(), vh.getPosition(), position);
-        vh.getTitle().setText(mvList.get(position).getTitle());
-        vh.getContent().setText(mvList.get(position).getContent());
+        itemList.get(position).showImg(vh.getImgSrc(), vh.getPosition(), position);
+        vh.getTitle().setSelected(false);
+        vh.getTitle().setText(itemList.get(position).getTitle());
+        vh.getContent().setText("Price: "+itemList.get(position).getCurrent_price());
 
         return convertView;
     }
@@ -88,6 +90,8 @@ public class MovieListAdapter extends BaseAdapter {
         }
 
         public TextView getTitle() {
+            //title.setSelected(true);
+
             return title;
         }
 

@@ -45,6 +45,15 @@ public class SoftKeyBoard {
                 }
 
             });
+        }else {
+            view.setOnTouchListener(new View.OnTouchListener() {
+
+                public boolean onTouch(View v, MotionEvent event) {
+                    showSoftKeyboard(a, v);
+                    return false;
+                }
+
+            });
         }
 
         //If a layout container, iterate over children and seed recursion.

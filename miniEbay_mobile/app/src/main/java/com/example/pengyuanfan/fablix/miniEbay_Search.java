@@ -1,6 +1,5 @@
 package com.example.pengyuanfan.fablix;
 
-import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,14 +21,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pengyuanfan.fablix.json.LoginResult;
+import com.example.pengyuanfan.fablix.json.SearchResult;
 import com.example.pengyuanfan.fablix.movieListAdapter.MovieListAdapter;
 import com.example.pengyuanfan.fablix.movieListAdapter.MovieListParser;
 import com.example.pengyuanfan.fablix.movieListAdapter.MvItemBean;
-import com.example.pengyuanfan.fablix.movieListAdapter.MvPage;
 import com.example.pengyuanfan.fablix.util.ConnectionState;
 import com.example.pengyuanfan.fablix.util.HttpGetThread;
 import com.example.pengyuanfan.fablix.util.SoftKeyBoard;
 import com.example.pengyuanfan.fablix.util.URLParam;
+import com.example.pengyuanfan.fablix.viewHolder.PagerHolder;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -39,7 +37,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fablix_Search extends AppCompatActivity {
+public class miniEbay_Search extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
     private EditText searchText;
@@ -47,8 +45,7 @@ public class Fablix_Search extends AppCompatActivity {
     private LinearLayout mainLayout;
     private PagerHolder mvLVPagerHolder;
 
-    private List<MvItemBean> data = new ArrayList<MvItemBean>();
-    private MvPage mvPage = new MvPage();
+    private SearchResult data;
 
     private ConnectionState cs;
     private Context appContext;
@@ -66,18 +63,17 @@ public class Fablix_Search extends AppCompatActivity {
             if(msg.what== HttpGetThread.success){
                 Log.d("d","showing");
                 //showData(msg.getData().getString("result"));
-                data.clear();
-                MovieListParser.parse(msg.getData().getString("result"), data, mvPage);
-                mvLV.setAdapter(new MovieListAdapter(Fablix_Search.this, data));
-                if(!data.isEmpty()){
-                    mvLVPagerHolder.getCur().setText(mvPage.getCurPageS());
-                    mvLVPagerHolder.getMax().setText(mvPage.getMaxPageS());
+                data=MovieListParser.parse(msg.getData().getString("result"));
+                if(data!=null){
+                    mvLV.setAdapter(new MovieListAdapter(miniEbay_Search.this, data.getBrief_items()));
+                    mvLVPagerHolder.getCur().setText(Integer.toString(data.getCurPage()));
+                    mvLVPagerHolder.getMax().setText(Integer.toString(data.getMaxPage()));
                     mvLVPagerHolder.getPrev().setEnabled(true);
                     mvLVPagerHolder.getNext().setEnabled(true);
-                    if(mvPage.getCurPage()==1){
+                    if(data.getCurPage()==1){
                         mvLVPagerHolder.getPrev().setEnabled(false);
                     }
-                    if(mvPage.getCurPage()==mvPage.getMaxPage()){
+                    if(data.getCurPage()==data.getMaxPage()){
                         mvLVPagerHolder.getNext().setEnabled(false);
                     }
                     mvLVPagerHolder.getMvLVPager().setVisibility(View.VISIBLE);
@@ -94,7 +90,7 @@ public class Fablix_Search extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fablix);
+        setContentView(R.layout.activity_search);
 
         searchText = (EditText) findViewById(R.id.query_message);
         mvLV = (ListView)findViewById(R.id.mv_list);
@@ -114,18 +110,34 @@ public class Fablix_Search extends AppCompatActivity {
 
         SoftKeyBoard.setupUI(mainLayout, this);
 
+        mvLV.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                View title=view.findViewById(R.id.mv_title);
+                if(title.isSelected()){
+                    title.setSelected(false);
+                }else{
+                    title.setSelected(true);
+                }
+
+                return true;
+            }
+        });
         mvLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String movieId=data.get(position).getId();
-                Intent searchTosingleMovie = new Intent(Fablix_Search.this, SingleMovieActivity.class);
+
+                String movieId=data.getBrief_items().get(position).getItem_id();
+                Intent searchTosingleMovie = new Intent(miniEbay_Search.this, ProductDetailActivity.class);
                 searchTosingleMovie.putExtra(SINGLE_MOVIE_ID, movieId);
                 startActivity(searchTosingleMovie);
+
             }
         });
 
-        searchURL = appContext.getString(R.string.fablix_Url) + appContext.getString(R.string.fablix_searchUrl);
-        logoutURL = appContext.getString(R.string.fablix_Url) + appContext.getString(R.string.fablix_logout);
+        searchURL = appContext.getString(R.string.miniEbay_Url) + appContext.getString(R.string.miniEbay_searchUrl);
+        logoutURL = appContext.getString(R.string.miniEbay_Url) + appContext.getString(R.string.fablix_logout);
         if(savedInstanceState!=null)
             onRestartSearch(savedInstanceState);
     }
@@ -149,7 +161,7 @@ public class Fablix_Search extends AppCompatActivity {
             Log.d("login", lgR.getLogin_name());
             getSupportActionBar().setSubtitle(lgR.getLogin_name());
         }else{
-            Intent backToLogin = new Intent(Fablix_Search.this, LoginActivity.class);
+            Intent backToLogin = new Intent(miniEbay_Search.this, LoginActivity.class);
             startActivity(backToLogin);
         }
     }
@@ -182,28 +194,30 @@ public class Fablix_Search extends AppCompatActivity {
     }
 
     public void nextPage(View view){
-        String query=mvPage.getQuery();
+        String query=data.getSearch_title();
         if(!query.trim().equals("")){
-            searchOnline("title="+query+"&"+"page="+Integer.toString(mvPage.getCurPage()+1));
+            searchOnline("title="+query+"&"+"page="+Integer.toString(data.getCurPage()+1));
         }
     }
 
     public void backPage(View view){
-        String query=mvPage.getQuery();
+        String query=data.getSearch_title();
         if(!query.trim().equals("")){
-            searchOnline("title="+query+"&"+"page="+Integer.toString(mvPage.getCurPage()-1));
+            searchOnline("title="+query+"&"+"page="+Integer.toString(data.getCurPage()-1));
         }
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        Log.d("Destory",mvPage.getQuery()+mvPage.getCurPageS());
         super.onSaveInstanceState(outState);
-        if(mvPage.getQuery()!=null&&!mvPage.getQuery().trim().equals("")){
-            outState.putString(QUERY, mvPage.getQuery());
-        }
-        if(!data.isEmpty()){
-            outState.putString(PAGE, mvPage.getCurPageS());
+        if(data!=null){
+            Log.d("Destory",data.getSearch_title()+Integer.toString(data.getCurPage()));
+            if(data.getSearch_title()!=null&&!data.getSearch_title().trim().equals("")){
+                outState.putString(QUERY, data.getSearch_title());
+            }
+            if(data!=null){
+                outState.putString(PAGE, data.getCurPageS());
+            }
         }
     }
 
@@ -218,7 +232,7 @@ public class Fablix_Search extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.logout:
-                Intent backToLogin = new Intent(Fablix_Search.this, LoginActivity.class);
+                Intent backToLogin = new Intent(miniEbay_Search.this, LoginActivity.class);
                 startActivity(backToLogin);
                 try {
                     new HttpGetThread(new URL(logoutURL),new Handler()).start();
@@ -226,7 +240,14 @@ public class Fablix_Search extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Log.d("login","logout");return true;
-
+            case R.id.cart:
+                Intent toCart = new Intent(miniEbay_Search.this, ShoppingCart.class);
+                startActivity(toCart);return true;
+            case R.id.order:
+                //Intent toOrder = new Intent(miniEbay_Search.this, OrderHistory.class);
+                //startActivity(toOrder);
+                Toast.makeText(actContext, "Currently not available...", Toast.LENGTH_SHORT).show();
+                return true;
             default:return super.onOptionsItemSelected(item);
         }
     }
@@ -243,53 +264,6 @@ public class Fablix_Search extends AppCompatActivity {
         Log.d("d",str);
         tmp.setText(str);
         mainLayout.addView(tmp);
-    }
-    private class PagerHolder{
-        View mvLVPager;
-        Button prev;
-        Button next;
-        TextView max;
-        TextView cur;
-
-        public View getMvLVPager() {
-            return mvLVPager;
-        }
-
-        public void setMvLVPager(View mvLVPager) {
-            this.mvLVPager = mvLVPager;
-        }
-
-        public Button getPrev() {
-            return prev;
-        }
-
-        public void setPrev(Button prev) {
-            this.prev = prev;
-        }
-
-        public Button getNext() {
-            return next;
-        }
-
-        public void setNext(Button next) {
-            this.next = next;
-        }
-
-        public TextView getMax() {
-            return max;
-        }
-
-        public void setMax(TextView max) {
-            this.max = max;
-        }
-
-        public TextView getCur() {
-            return cur;
-        }
-
-        public void setCur(TextView cur) {
-            this.cur = cur;
-        }
     }
 
     private String QUERY="QUERY",

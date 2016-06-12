@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.example.pengyuanfan.fablix.json.LoginResult;
 import com.example.pengyuanfan.fablix.json.SingleStar;
-import com.example.pengyuanfan.fablix.singleMS.SingleMovieParser;
 import com.example.pengyuanfan.fablix.singleStar.SingleStarParser;
 import com.example.pengyuanfan.fablix.singleStar.StarredInListAdapter;
 import com.example.pengyuanfan.fablix.util.ConnectionState;
@@ -67,7 +66,7 @@ public class SingleStarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_star);
 
-        starId = getIntent().getStringExtra(Fablix_Search.SINGLE_STAR_ID);
+        starId = getIntent().getStringExtra(miniEbay_Search.SINGLE_STAR_ID);
         Log.d("actSwitch","newSingleStar"+starId);
         photoV = (ImageView) findViewById(R.id.singleStar_img);
         idV = (TextView) findViewById(R.id.singleStar_starId);
@@ -80,7 +79,7 @@ public class SingleStarActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String movieId = ss.getMovies().get(position).getId();
                 Intent singleStarToSingleMovie = new Intent(SingleStarActivity.this, SingleMovieActivity.class);
-                singleStarToSingleMovie.putExtra(Fablix_Search.SINGLE_MOVIE_ID, movieId);
+                singleStarToSingleMovie.putExtra(miniEbay_Search.SINGLE_MOVIE_ID, movieId);
                 startActivity(singleStarToSingleMovie);
             }
         });
@@ -90,7 +89,7 @@ public class SingleStarActivity extends AppCompatActivity {
 
         cs = new ConnectionState(appContext);
 
-        singleStarUrl = appContext.getString(R.string.fablix_Url)+appContext.getString(R.string.fablix_singleStarUrl);
+        singleStarUrl = appContext.getString(R.string.miniEbay_Url)+appContext.getString(R.string.fablix_singleStarUrl);
 
         downLoadSingleStar(starId);
     }

@@ -87,18 +87,21 @@ public class HttpGetThread extends Thread {
                 conn = (HttpURLConnection) url.openConnection();
             }
             conn.setRequestMethod("GET");
+            MiniCookieManager.setCookies(conn);
             conn.setConnectTimeout(5000);
             conn.setReadTimeout(5000);
             Log.d("d","connected");
+            //Request send when we call conn.getInputStream()
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            //get response code after getInputStream()
             if(conn.getResponseCode()==HttpURLConnection.HTTP_OK) {
-                //Read Data
-                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 String str;
                 StringBuffer strbuffer = new StringBuffer();
                 while ((str = reader.readLine()) != null) {
                     strbuffer.append(str);
                 }
                 Log.d("d", "dataing");
+                //MiniCookieManager.storeCookies(conn);
                 //Send Message to Caller Handler
                 Bundle res = new Bundle();
                 res.putString("result", strbuffer.toString());
