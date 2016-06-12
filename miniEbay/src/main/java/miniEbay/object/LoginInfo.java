@@ -1,25 +1,16 @@
 package miniEbay.object;
 
 public class LoginInfo {
+	private String customer_id;
 	private String email;
 	private String pass;
-	private String lname;
-	private int user_id;
 
-	public String getLname() {
-		return lname;
+	public String getCustomer_id() {
+		return customer_id;
 	}
 
-	public void setLname(String lname) {
-		this.lname = lname;
-	}
-
-	public int getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
 	}
 
 	public String getEmail() {

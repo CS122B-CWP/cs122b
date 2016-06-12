@@ -1,14 +1,14 @@
-package project4.jdbc;
+package miniEbay.jdbc;
 
 import java.sql.SQLException;
 
 import miniEbay.jdbc.JDBCPool;
-import miniEbay.jdbc.dao.StarMoviesDAO;
+import miniEbay.jdbc.dao.MovieStarsDAO;
 
-public class StarMoviesDAOTest {
+public class MovieStarsDAOTest {
 	public static void main(String[] args) throws SQLException {
 		JDBCPool pool = JDBCPool.getInstance();
-		System.out.println(StarMoviesDAO.star_movies(671105));
+		System.out.println(MovieStarsDAO.movie_stars(908));
 		pool.closePool();
 	}
 }

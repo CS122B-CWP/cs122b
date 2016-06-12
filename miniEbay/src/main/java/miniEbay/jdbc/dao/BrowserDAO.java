@@ -8,73 +8,70 @@ import java.util.ArrayList;
 import java.util.List;
 
 import miniEbay.jdbc.JDBCPool;
-import miniEbay.jdbc.bean.BrowserPageBean;
-import miniEbay.object.Movie;
+import miniEbay.jdbc.bean.PageBean;
+import miniEbay.object.BriefItem;
 
 public class BrowserDAO {
 
-	public static List<Movie> browserContent(BrowserPageBean pagebean) {
-		List<Movie> movies = new ArrayList<Movie>();
+	public static List<BriefItem> browserContent(PageBean pagebean) {
+		List<BriefItem> brief_items = new ArrayList<BriefItem>();
 		int start = (pagebean.getCurPage() - 1) * pagebean.getRowsPerPage();
-		Object[] para = new Object[] { "%" + pagebean.getGenre() + "%", pagebean.getYear() + "%", start,
-				pagebean.getRowsPerPage() };
+		Object[] para = new Object[] { "%" + pagebean.getSearch_category_id() + "%", start, pagebean.getRowsPerPage() };
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
-			String sql_str = "select movies.id, title, year, dirctor, banner_url, name from movies, genres_in_movies, genres"
-					+ " where movies.id=genres_in_movies.movie_id and genres_in_movies.genre_id = genres.id "
-					+ "and name like ? and year like ? group by movies.id limit ?,?;";
-			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setObject(1, para[0]);
-			sql.setObject(2, para[1]);
-			sql.setObject(3, para[2]);
-			sql.setObject(4, para[3]);
-			// System.out.println(sql.toString());
+			String sql_str = "select item_id, title, items.category_id, category_name, current_price, gallery_url"
+					+ " from items, categories where items.category_id = categories.category_id and "
+					+ "items.category_id like ? group by item_id limit ?, ?;";
+			PreparedStatement stmn = conn.prepareStatement(sql_str);
+			stmn.setObject(1, para[0]);
+			stmn.setObject(2, para[1]);
+			stmn.setObject(3, para[2]);
+			// System.out.println(stmn.toString());
 
-			ResultSet rs = sql.executeQuery();
+			ResultSet rs = stmn.executeQuery();
 
 			while (rs.next()) {
-				Movie mv = new Movie();
-				mv.setId(rs.getInt(1));
-				mv.setTitle(rs.getString(2));
-				mv.setYear(rs.getInt(3));
-				mv.setDirctor(rs.getString(4));
-				mv.setBanner_url(rs.getString(5));
-				mv.setGenre(rs.getString(6));
-				movies.add(mv);
+				BriefItem item = new BriefItem();
+				item.setItem_id(rs.getString(1));
+				item.setTitle(rs.getString(2));
+				item.setCategory_id(rs.getString(3));
+				item.setCategory_name(rs.getString(4));
+				item.setCurrent_price(rs.getDouble(5));
+				item.setGallery_url(rs.getString(6));
+				brief_items.add(item);
 				// System.out.println(mv.toString());
 			}
 			rs.close();
-			sql.close();
+			stmn.close();
 			JDBCPool.getInstance().release(conn);
 		} catch (SQLException e) {
 			System.out.println("JDBC Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode());
 		}
-		return movies;
+		return brief_items;
 	}
 
-	public static int browserPages(BrowserPageBean pagebean) {
+	public static int browserPages(PageBean pagebean) {
 		int total_pages = 0;
-		Object[] para = new Object[] { "%" + pagebean.getGenre() + "%", pagebean.getYear() + "%" };
+		Object[] para = new Object[] { "%" + pagebean.getSearch_category_id() + "%" };
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
-			String sql_str = "select count(distinct movies.id) from movies, genres_in_movies, genres"
-					+ " where movies.id=genres_in_movies.movie_id and genres_in_movies.genre_id = genres.id "
-					+ "and name like ? and title like ?;";
-			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setObject(1, para[0]);
-			sql.setObject(2, para[1]);
-			// System.out.println(sql.toString());
+			String sql_str = "select count(item_id) from items, categories"
+					+ " where items.category_id = categories.category_id and " + "items.category_id like ?;";
+			PreparedStatement stmn = conn.prepareStatement(sql_str);
+			stmn.setObject(1, para[0]);
+			// System.out.println(stmn.toString());
 
-			ResultSet rs = sql.executeQuery();
+			ResultSet rs = stmn.executeQuery();
 			if (rs.next()) {
 				total_pages = rs.getInt(1);
 			}
 			rs.close();
-			sql.close();
+			stmn.close();
 			JDBCPool.getInstance().release(conn);
 		} catch (SQLException e) {
 			System.out.println("JDBC Error:\t" + e.getMessage() + "\nError Code:\t" + e.getErrorCode());
 		}
+
 		if (total_pages % pagebean.getRowsPerPage() != 0)
 			total_pages /= pagebean.getRowsPerPage() + 1;
 		else

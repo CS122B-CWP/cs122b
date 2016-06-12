@@ -11,25 +11,24 @@ import miniEbay.jdbc.JDBCPool;
 import miniEbay.jdbc.bean.ShoppingCartBean;
 
 public class ShoppingCartDAO {
-	private static ShoppingCartBean checkitem(int customer_id, int movie_id) {
+	private static ShoppingCartBean checkitem(String customer_id, String item_id) {
 		ShoppingCartBean item = null;
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
-			String sql_str = "select * from shopping_cart_items where customer_id=? and movie_id=?;";
+			String sql_str = "select * from shopping_cart_items where customer_id=? and item_id=?;";
 			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setInt(1, customer_id);
-			sql.setInt(2, movie_id);
+			sql.setString(1, customer_id);
+			sql.setString(2, item_id);
 			// System.out.println(sql.toString());
 
 			ResultSet rs = sql.executeQuery();
 
 			if (rs.next()) {
 				item = new ShoppingCartBean();
-				item.setCustomer_id(rs.getInt(1));
-				item.setMovie_id(rs.getInt(2));
-				item.setMovie_title(rs.getString(3));
-				item.setUnit_price(rs.getDouble(4));
-				item.setQty(rs.getInt(5));
+				item.setCustomer_id(customer_id);
+				item.setItem_id(item_id);
+				item.setTitle((rs.getString(3)));
+				item.setPrice((rs.getDouble(4)));
 				// System.out.println(mv.toString());
 			}
 			rs.close();
@@ -41,19 +40,18 @@ public class ShoppingCartDAO {
 		return item;
 	}
 
-	private static double unitprice(int movie_id) {
+	private static double unitprice(String item_id) {
 		double price = 0.0;
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
-			String sql_str = "select price from movies where id=?;";
+			String sql_str = "select current_price from items where item_id= ?;";
 			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setInt(1, movie_id);
+			sql.setString(1, item_id);
 			// System.out.println(sql.toString());
 
 			ResultSet rs = sql.executeQuery();
 			if (rs.next()) {
 				price = rs.getDouble(1);
-				// System.out.println(mv.toString());
 			}
 			rs.close();
 			sql.close();
@@ -64,30 +62,27 @@ public class ShoppingCartDAO {
 		return price;
 	}
 
-	public static void additem(int customer_id, int movie_id, String movie_title) {
-		ShoppingCartBean item = ShoppingCartDAO.checkitem(customer_id, movie_id);
+	public static void additem(String customer_id, String item_id, String title) {
+		ShoppingCartBean item = ShoppingCartDAO.checkitem(customer_id, item_id);
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
 			String sql_str;
 			PreparedStatement sql;
 			if (item == null) {
-				sql_str = "insert into shopping_cart_items (customer_id, movie_id, "
-						+ "movie_title, unit_price, qty) values (?, ?, ?, ?, 1);";
+				sql_str = "insert into shopping_cart_items (customer_id, item_id, "
+						+ "title, price) values (?, ?, ?, ?);";
 				sql = conn.prepareStatement(sql_str);
-				sql.setInt(1, customer_id);
-				sql.setInt(2, movie_id);
-				sql.setString(3, movie_title);
-				sql.setDouble(4, ShoppingCartDAO.unitprice(movie_id));
+				sql.setString(1, customer_id);
+				sql.setString(2, item_id);
+				sql.setString(3, title);
+				sql.setDouble(4, ShoppingCartDAO.unitprice(item_id));
 			} else {
-				sql_str = "update shopping_cart_items set qty=qty+1 where customer_id=? and movie_id=?;";
-				sql = conn.prepareStatement(sql_str);
-				sql.setInt(1, customer_id);
-				sql.setInt(2, movie_id);
+				return;
 			}
 
 			// System.out.println(sql.toString());
 
-			int lines = sql.executeUpdate();
+			sql.executeUpdate();
 			// System.out.println(lines);
 			sql.close();
 			JDBCPool.getInstance().release(conn);
@@ -107,7 +102,7 @@ public class ShoppingCartDAO {
 
 			// System.out.println(sql.toString());
 
-			int lines = sql.executeUpdate();
+			sql.executeUpdate();
 			// System.out.println(lines);
 			sql.close();
 			JDBCPool.getInstance().release(conn);
@@ -116,17 +111,17 @@ public class ShoppingCartDAO {
 		}
 	}
 
-	public static void removeitem(int customer_id, int movie_id) {
+	public static void removeitem(String customer_id, String item_id) {
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
-			String sql_str = "delete from shopping_cart_items where customer_id=? and movie_id=?;";
+			String sql_str = "delete from shopping_cart_items where customer_id = ? and item_id = ?;";
 			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setInt(1, customer_id);
-			sql.setInt(2, movie_id);
+			sql.setString(1, customer_id);
+			sql.setString(2, item_id);
 
 			// System.out.println(sql.toString());
 
-			int lines = sql.executeUpdate();
+			sql.executeUpdate();
 			// System.out.println(lines);
 			sql.close();
 			JDBCPool.getInstance().release(conn);
@@ -135,16 +130,16 @@ public class ShoppingCartDAO {
 		}
 	}
 
-	public static void removeAll(int customer_id) {
+	public static void removeAll(String customer_id) {
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
-			String sql_str = "delete from shopping_cart_items where customer_id=?;";
+			String sql_str = "delete from shopping_cart_items where customer_id = ?;";
 			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setInt(1, customer_id);
+			sql.setString(1, customer_id);
 
 			// System.out.println(sql.toString());
 
-			int lines = sql.executeUpdate();
+			sql.executeUpdate();
 			// System.out.println(lines);
 			sql.close();
 			JDBCPool.getInstance().release(conn);
@@ -153,24 +148,23 @@ public class ShoppingCartDAO {
 		}
 	}
 
-	public static List<ShoppingCartBean> items(int customer_id) {
+	public static List<ShoppingCartBean> items(String customer_id) {
 		List<ShoppingCartBean> items = new ArrayList<ShoppingCartBean>();
 		try {
 			Connection conn = JDBCPool.getInstance().getConnection();
 			String sql_str = "select * from shopping_cart_items where customer_id=?";
 			PreparedStatement sql = conn.prepareStatement(sql_str);
-			sql.setInt(1, customer_id);
+			sql.setString(1, customer_id);
 			// System.out.println(sql.toString());
 
 			ResultSet rs = sql.executeQuery();
 
 			while (rs.next()) {
 				ShoppingCartBean item = new ShoppingCartBean();
-				item.setCustomer_id(rs.getInt(1));
-				item.setMovie_id(rs.getInt(2));
-				item.setMovie_title(rs.getString(3));
-				item.setUnit_price(rs.getDouble(4));
-				item.setQty(rs.getInt(5));
+				item.setCustomer_id(customer_id);
+				item.setItem_id(rs.getString(2));
+				item.setTitle((rs.getString(3)));
+				item.setPrice((rs.getDouble(4)));
 				items.add(item);
 				// System.out.println(mv.toString());
 			}

@@ -22,8 +22,8 @@
 	for (i = endP; i >= startP && i > 0; i--) {
 		var li = $('<li></li>');
 		var a = $('<a></a>');
-		a.attr('href', 'browse?page=' + i + "&genre=" + content.genre
-				+ "&year=" + content.year);
+		a.attr('href', 'browse?page=' + i + "&search_category_id="
+				+ content.search_category_id);
 		a.text(i);
 		a.appendTo(li);
 		var test = $('#pageP');
@@ -35,14 +35,14 @@
 		pre = 1;
 	$('#pageP').find('a').attr(
 			'href',
-			'browse?page=' + pre + "&genre=" + content.genre + "&year="
-					+ content.year);
+			'browse?page=' + pre + "&search_category_id="
+					+ content.search_category_id);
 
 	var next = content.curPage + 1;
 	if (next > content.maxPage)
 		next = content.maxPage;
 	$('#pageN').find('a').attr(
 			'href',
-			'browse?page=' + next + "&genre=" + content.genre + "&year="
-					+ content.year);
+			'browse?page=' + next + "&search_category_id="
+					+ content.search_category_id);
 </script>

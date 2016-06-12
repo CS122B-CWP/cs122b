@@ -14,7 +14,7 @@ import org.json.JSONObject;
 import miniEbay.jdbc.bean.ShoppingCartBean;
 import miniEbay.jdbc.dao.ShoppingCartDAO;
 
-public class ShoppingCartServlet extends HttpServlet {
+public class ShoppingCartServletMobile extends HttpServlet {
 	private static final long serialVersionUID = 7L;
 
 	@Override
@@ -25,7 +25,7 @@ public class ShoppingCartServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			String customer_id = (String) request.getSession().getAttribute("customer_id");
+			String customer_id = request.getParameter("customer_id");
 			String type = request.getParameter("type");
 			if (type != null) {
 				switch (type) {
@@ -60,11 +60,8 @@ public class ShoppingCartServlet extends HttpServlet {
 			}
 			cartPage.put("items", item_array);
 			HttpSession session = request.getSession();
-			session.setAttribute("cartPage", cartPage.toString());
 			session.setAttribute("item_nums", total);
-			response.sendRedirect("shoppingcart.jsp");
-			// request.getRequestDispatcher("shoppingcart.jsp").forward(request,
-			// response);
+			response.getWriter().write(cartPage.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

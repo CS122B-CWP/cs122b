@@ -1,4 +1,4 @@
-package project4.jdbc;
+package miniEbay.jdbc;
 
 import java.sql.SQLException;
 import java.util.List;

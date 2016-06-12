@@ -8,32 +8,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import miniEbay.jdbc.dao.SingleMovieDAO;
-import miniEbay.object.Movie;
+import miniEbay.jdbc.dao.SingleItemDAO;
+import miniEbay.object.DetailItem;
 
-public class SingleMovieServlet extends HttpServlet {
+public class SingleItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 4L;
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			String movie_id = request.getParameter("id");
-			Movie mv = null;
-			if (movie_id != null && movie_id.matches("[0-9][0-9]*"))
-				mv = SingleMovieDAO.moviecontent(Integer.parseInt(movie_id));
-			if (mv != null) {
+			String item_id = request.getParameter("item_id");
+			DetailItem item = null;
+			if (item_id != null)
+				item = SingleItemDAO.itemDetail(item_id);
+			// System.out.println(item.toString());
+			if (item != null) {
 				HttpSession session = request.getSession();
-				session.setAttribute("moviePage", mv.toString());
+				session.setAttribute("itemPage", item.toString());
+				request.getRequestDispatcher("singleitem.jsp").forward(request, response);
+			} else {
+				response.sendRedirect("search.jsp");
 			}
-			// System.out.println(mv.toString());
-			request.getRequestDispatcher("singlemovie.jsp").forward(request, response);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		doGet(request, response);

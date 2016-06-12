@@ -1,18 +1,17 @@
-package project4.jdbc;
+package miniEbay.jdbc;
 
 import java.sql.SQLException;
 
 import miniEbay.jdbc.JDBCPool;
-import miniEbay.jdbc.bean.BrowserPageBean;
+import miniEbay.jdbc.bean.PageBean;
 import miniEbay.jdbc.dao.BrowserDAO;
 
 public class BrowserDAOTest {
 	public static void main(String[] args) throws SQLException {
 		JDBCPool pool = JDBCPool.getInstance();
-		BrowserPageBean pg = new BrowserPageBean(1, 20);
-		// BrowserDAO.browserContent(new PageBean(1, 20), "crime", "s");
+		PageBean pg = new PageBean(1, 20);
 		pg.setMaxPage(BrowserDAO.browserPages(pg));
-		pg.setMovies(BrowserDAO.browserContent(pg));
+		pg.setBrief_items((BrowserDAO.browserContent(pg)));
 		System.out.println(pg.toString());
 		pool.closePool();
 	}

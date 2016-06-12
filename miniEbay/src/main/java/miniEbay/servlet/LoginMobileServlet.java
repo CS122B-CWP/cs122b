@@ -23,19 +23,12 @@ public class LoginMobileServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			LoginInfo user = LoginDAO.validate(request.getParameter("username"), request.getParameter("password"));
-			// System.out.println(login_name);
-			// System.out.println(request.getHeader("referer"));
-			/*
-			 * if (request.getSession().getAttribute("origin_url") == null) {
-			 * request.getSession().setAttribute("origin_url",
-			 * request.getHeader("referer")); }
-			 */
 
 			JSONObject login_result = new JSONObject();
 
 			if (user != null) {
 				login_result.put("login_result", true);
-				login_result.put("login_name", user.getLname());
+				login_result.put("customer_id", user.getCustomer_id());
 			} else {
 				login_result.put("login_result", false);
 			}

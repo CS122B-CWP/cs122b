@@ -2,16 +2,14 @@ package miniEbay.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import miniEbay.jdbc.bean.PageBean;
 import miniEbay.jdbc.dao.BrowserDAO;
 
-public class BrowserServlet extends HttpServlet {
+public class BrowserServletMobile extends HttpServlet {
 	private static final long serialVersionUID = 3L;
 
 	@Override
@@ -32,12 +30,8 @@ public class BrowserServlet extends HttpServlet {
 
 			// System.out.println(pg.toString());
 
-			HttpSession session = request.getSession();
-			session.setAttribute("browsePage", pg.toString());
-			request.getRequestDispatcher("browse.jsp").forward(request, response);
+			response.getWriter().write(pg.toString());
 		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ServletException e) {
 			e.printStackTrace();
 		}
 	}
