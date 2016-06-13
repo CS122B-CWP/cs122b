@@ -41,10 +41,10 @@ public class LoginServlet extends HttpServlet {
 			// System.out.println(login_name);
 			// System.out.println(request.getHeader("referer"));
 			/*
-			if (request.getSession().getAttribute("origin_url") == null) {
-				request.getSession().setAttribute("origin_url", request.getHeader("referer"));
-			}
-			*/
+			 * if (request.getSession().getAttribute("origin_url") == null) {
+			 * request.getSession().setAttribute("origin_url",
+			 * request.getHeader("referer")); }
+			 */
 
 			if (user != null) {
 
@@ -57,17 +57,17 @@ public class LoginServlet extends HttpServlet {
 					total += item.getQty();
 				session.setAttribute("item_nums", total);
 				response.sendRedirect("main.jsp");
-				// String origin_url = (String) session.getAttribute("origin_url");
+				// String origin_url = (String)
+				// session.getAttribute("origin_url");
 				// System.out.println(origin_url);
 				/*
-				if (origin_url != null) {
-					session.removeAttribute("origin_url");
-					// System.out.println(origin_url);
-					response.sendRedirect(origin_url);
-				} else {
-					
-				}
-				*/
+				 * if (origin_url != null) {
+				 * session.removeAttribute("origin_url"); //
+				 * System.out.println(origin_url);
+				 * response.sendRedirect(origin_url); } else {
+				 * 
+				 * }
+				 */
 			} else {
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}

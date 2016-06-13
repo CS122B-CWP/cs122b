@@ -88,7 +88,7 @@
 		});
 		$('#checkBtn').click(function() {
 			if ($('#header').find('#itemNum').text() > 0) {
-				window.location.href = 'orderInfo.html';
+				//window.location.href = 'orderInfo.html';
 			} else
 				alert('Your shopping cart is empty!');
 		});

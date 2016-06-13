@@ -24,7 +24,7 @@
 				<configuration>
 					<path>/fabflix</path>
 					<update>true</update>
-					<url>http://54.193.25.226:8080/manager/text</url>
+					<url>http://52.53.178.123:8080/manager/text</url>
 					<username>caoyh</username>
 					<password>cyhwwq</password>
 				</configuration>

@@ -39,10 +39,10 @@
 						class="glyphicon glyphicon-th-large"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/miniEbay/userInfo.jsp" class="pre">User
+						<li><a href="" class="pre">User
 								Info</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="/miniEbay/orderhistory">Order History</a></li>
+						<li><a href="">Order History</a></li>
 					</ul></li>
 				<li><a href="/miniEbay/shoppingcart" title="Shopping cart">
 						<span class="glyphicon glyphicon-shopping-cart"></span> <span

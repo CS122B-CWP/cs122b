@@ -57,6 +57,10 @@
 							name="password" placeholder="Password" required tabindex="2"
 							type="password" value="">
 					</div>
+<!--  
+					<div class="g-recaptcha"
+						data-sitekey="6LeTIB8TAAAAACg8vwRvbLH7KYhvueTac4q8_zFO"></div>
+-->
 					<p class="checkbox">
 						<label><input type="checkbox" name="remember_me"
 							tabindex="3">Remember me</label>
