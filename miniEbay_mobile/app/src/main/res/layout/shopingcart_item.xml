@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    android:descendantFocusability="blocksDescendants">
+    <ImageView
+        android:layout_column="0"
+        android:id="@+id/shoppingcart_item_img"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/ic_launcher"
+        android:visibility="gone"/>
+    <View
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="#FF00FF00"
+        />
+    <TextView
+        android:layout_column="1"
+        android:layout_width="wrap_content"
+        android:text="Title"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:background="@color/tableHead" />
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/shoppingcart_item_title"
+        android:layout_width="wrap_content"
+        android:text="Title"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"/>
+    <TextView
+        android:layout_column="1"
+        android:text="price"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:background="@color/tableHead"/>
+    <TextView
+        android:layout_column="1"
+        android:id="@+id/shoppingcart_item_price"
+        android:text="0.00"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"/>
+    <com.example.pengyuanfan.fablix.util.DontPressWithParentButton
+        android:layout_column="1"
+        android:layout_width="wrap_content"
+        android:id="@+id/shoppingcart_item_delete"
+        android:layout_gravity="center_horizontal"
+        android:text="Delte"/>
+
+
+        <EditText
+            android:layout_column="1"
+            android:layout_width="match_parent"
+            android:layout_marginTop="-8dp"
+            android:id="@+id/shoppingcart_item_qty"
+            android:gravity="center_horizontal"
+            android:text="0.00"
+            android:textSize="18sp"
+            android:inputType="none"
+            android:visibility="gone"/>
+
+    <TableRow>
+        <com.example.pengyuanfan.fablix.util.DontPressWithParentButton
+            android:layout_column="1"
+            android:id="@+id/shoppingcart_item_update"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Update"
+            android:visibility="gone"/>
+    </TableRow>
+</TableLayout>

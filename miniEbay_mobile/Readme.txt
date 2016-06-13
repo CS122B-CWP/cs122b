@@ -5,13 +5,21 @@ Login:	App start with the login activity, login to the search activity;
 
 Logout:	Logout is in search acitivity's action bar option menu;
 
-Search:	Input movie title to search movie; 
+Search:	Input product title to search movie; 
+
+	If the title is too long, long press the search result to see the whole title. 
 
 Pagination:	Drag to the bottom of the search result, there will be a pagination if there are more than 20 movies in the result;
 
-Single movie:	To see single movie detail, please click on the search result;
+Single product:	To see single product detail, please click on the search result;
+		
+		you can see slides show product image and real time count down.	
+	
+		you can also bid, post comment on single product page.
 
-Single star:	To see single star detail, please click on the star's name in the single movie activity.
+Shopping cart: see product you bought, or can delete them.  
+
+
 
 
 Test enviroment:

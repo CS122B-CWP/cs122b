@@ -13,6 +13,7 @@ import java.net.URL;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.List;
+import java.util.Map;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -28,7 +29,7 @@ public class HttpPostThread extends Thread {
     URL url;
     Handler output;
     String params;
-
+    public static String cookie;
     public HttpPostThread(URL url, Handler output, String params){
         this.url = url;
         this.output = output;
@@ -88,15 +89,21 @@ public class HttpPostThread extends Thread {
             } else {
                 conn = (HttpURLConnection) url.openConnection();
             }
+
             conn.setRequestMethod("POST");
+            conn.setDoOutput(true);//actually no effect, just prevent you from calling getOutputStream before open connection
+            MiniCookieManager.setCookies(conn);
             conn.setDoOutput(true);
             conn.setConnectTimeout(5000);
             conn.setReadTimeout(5000);
+
             DataOutputStream dStream = new DataOutputStream(conn.getOutputStream());
             dStream.writeBytes(params);
             dStream.flush();
             dStream.close();
             Log.d("d","connected");
+
+            //http reponse code return in any time after .getOutputStream()
             if(conn.getResponseCode()==HttpURLConnection.HTTP_OK) {
                 //Read Data
                 BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -106,9 +113,11 @@ public class HttpPostThread extends Thread {
                     strbuffer.append(str);
                 }
                 Log.d("d", "dataing");
+                //MiniCookieManager.storeCookies(conn);
                 //Send Message to Caller Handler
                 Bundle res = new Bundle();
                 res.putString("result", strbuffer.toString());
+
                 msg.setData(res);
                 msg.what = success;
             }
@@ -122,4 +131,5 @@ public class HttpPostThread extends Thread {
     public static final int
             fail=0,
             success= 1 ;
+    public static final String COOKIES_HEADER = "Set-Cookie";
 }

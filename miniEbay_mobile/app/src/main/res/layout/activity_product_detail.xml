@@ -7,71 +7,187 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.pengyuanfan.fablix.ProductDetailActivity">
-
-    <LinearLayout
+    tools:context="com.example.pengyuanfan.fablix.ProductDetailActivity"
+    android:id="@+id/singleItem_content">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/singleMovie_img"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@mipmap/ic_launcher"
-            android:layout_gravity="center_horizontal"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/product_name"
-            android:text="product name"
-            android:layout_gravity="center_horizontal"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="20dp"
-            android:text="Descirption:"/>
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="1,2">
-            <TableRow
-                android:background="@color/tableHead"
+            <ImageView
+                android:id="@+id/singleItem_img"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@mipmap/ic_launcher"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"/>
+            <RelativeLayout
+                android:id="@+id/product_slides_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <TextView
-                    android:layout_column="1"
-                    android:layout_width="wrap_content"
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/product_slides"/>
+                <com.example.pengyuanfan.fablix.util.CirclePageIndicator
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Price Now:"
-                    android:layout_gravity="center_horizontal"
-                    />
+                    android:layout_below="@+id/product_slides"
+                    android:id="@+id/product_slides_indicator"/>
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/slides_pager"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Time left:"
-                    android:layout_gravity="center_horizontal"/>
-            </TableRow>
-            <TableRow>
-                <EditText
-                    android:layout_marginTop="4dp"
-                    android:layout_column="1"
-                    android:id="@+id/bidPrice"
-                    />
-                <Button
-                    android:text="bid"/>
-            </TableRow>
-        </TableLayout>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Buy it now"/>
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/commentList"/>
-    </LinearLayout>
+                    android:layout_below="@id/product_slides_indicator"
+                    android:background="#88343434"
+                    android:ellipsize="end"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="2dp"
+                    android:paddingTop="2dp"
+                    android:singleLine="true"
+                    android:textColor="#ededed"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_name"
+                android:text="product name"
+                android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/product_description"
+                android:textSize="20dp"
+                android:text="Description: "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_category"
+                android:text="Category: "/>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1,2">
+                <TableRow
+                    android:background="@color/tableHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_column="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price Now"
+                        android:layout_gravity="center_horizontal"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Time left"
+                        android:layout_gravity="center_horizontal"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_column="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/product_price"
+                        android:text="Price Now:"
+                        android:layout_gravity="center_horizontal"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/product_timeLeft"
+                        android:text="End"
+                        android:layout_gravity="center_horizontal"/>
+                </TableRow>
+                <TableRow
+                    android:background="@color/tableHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_column="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start at"
+                        android:layout_gravity="center_horizontal"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="End at"
+                        android:layout_gravity="center_horizontal"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_column="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/product_timeStart"
+                        android:text="start"
+                        android:layout_gravity="center_horizontal"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/product_timeEnd"
+                        android:text="end"
+                        android:layout_gravity="center_horizontal"/>
+                </TableRow>
+                <TableRow>
+                    <EditText
+                        android:layout_marginTop="4dp"
+                        android:layout_column="1"
+                        android:id="@+id/bidPrice"
+                        android:inputType="numberDecimal"
+                        />
+                    <Button
+                        android:text="bid"
+                        android:id="@+id/bidBtn"
+                        android:onClick="bid"/>
+                </TableRow>
+            </TableLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/buyBtn"
+                android:text="Buy it now"
+                android:onClick="buy"
+                android:visibility="gone"/>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/commentList"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textMultiLine"
+                android:lines="8"
+                android:minLines="6"
+                android:maxLines="10"
+                android:gravity="top|left"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:hint="Comments.."
+                android:id="@+id/product_comments"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Post comment"
+                android:id="@+id/product_comments_btn"
+                android:onClick="post"/>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

@@ -17,8 +17,12 @@ public class ListViewImageDLder extends ImageDowloader {
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        if(position==ph.getP())
-            show.setImageBitmap(bitmap);
+        if(position==ph.getP()) {
+            if(bitmap!=null)
+                show.setImageBitmap(bitmap);
+            else
+                show.setImageBitmap(img.getImg());
+        }
         if(img!=null)
             img.setImg(bitmap);
     }

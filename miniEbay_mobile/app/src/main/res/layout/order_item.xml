@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:stretchColumns="0,1,2">
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:text="id"
+            android:textSize="25dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/orderList_id"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:text="price"
+            android:textSize="25dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/orderList_price"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="product name"
-        android:textSize="25dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text="Date"
+            android:textSize="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/orderList_Date"/>
+    </TableRow>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date"
-        android:textSize="25dp"
-        android:layout_alignParentRight="true"/>
 
-</RelativeLayout>
+</TableLayout>

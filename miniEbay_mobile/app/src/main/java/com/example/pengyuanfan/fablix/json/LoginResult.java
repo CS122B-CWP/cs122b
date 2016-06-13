@@ -6,6 +6,7 @@ package com.example.pengyuanfan.fablix.json;
 public class LoginResult {
     private boolean login_result;
     private String login_name;
+    private String customer_id;
 
     public boolean isLogin_result() {
         return login_result;
@@ -21,5 +22,13 @@ public class LoginResult {
 
     public void setLogin_name(String login_name) {
         this.login_name = login_name;
+    }
+
+    public String getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
     }
 }

@@ -12,17 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Fablix_Search"
+            android:name=".miniEbay_Search"
             android:launchMode="singleTop"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Display_Activity"
             android:label="@string/title_activity_display_message"
-            android:parentActivityName=".Fablix_Search"
+            android:parentActivityName=".miniEbay_Search"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Fablix_Search" />
+                android:value=".miniEbay_Search" />
         </activity>
         <activity
             android:name=".LoginActivity"
@@ -38,15 +38,25 @@
         <activity
             android:name=".SingleMovieActivity"
             android:label="Movie"
-            android:parentActivityName=".Fablix_Search" />
+            android:parentActivityName=".miniEbay_Search" />
         <activity
             android:name=".SingleStarActivity"
             android:label="Star"
-            android:parentActivityName=".Fablix_Search" />
-        <activity android:name=".ProductDetailActivity" />
-        <activity android:name=".OrderHistory" />
-        <activity android:name=".ShoppingCart" />
-        <activity android:name=".OrderDetail"></activity>
+            android:parentActivityName=".miniEbay_Search" />
+        <activity
+            android:name=".ProductDetailActivity"
+            android:label="Item"
+            android:theme="@style/StyledIndicators"
+            android:parentActivityName=".miniEbay_Search"/>
+        <activity android:name=".OrderHistory"
+            android:label="Order History"
+            android:parentActivityName=".miniEbay_Search"/>
+        <activity android:name=".ShoppingCart"
+            android:label="Shopping Cart"
+            android:parentActivityName=".miniEbay_Search"/>
+        <activity android:name=".OrderDetail"
+            android:label="Order Detail"
+            android:parentActivityName=".OrderHistory"/>
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.example.pengyuanfan.fablix.util;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.InputStream;
@@ -34,8 +35,11 @@ public class ImageDowloader extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        if(bitmap!=null)
+        Log.d("ImageDownloader", "finished");
+        if(bitmap!=null) {
+            Log.d("ImageDownloader", "show!");
             show.setImageBitmap(bitmap);
+        }
         if(img!=null)
             img.setImg(bitmap);
     }

@@ -8,7 +8,6 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -18,10 +17,7 @@ import android.widget.Toast;
 
 import com.example.pengyuanfan.fablix.json.LoginResult;
 import com.example.pengyuanfan.fablix.json.SingleMovie;
-import com.example.pengyuanfan.fablix.json.SingleStar;
-import com.example.pengyuanfan.fablix.json.Star;
 import com.example.pengyuanfan.fablix.singleMS.SingleMovieParser;
-import com.example.pengyuanfan.fablix.singleMS.StarBean;
 import com.example.pengyuanfan.fablix.singleMS.StarListAdapter;
 import com.example.pengyuanfan.fablix.util.ConnectionState;
 import com.example.pengyuanfan.fablix.util.HttpGetThread;
@@ -29,8 +25,6 @@ import com.example.pengyuanfan.fablix.util.ImageDowloader;
 import com.example.pengyuanfan.fablix.util.URLParam;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SingleMovieActivity extends AppCompatActivity {
 
@@ -74,7 +68,7 @@ public class SingleMovieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_movie);
 
-        movieId = getIntent().getStringExtra(Fablix_Search.SINGLE_MOVIE_ID);
+        movieId = getIntent().getStringExtra(miniEbay_Search.SINGLE_MOVIE_ID);
 
         movieIdV=(TextView)findViewById(R.id.singleMovie_movieId);
         movieTitleV=(TextView)findViewById(R.id.singleMovie_title);
@@ -90,7 +84,7 @@ public class SingleMovieActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String starId = sg.getStars().get(position).getId();
                 Intent singleMovieToSingleStar = new Intent(SingleMovieActivity.this, SingleStarActivity.class);
-                singleMovieToSingleStar.putExtra(Fablix_Search.SINGLE_STAR_ID, starId);
+                singleMovieToSingleStar.putExtra(miniEbay_Search.SINGLE_STAR_ID, starId);
                 startActivity(singleMovieToSingleStar);
             }
         });
@@ -105,7 +99,7 @@ public class SingleMovieActivity extends AppCompatActivity {
 
         //generateData();
 
-        singleMovieUrl = appContext.getString(R.string.fablix_Url) + appContext.getString(R.string.fablix_singleMovieUrl);
+        singleMovieUrl = appContext.getString(R.string.miniEbay_Url) + appContext.getString(R.string.fablix_singleMovieUrl);
         downLoadSingleMovie(movieId);
     }
 

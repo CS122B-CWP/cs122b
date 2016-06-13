@@ -1,6 +1,8 @@
 package com.example.pengyuanfan.fablix.movieListAdapter;
 
+import com.example.pengyuanfan.fablix.json.SearchResult;
 import com.example.pengyuanfan.fablix.util.JSONCodeLocator;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,23 +15,15 @@ import java.util.List;
  */
 public class MovieListParser {
 
-    public static void parse(String code, List<MvItemBean> result, MvPage mvPage){
-        code= JSONCodeLocator.locate(code);
-        try {
-            JSONObject  mvL = new JSONObject(code);
-            JSONArray mvs = mvL.optJSONArray("movies");
-            mvPage.setCurPageS(mvL.getString("curPage"));
-            mvPage.setMaxPageS(mvL.getString("maxPage"));
-            mvPage.setQuery( mvL.getString("title"));
-            for(int i=0;i<mvs.length();i++){
-                JSONObject mv=mvs.getJSONObject(i);
-                result.add(new MvItemBean(mv.getString("banner_url"),
-                                          mv.getString("title"),
-                                          mv.getString("dirctor")+" "+mv.getString("year"),
-                                          mv.getString("id")));
-            }
-        }catch (JSONException e){
-            e.printStackTrace();
+    public static SearchResult parse(String code){
+
+        if(code!=null){
+            Gson gs = new Gson();
+            return gs.fromJson(code, SearchResult.class);
+        }else {
+            return null;
         }
+
+
     }
 }
